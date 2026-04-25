@@ -1,0 +1,79 @@
+---
+title: The Method
+description: RTCSG, the AI Maturity Spectrum, and the Three-Horizon Adoption Journey.
+---
+
+# The Method
+
+Three frameworks structure every Lokomotif engagement and every module in the Kit. Together they form the methodology that the Kit publishes.
+
+## RTCSG — five layers, one architecture
+
+Every module belongs to exactly one of these concerns:
+
+- **R — Role.** Who the AI acts as. Expertise, perspective, authority calibrated to the task. A prompt without a role is a prompt without a point of view.
+- **T — Task & Format.** What must be done; how the output is structured. Precision over improvisation. The task layer is where most prompts fail — by asking for outputs that cannot be evaluated.
+- **C — Context & Constraint.** The organizational reality the model must respect. Data, boundaries, situational limits, regulatory frame. The context layer is where method meets operating model.
+- **S — Style & Tone.** Voice and register calibrated to audience. Internal memo, board brief, customer message — each demands different calibration.
+- **G — Guardrail.** What the model must not do. Ethical boundaries, accuracy standards, organizational risk controls — built in from the start.
+
+### Why composition matters
+
+A role module never embeds guardrails. A task module never carries context. The five concerns are composed at flow time, not at module time. The Kit enforces this through its schema; module authors who try to mix concerns get a validation failure with a precise pointer to the offending field.
+
+The discipline lets the same role be paired with different tasks across engagements, the same guardrail be applied across teams, and the same style be calibrated for different audiences without rewriting any one piece. Reusable building blocks instead of bespoke prompts.
+
+## The AI Maturity Spectrum
+
+Every enterprise client exists at a point along an AI maturity spectrum. The point matters: it determines the engagement that fits, the language that lands, and the outcome that can be promised.
+
+| State | Indicators | What the state needs |
+|---|---|---|
+| **AI-Absent** | No policy. No ownership. No experimentation. | Category education, exec-level framing, a first pilot that ships. |
+| **AI-Curious** | Scattered pilots. Individual productivity wins. No operating model, no measurement. | A diagnostic mapping use cases to ROI; the first disciplined engagement with baseline metrics. |
+| **AI-Integrated** | AI embedded in named workflows. Measurement exists. Roles partially redefined. | Workflow redesign at scale — rewire processes end-to-end, not automate the old ones faster. |
+| **AI-Native** | AI assumed in process design. Agents operate with guardrails. Operating model rebuilt for autonomous systems. | Agentic workflow design, observability, phased scaling, institutional governance maturity. |
+
+The spectrum is a diagnostic lens, not a marketing device. Engagement fit, conversation discipline, and content targeting all key off it.
+
+## The Three-Horizon Adoption Journey
+
+Three named practices that clients progress through, entered via a Diagnostic and often preceded by an Open Program for top-of-funnel readiness.
+
+### Horizon 1 — Adoption Sprint (2–4 weeks)
+
+_Move from intention to action._
+
+The first working proof of concept inside a real workflow. Entered from AI-Absent or AI-Curious state. The outcome is not a deck — it is a deployed, measured, teachable pilot a client team can operate and extend.
+
+**Primary deliverables:** prioritized use case, rapid PoC shipped, team enablement playbook, baseline metrics instrument, structured handover.
+
+### Horizon 2 — Workflow Rewire (6–12 weeks)
+
+_Redesign the processes, not just the tools._
+
+End-to-end workflow reconstruction with AI embedded, roles redefined, and measurement built in. Entered by clients who have pilot experience and now need structural change. The outcome is a redesigned operating rhythm for a named function or value stream.
+
+**Primary deliverables:** redesigned workflow documentation, role and ownership model, measurement dashboard, governance framework, risk and compliance protocol, structured training for the rewired roles.
+
+### Horizon 3 — Agentic Scale (8–16 weeks)
+
+_Move beyond assistance into autonomous operation._
+
+Design, test, and scale agentic workflows with the governance architecture to match. Entered by AI-Integrated clients ready to cross into AI-Native operation.
+
+**Primary deliverables:** agentic workflow design, guardrails and observability instrumentation, phased scaling plan, incident-response protocol, operational handbook, governance council structure.
+
+## How the three connect
+
+- **RTCSG** is the atomic unit. One module, one concern.
+- **The Maturity Spectrum** places the client on the map and tells you which horizon fits.
+- **The Three-Horizon Journey** is the progression — Adoption Sprint → Workflow Rewire → Agentic Scale, with measurement carried forward and method deepened at each step.
+
+Modules in this Kit support every horizon. Adoption Sprint engagements lean on role + task + style + guardrail. Workflow Rewire pulls in context modules and richer guardrails. Agentic Scale needs all five layers plus observability via [`@lokomotif/otel-schema`](https://github.com/lokomotif-ai/lokomotif-kit/tree/main/packages/otel-schema).
+
+## Further reading
+
+- [Authoring Modules](/module-authoring) — how to encode method into a YAML module.
+- [Glossary](/glossary) — every category term the firm owns.
+- [`Lokomotif_AI_Positioning_Brief.md`](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/Lokomotif_AI_Positioning_Brief.md) — the strategic frame the method serves.

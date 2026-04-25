@@ -1,0 +1,109 @@
+---
+title: Eval Harness
+description: Python test runner for RTCSG modules — deterministic and LLM-judged checks.
+---
+
+# Eval Harness
+
+Every Lokomotif module ships with at least one passing eval suite. The harness is the Python implementation that runs them.
+
+## Why evals are mandatory
+
+A module without an eval is a hypothesis. Evals turn hypotheses into contracts: an authored module says "this is what the role looks like"; the eval says "this is the behavior we expect, and here's how we'll know if it drifts." The Kit will not merge a module without an eval — the rule is enforced at PR review and through the schema's source-material policy.
+
+## CLI
+
+```bash
+uv run lokomotif-eval run                    # every eval suite under modules/
+uv run lokomotif-eval run --module roles/finance/aml-analyst
+uv run lokomotif-eval run --reporter json    # machine-readable output
+uv run lokomotif-eval list                   # discovered suites
+uv run lokomotif-eval scan-pii path/         # Turkey-aware PII scan
+```
+
+The same harness is reachable through the Node CLI as `lokomotif eval run`.
+
+## Eval YAML format
+
+Each module under `modules/` carries a sibling `__tests__/<name>.eval.yaml`:
+
+```yaml
+module: roles/finance/aml-analyst
+description: "Eval suite for the AML analyst role."
+checks:
+  - id: identity-mentions-aml
+    judge: deterministic
+    kind: regex
+    target: /body/identity/en
+    pattern: "AML|anti-money laundering"
+    flags: i
+
+  - id: identity-not-empty-tr
+    judge: deterministic
+    kind: not_empty
+    target: /body/identity/tr
+
+  - id: voice-sounds-senior
+    judge: llm
+    target: /body/identity
+    rubric: "Identity should sound like a senior practitioner."
+    threshold: 0.7
+```
+
+## Check kinds
+
+| `judge` | `kind` | Required args | Pass condition |
+|---------|--------|---------------|----------------|
+| `deterministic` | `regex` | `pattern`, optional `flags` | regex matches the target text |
+| `deterministic` | `not_empty` | — | target is non-null and non-empty |
+| `deterministic` | `array_length` | `min`, `max` | array length in bounds |
+| `deterministic` | `equals` | `expected` | target equals the expected value |
+| `deterministic` | `contains` | `substring` | target contains the substring |
+| `llm` | — | `rubric`, `threshold` | judge score ≥ threshold |
+
+`target` is a JSON Pointer (RFC 6901) into the module — `/body/identity/en`, `/body/expertise/0`, and so on. Empty pointer `""` or `"/"` returns the document root.
+
+## Judges
+
+### Deterministic
+
+Pure code. Same input always produces the same output. Use them for shape-correctness and content-presence assertions.
+
+### LLM
+
+The harness ships with `StubLLMJudge` — a deterministic keyword-overlap heuristic so CI runs without API keys. It identifies itself as `stub` in the result so reports never confuse it with a real LLM run.
+
+Real LLM judges are implemented by the operator: a class implementing the `LLMJudge` protocol that calls Anthropic, OpenAI-compatible, or a local model server. The harness is vendor-neutral; you compose your preferred judge.
+
+```python
+from lokomotif_eval import EvalRunner, LLMJudge
+
+class AnthropicJudge:
+    def evaluate(self, check, target_value):
+        # ... call Anthropic, score, return JudgeResult
+        ...
+
+runner = EvalRunner(modules_dir=modules_dir, llm_judge=AnthropicJudge())
+results, summary = runner.run_paths(pairs)
+```
+
+## Reports
+
+Two formats:
+
+- **Console** — human-readable, ✓/✗ markers, expanded reasons for failures, aggregate counts.
+- **JSON** — stable shape suitable for CI metadata wrappers; includes per-check duration and severity.
+
+## PII scanner
+
+`lokomotif-eval scan-pii <path>` walks files and surfaces TC Kimlik candidates, Turkish IBAN, mobile numbers, and email addresses. The canonical specification is the `guardrails/cross-industry/pii-tr` module; the runtime patterns are aligned to it by hand for now.
+
+## Coverage
+
+The harness's own coverage budget is 90% on lines and functions. Eval-test coverage of modules is reported separately by the harness — every module's eval suite must include checks for the load-bearing fields of its kind.
+
+## See also
+
+- [Authoring Modules](/module-authoring) — write a module + its eval together.
+- [`packages/eval` README](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/packages/eval/README.md) — implementation reference.
+- [`guardrails/cross-industry/pii-tr`](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/modules/guardrails/cross-industry/pii-tr.yaml) — canonical PII spec.

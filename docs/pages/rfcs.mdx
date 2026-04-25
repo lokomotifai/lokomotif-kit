@@ -1,0 +1,43 @@
+---
+title: RFCs
+description: Durable decisions that govern the Kit's evolution.
+---
+
+# RFCs
+
+RFCs are how the Kit makes durable decisions in writing. They are required for changes that affect the schema, scope, or convention. The full process is in [`GOVERNANCE.md`](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/GOVERNANCE.md).
+
+## Index
+
+| Number | Status | Title |
+|---|---|---|
+| [0001](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/docs/rfcs/0001-phase-6-partial-scope.md) | Accepted | Phase 6 partial scope — public-sourced canonical modules first |
+
+## When to write an RFC
+
+Open one when a change:
+
+- Modifies the JSON Schema or any module contract.
+- Introduces a new RTCSG concern, kind, or industry.
+- Changes the runtime contract (CLI, SDK, blueprints).
+- Sets or alters a project-wide convention.
+- Introduces a new dependency at the package level.
+- Reduces or expands a phase's scope in `IMPLEMENTATION_PLAN.md`.
+
+## What an RFC contains
+
+- **Summary** — one paragraph.
+- **Motivation** — why now.
+- **Decision** — what changes.
+- **Why this is not a rule violation** — when the change brushes against an existing rule, the explicit case for why it does not break the rule.
+- **Migration** — for breaking changes, how operators move from current to proposed without breaking users.
+- **Open questions** — what is unresolved.
+
+## Process
+
+1. Open a GitHub issue using the **RFC** template.
+2. Discussion happens in the issue thread.
+3. The Lead Maintainer marks the RFC as `accepted`, `revising`, or `declined` within 14 days of opening.
+4. Accepted RFCs are committed as `docs/rfcs/NNNN-short-name.md` and linked from the implementation pull request.
+
+RFCs are durable. They explain why a decision exists; the codebase shows how.

@@ -1,0 +1,79 @@
+---
+title: Metod
+description: RTCSG, AI Olgunluk Spektrumu ve Üç-Ufuk Adaptasyon Yolculuğu.
+---
+
+# Metod
+
+Üç çerçeve her Lokomotif engagement'ını ve Kit'teki her modülü yapılandırır. Birlikte, Kit'in yayımladığı metodolojiyi oluşturur.
+
+## RTCSG — beş katman, tek mimari
+
+Her modül beş concern'den birine ait:
+
+- **R — Role.** AI kim gibi davranıyor. Göreve ayarlı uzmanlık, perspektif, otorite. Role'siz prompt, bakış açısı olmayan prompt'tur.
+- **T — Task & Format.** Ne yapılmalı; çıktı nasıl yapılandırılmalı. İmprovizasyon yerine kesinlik. Çoğu prompt bu katmanda başarısız olur — değerlendirilemeyen çıktı isteyerek.
+- **C — Context & Constraint.** Modelin uyması gereken organizasyonel gerçeklik. Veri, sınırlar, durumsal limitler, düzenleyici çerçeve. Metodun operating model ile buluştuğu katman burası.
+- **S — Style & Tone.** Kitleye ayarlı ses ve register. İç notu, yönetim kurulu brief'i, müşteri mesajı — her biri farklı kalibrasyon ister.
+- **G — Guardrail.** Modelin yapmaması gereken. Etik sınırlar, doğruluk standartları, organizasyonel risk kontrolleri — sonradan değil, baştan inşa edilir.
+
+### Kompozisyon neden önemli
+
+Role modülü guardrail gömmez. Task modülü context taşımaz. Beş concern flow anında kompoze edilir, modül anında değil. Kit bunu schema ile zorlar; concern'leri karıştırmaya çalışan modül yazarı, hatalı alana işaret eden bir validation hatası alır.
+
+Bu disiplin sayesinde aynı role farklı task'larla eşleşebilir, aynı guardrail farklı ekiplere uygulanabilir, aynı style farklı kitleler için kalibre edilebilir — hiçbir parça yeniden yazılmadan. Bespoke prompt yerine yeniden kullanılabilir yapı taşları.
+
+## AI Olgunluk Spektrumu
+
+Her kurumsal müşteri AI olgunluk spektrumunda bir noktada. O nokta önemli: hangi engagement'ın uyduğunu, hangi dilin tutacağını, hangi sonucun vaat edilebileceğini belirler.
+
+| Durum | Göstergeler | Durumun ihtiyacı |
+|---|---|---|
+| **AI-Absent** | Politika yok. Sahiplenme yok. Deneme yok. | Kategori eğitimi, yönetim seviyesi çerçeveleme, ilk ship eden pilot. |
+| **AI-Curious** | Dağınık pilotlar. Bireysel verimlilik kazanımları. Operating model yok, ölçüm yok. | ROI'ye haritalanmış use case'lerle diagnostic; baseline metrikli ilk disiplinli engagement. |
+| **AI-Integrated** | İsimlendirilmiş workflow'lara gömülü AI. Ölçüm var. Roller kısmen yeniden tanımlı. | Ölçekte workflow yeniden tasarımı — eskileri daha hızlı otomatikleştirmek değil, end-to-end yeniden kablolama. |
+| **AI-Native** | Süreç tasarımında AI varsayılan. Agent'lar guardrail'lerle çalışıyor. Operating model otonom sistemler için yeniden inşa edilmiş. | Agentic workflow tasarımı, observability, faz faz ölçeklendirme, kurumsal yönetişim olgunluğu. |
+
+Spektrum bir pazarlama aracı değil — diagnostic mercek. Engagement uyumu, konuşma disiplini, içerik hedeflemesi hepsi buna bağlı.
+
+## Üç-Ufuk Adaptasyon Yolculuğu
+
+Müşterilerin ilerlediği üç adlandırılmış pratik. Diagnostic ile girilir; sıkça Open Program ile öncelenir.
+
+### Ufuk 1 — Adoption Sprint (2–4 hafta)
+
+_Niyetten eyleme geç._
+
+Gerçek bir workflow'un içinde ilk çalışan proof of concept. AI-Absent veya AI-Curious durumdan girilir. Sonuç bir deck değil — müşteri ekibinin işletip genişletebildiği, deploy edilmiş, ölçülmüş, öğretilebilir bir pilot.
+
+**Birincil teslimatlar:** önceliklendirilmiş use case, hızlı PoC ship'i, ekip enablement playbook'u, baseline metrik enstrümanı, yapılandırılmış handover.
+
+### Ufuk 2 — Workflow Rewire (6–12 hafta)
+
+_Sadece araçları değil, süreçleri yeniden tasarla._
+
+AI gömülü, roller yeniden tanımlı, ölçüm yerleşik, end-to-end workflow yeniden inşası. Pilot deneyimi olan ve şimdi yapısal değişim isteyen müşteriler tarafından girilir. Sonuç, isimli bir fonksiyon ya da value stream için yeniden tasarlanmış operating rhythm.
+
+**Birincil teslimatlar:** yeniden tasarlanmış workflow dokümantasyonu, rol ve sahiplenme modeli, ölçüm dashboard'u, governance framework'ü, risk ve compliance protokolü, yeniden tanımlı roller için yapılandırılmış eğitim.
+
+### Ufuk 3 — Agentic Scale (8–16 hafta)
+
+_Asistan olmaktan otonom operasyona geç._
+
+Eşleşen governance mimarisiyle agentic workflow'ları tasarla, test et ve ölçeklendir. AI-Integrated müşteriler tarafından AI-Native operasyona geçmek için girilir.
+
+**Birincil teslimatlar:** agentic workflow tasarımı, guardrail ve observability enstrümentasyonu, faz faz ölçeklendirme planı, incident-response protokolü, operasyonel handbook, governance konsey yapısı.
+
+## Üçü nasıl bağlanır
+
+- **RTCSG** atomik birimdir. Bir modül, bir concern.
+- **Olgunluk Spektrumu** müşteriyi haritada konumlandırır ve hangi ufkun uyduğunu söyler.
+- **Üç-Ufuk Yolculuğu** ilerlemedir — Adoption Sprint → Workflow Rewire → Agentic Scale, her adımda ölçüm taşınır ve metod derinleşir.
+
+Bu Kit'teki modüller her ufku destekler. Adoption Sprint engagement'ları role + task + style + guardrail'e yaslanır. Workflow Rewire context modüllerini ve daha zengin guardrail'leri devreye alır. Agentic Scale, beş katmanın hepsini ve [`@lokomotif/otel-schema`](https://github.com/lokomotif-ai/lokomotif-kit/tree/main/packages/otel-schema) üzerinden observability'yi gerektirir.
+
+## Daha fazla okuma
+
+- [Authoring Modules](/module-authoring) — metodu nasıl YAML modüle kodlarsın (EN canonical).
+- [Sözlük](/tr/glossary) — firmanın sahiplendiği her kategori terimi.
+- [`Lokomotif_AI_Positioning_Brief.md`](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/Lokomotif_AI_Positioning_Brief.md) — metodun hizmet ettiği stratejik çerçeve.

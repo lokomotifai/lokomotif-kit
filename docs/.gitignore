@@ -1,0 +1,7 @@
+.next/
+out/
+node_modules/
+.turbo/
+*.tsbuildinfo
+.vercel
+next-env.d.ts

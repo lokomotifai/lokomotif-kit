@@ -1,0 +1,89 @@
+---
+title: Blueprints
+description: Runtime adapters — Anthropic SDK, Dify, n8n, LangGraph.
+---
+
+# Blueprints
+
+Modules and the SDK stay vendor-neutral by design. Every vendor concern lives in `blueprints/`. Each blueprint takes a `ComposedPrompt` from [`@lokomotif/sdk`](/sdk) and produces the format its target runtime expects, with the composition hash preserved end-to-end so traces correlate back to the originating Lokomotif composition.
+
+## The four shipped runtimes
+
+| Blueprint | Output | Vendor dep |
+|---|---|---|
+| `@lokomotif/blueprint-anthropic-sdk` | Anthropic Messages API call | `@anthropic-ai/sdk` (peer) |
+| `@lokomotif/blueprint-dify` | Workflow YAML (Dify import-ready) | none — structural transform |
+| `@lokomotif/blueprint-n8n` | Workflow JSON (n8n import-ready) | none — structural transform |
+| `@lokomotif/blueprint-langgraph` | LangGraph `StateGraph` | `@langchain/langgraph` (peer) |
+
+## Anthropic SDK
+
+```ts
+import Anthropic from '@anthropic-ai/sdk';
+import { compose, loadModules } from '@lokomotif/sdk';
+import { runWithAnthropic } from '@lokomotif/blueprint-anthropic-sdk';
+
+const composed = compose(loadModules([...], { modulesDir }));
+
+const message = await runWithAnthropic(composed, 'Vakayı özetle.', {
+  client: new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY }),
+  model: 'claude-sonnet-4-6',
+});
+```
+
+The composed prompt becomes the Anthropic Messages `system` field; the user input becomes a single `user` message. Multi-turn conversation remains the caller's responsibility. The composition hash is exposed so emitters can record `lokomotif.flow.composition_hash` (see [`@lokomotif/otel-schema`](https://github.com/lokomotif-ai/lokomotif-kit/tree/main/packages/otel-schema)).
+
+## Dify
+
+```ts
+import { compose } from '@lokomotif/sdk';
+import { adaptToDify, renderDifyYaml } from '@lokomotif/blueprint-dify';
+import { writeFileSync } from 'node:fs';
+
+const composed = compose(modules);
+const definition = adaptToDify(composed, { appName: 'aml-review' });
+writeFileSync('aml-review.dify.yaml', renderDifyYaml(definition));
+```
+
+The output is a workflow-mode Dify definition with start → llm → end nodes wired in series. Import via the Dify dashboard (_Apps → Create from DSL_).
+
+## n8n
+
+```ts
+import { compose } from '@lokomotif/sdk';
+import { adaptToN8n, renderN8nJson } from '@lokomotif/blueprint-n8n';
+
+const composed = compose(modules);
+const workflow = adaptToN8n(composed, { workflowName: 'aml-review' });
+writeFileSync('aml-review.n8n.json', renderN8nJson(workflow));
+```
+
+The output is an n8n workflow with a manual trigger → Anthropic chat node → set output node, all wired in series. Import via _Workflows → Import from File_.
+
+## LangGraph
+
+```ts
+import { compose } from '@lokomotif/sdk';
+import { buildStateGraph } from '@lokomotif/blueprint-langgraph';
+
+const composed = compose(modules);
+const graph = buildStateGraph(composed, {
+  llm: async (state) => callYourLLM(state.system_prompt, state.user_input),
+});
+
+const compiled = graph.compile();
+const result = await compiled.invoke({ user_input: 'analyze this' });
+```
+
+The graph topology is fixed: **compose → execute → audit**. The `compose` node injects the system prompt into state. The `execute` node calls the caller-supplied `llm` callback. The `audit` node records the composition hash and module manifest for downstream observability.
+
+## Adding a new runtime
+
+A new blueprint requires an RFC. Why: the runtime list is the surface that operators evaluate the Kit against; adding entries casually dilutes the signal. The RFC documents the runtime's adapter contract, the test strategy without external API access, and the maintenance burden.
+
+## See also
+
+- [`blueprints/anthropic-sdk` README](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/blueprints/anthropic-sdk/README.md)
+- [`blueprints/dify` README](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/blueprints/dify/README.md)
+- [`blueprints/n8n` README](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/blueprints/n8n/README.md)
+- [`blueprints/langgraph` README](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/blueprints/langgraph/README.md)

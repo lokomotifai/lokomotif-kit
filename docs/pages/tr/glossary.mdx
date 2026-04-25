@@ -1,0 +1,75 @@
+---
+title: Sözlük
+description: Firmanın sahiplendiği terimler, kullanılacak ifadeler, emekliye ayrılmış ifadeler.
+voice_gate: skip
+---
+
+# Sözlük
+
+Çalışma lexicon'u. Bu sayfa `Lokomotif_AI_Positioning_Brief.md` § 11'deki kanonik sözlüğü yansıtır — ikisi senkron tutulur. Voice gate burada bilerek atlanır; çünkü emekliye ayrılmış ifadeler bölümü, gate'in tam olarak blokladığı ifadeleri belgeleyen içeriktir.
+
+## Firmanın sahiplendiği terimler
+
+İsimlendirilmiş çerçeveler ve kategori terimleri. Kavram olarak referans verildiğinde proper noun olarak kullan; baş harfi büyük.
+
+- **Corporate AI Adoption Partner** — firmanın kategori iddiası.
+- **The Lokomotif Method** — firmanın özgün yaklaşımının şemsiye adı.
+- **RTCSG** — beş katmanlı prompt mimarisi (Role, Task & Format, Context & Constraint, Style & Tone, Guardrail).
+- **The AI Maturity Spectrum** — dört durumlu diagnostic model (AI-Absent, AI-Curious, AI-Integrated, AI-Native).
+- **The Three-Horizon Adoption Journey** — pratik mimarisi (Adoption Sprint, Workflow Rewire, Agentic Scale), Diagnostic ile girilir.
+- **Adoption Sprint, Workflow Rewire, Agentic Scale** — üç adlandırılmış pratik.
+- **The Diagnostic** — sabit kapsamlı giriş engagement'ı.
+- **Open Programs** — ürünleştirilmiş public eğitimler. _Academy_ değil. _Kurslar_ değil.
+- **The Leveraged Agency Model** — beş yıllık ürün merdiveni (Services → Productized Service → Product, altında audience).
+- **Komünite** — her zaman Türkçe diakritiklerle yazılır. Çevrilmez.
+- **Komünite Space** — fiziksel hub. Her zaman büyük harf.
+
+## Sektör taksonomisi
+
+Schema'nın `industry` alanında kabul ettiği 16 değer. Genişletme RFC ile.
+
+`finance` · `banking` · `insurance` · `retail` · `e-commerce` · `logistics` · `healthcare` · `manufacturing` · `energy` · `telco` · `media` · `hr` · `legal` · `public-sector` · `education` · `cross-industry`
+
+## Kullanılacak ifadeler
+
+Yüzeylerde doğal olarak görünmesi beklenen — slogan tekrarı gibi değil, baseline vocabulary olarak — operasyonel kategori sözlüğü.
+
+- operating model design
+- workflow redesign / workflow rewire
+- agentic transformation / agentic scale / agentic workflows
+- measurable transformation
+- methodology-led
+- frontier-connected
+- community-powered
+- baseline, delta, ROI case
+- operating rhythm
+- guardrails and observability
+- the adoption gap
+- AI-absent'tan AI-native'e
+- the Phase 3 shift
+
+## Emekliye ayrılmış ifadeler
+
+AI-solutions ve AI-academy döneminden kalma legacy ifadeler. Kategori iddiasını zayıflatırlar; her public yüzeyden kaldırılır — mümkünse arşiv içerikten de.
+
+- "AI solutions" — jenerik, kategori-kör.
+- "AI training academy" — firmayı eğitim-firmasi olarak konumlandırır.
+- "End-to-end AI services" — firmayı dev shop olarak konumlandırır.
+- "Digitize your business" — dönem-yanlış; AI sayısallaştırma değil.
+- "Simplify your complex processes" — jenerik consulting dili.
+- "Integrations in days" — agency tipi velocity çerçevelemesi.
+- "MVP in 12 weeks" — dev shop çerçevelemesi.
+- "Your trusted AI partner" — parity dili, diferansiyasyon yok.
+- Jenerik tekliflere uygulanan modifier olarak "AI-powered".
+- "Revolutionary" / "next-gen" / "cutting-edge" — hepsi hype-kategorisi.
+- "Empower your team" — jenerik; somut sonuçlar bunu değiştirir.
+- Eğitim sayfalarında birincil değer önerisi olarak "Certificate of completion".
+
+Voice gate her MDX sayfasını yukarıdaki string'ler için tarar (case-insensitive). Bunlara değinmesi gereken bir sayfa — bu sayfa gibi — frontmatter'ında `voice_gate: skip` ile devre dışı bırakır.
+
+## Çift dilli yüzey rehberi
+
+Türkçe ve İngilizce yüzeyleri yöneten iki dil kuralı:
+
+- **Teknik kategori terimleri İngilizce kalır.** RTCSG, agentic, operating model, workflow rewire, Agentic Scale, Adoption Sprint, Open Program — bunlar çevrilmez. İki dilde de proper noun'dur. Komünite iki dilde de Türkçe kalır.
+- **Çevreleyen nesir çevrilmez, native yazılır.** Türkçe yüzeyler native Türkçe yazılır, Türk yazarlar tarafından, gömülü İngilizce kategori terimleriyle. İngilizce'den Türkçe'ye (ya da tersi) doğrudan çeviri, iki yönde de ithal hisseden yüzey üretir.

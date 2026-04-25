@@ -1,0 +1,95 @@
+---
+title: Başlangıç
+description: Lokomotif Kit'i kur, ilk modülünü scaffold et, eval çalıştır.
+---
+
+# Başlangıç
+
+## Ön gereksinimler
+
+- **Node.js** ≥ 20.10
+- **pnpm** 9.x — [Corepack](https://nodejs.org/api/corepack.html) ile: `corepack enable`
+- **Python** ≥ 3.12
+- **uv** Python bağımlılık yönetimi için — [kurulum](https://docs.astral.sh/uv/getting-started/installation/)
+
+## Kur
+
+```bash
+git clone https://github.com/lokomotif-ai/lokomotif-kit.git
+cd lokomotif-kit
+corepack enable
+pnpm install
+cd packages/eval && uv sync
+cd ../..
+```
+
+## Kurulumu doğrula
+
+```bash
+pnpm typecheck
+pnpm lint
+pnpm test
+pnpm validate:modules
+```
+
+Her komut temiz çıkış vermeli. Bir şey hata verirse devam etmeden önce çıktıyla birlikte issue aç.
+
+## Modül scaffold et
+
+Modüller tam olarak bir RTCSG concern'üne ait: role, task, context, style ya da guardrail. CLI ile frontmatter-tam iskelet üret:
+
+```bash
+pnpm -F @lokomotif/cli start -- modules new role finance/aml-analyst
+```
+
+Bu komut şunları yazar:
+
+- `modules/roles/finance/aml-analyst.yaml` — TODO marker'lı modül iskeleti.
+- `modules/roles/finance/__tests__/aml-analyst.eval.yaml` — eval test placeholder.
+
+TODO'ları gerçek Lokomotif praktiğine göre uyarla. Modüller gerçek pratiği yansıtmak zorundadır — kural ve arkasındaki politika için [Modül Yazımı](/module-authoring) (EN canonical, TR yakında).
+
+## Modülü doğrula
+
+```bash
+pnpm validate:modules
+```
+
+Schema doğrulayıcısı `modules/**/*.yaml` dosyalarını gezer, her birini doğrular ve hataları JSON Pointer yolu ile bildirir. Yeşil bir koşu, her modülün şekil olarak doğru olduğu anlamına gelir.
+
+## Eval çalıştır
+
+```bash
+cd packages/eval
+uv run lokomotif-eval run
+```
+
+Harness her modülü ve sibling `__tests__/<name>.eval.yaml` dosyasını yükler, her check'i çalıştırır ve pass/fail raporlar. Varsayılan LLM judge deterministik stub — CI API key'siz çalışır.
+
+## Flow kompoze et
+
+Bir flow modülleri tek bir prompt'ta birleştirir:
+
+```yaml
+# flow.yaml
+name: aml-review
+modules:
+  - roles/finance/aml-analyst
+  - tasks/general/structured-summary
+  - contexts/finance/kvkk-compliance
+  - styles/cross-industry/executive-board-brief
+  - guardrails/cross-industry/pii-tr
+```
+
+```bash
+pnpm -F @lokomotif/cli start -- compose flow.yaml
+```
+
+CLI sırayı **R → T → C → S → G**'ye kanonikleştirir, tekrarlananları siler ve tek bir prompt üretir. Programatik kullanım için `@lokomotif/sdk`'dan `compose()` fonksiyonunu çağır.
+
+## Sonraki adımlar
+
+- [Metod](/tr/method) — RTCSG, Olgunluk Spektrumu, Üç-Ufuk Adaptasyon Yolculuğu.
+- [Sözlük](/tr/glossary) — firmanın sahiplendiği terimler, kullanım ve emekli ifadeler.
+- [CLI](/cli) — `lokomotif` komut referansı (EN canonical).
+- [Blueprints](/blueprints) — Anthropic SDK, Dify, n8n, LangGraph (EN canonical).

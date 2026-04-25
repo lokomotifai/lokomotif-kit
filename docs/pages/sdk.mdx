@@ -1,0 +1,126 @@
+---
+title: SDK
+description: '@lokomotif/sdk — runtime-agnostic TypeScript composition library.'
+---
+
+# `@lokomotif/sdk`
+
+Runtime-agnostic TypeScript composition library. Zero vendor SDK dependencies — runtime adapters live in [blueprints](/blueprints).
+
+## Install
+
+```bash
+pnpm add @lokomotif/sdk
+```
+
+## Public API
+
+```ts
+import {
+  loadModule,
+  loadModules,
+  loadFlow,
+  compose,
+  composeFlow,
+  composeFlowFile,
+  renderPrompt,
+  renderModule,
+  pickLanguage,
+  compositionHash,
+  LoadModuleError,
+  FlowError,
+  type Flow,
+  type ComposedPrompt,
+  type ComposeOptions,
+} from '@lokomotif/sdk';
+```
+
+## Loading modules
+
+```ts
+import { loadModule } from '@lokomotif/sdk';
+
+const module = loadModule('roles/finance/aml-analyst', {
+  modulesDir: '/abs/path/to/modules',
+});
+```
+
+`LoadModuleError` is thrown with a typed `reason` (`not-found`, `parse-error`, `validation-error`) when the module cannot be loaded.
+
+```ts
+import { loadModules, LoadModuleError } from '@lokomotif/sdk';
+
+try {
+  const mods = loadModules(['roles/finance/aml-analyst', 'tasks/general/structured-summary'], {
+    modulesDir,
+  });
+} catch (err) {
+  if (err instanceof LoadModuleError && err.reason === 'validation-error') {
+    console.error('schema problems:', err.validationErrors);
+  }
+  throw err;
+}
+```
+
+## Composing flows
+
+```ts
+import { composeFlow } from '@lokomotif/sdk';
+
+const composed = composeFlow(
+  {
+    name: 'aml-review',
+    modules: [
+      'roles/finance/aml-analyst',
+      'tasks/general/structured-summary',
+      'contexts/finance/kvkk-compliance',
+      'styles/cross-industry/executive-board-brief',
+      'guardrails/cross-industry/pii-tr',
+    ],
+  },
+  { modulesDir, language: 'tr' },
+);
+
+console.log(composed.text);             // RTCSG-ordered, sectioned prompt
+console.log(composed.compositionHash);  // 16-char deterministic hash
+console.log(composed.byKind.role?.id);  // bucketed access
+```
+
+The pure form, `compose(modules, options)`, accepts pre-loaded modules and skips disk I/O. Use it when you already have `Module` objects in memory.
+
+## RTCSG ordering
+
+Composition canonicalizes module order to **R → T → C → S → G**. RTCSG enforces at most one role per composition; multiple of any other kind are accepted and rendered in their input order. Duplicate module IDs throw a `FlowError`. A composition with neither role nor task throws — the structural slots cannot be empty.
+
+`renderPrompt` emits sections under markdown-style `## Role`, `## Task`, `## Context`, `## Style`, `## Guardrail` headers. Localized fields are rendered in `language` (or `fallbackLanguage`, default `en`) preference order.
+
+## Composition hash
+
+`compositionHash(modules)` returns a stable 16-character hex hash of the ordered `(id, version)` tuples. Same input produces the same hash regardless of the order modules were passed in. The hash is the canonical correlator across observability spans — see [`@lokomotif/otel-schema`](https://github.com/lokomotif-ai/lokomotif-kit/tree/main/packages/otel-schema)'s `lokomotif.flow.composition_hash` attribute.
+
+```ts
+import { compositionHash } from '@lokomotif/sdk';
+
+const a = compositionHash([roleModule, taskModule]);
+const b = compositionHash([taskModule, roleModule]);
+a === b; // true
+```
+
+## Why a separate package
+
+The Kit's surface is partitioned by purpose:
+
+- `@lokomotif/schema` — the contract.
+- `@lokomotif/cli` — the practitioner UX.
+- `@lokomotif/sdk` — composition for downstream consumers (blueprints, internal services, integrations).
+
+Other tools (the CLI, the four blueprints) depend on the SDK without taking on each other's dependencies. The SDK has zero vendor SDK dependencies — that invariant is verified at test time.
+
+## Status
+
+`v0.0.x` — pre-release. Surface may evolve before v1.0.0 via RFC.
+
+## See also
+
+- [Blueprints](/blueprints) — runtime adapters that consume `ComposedPrompt`.
+- [`packages/sdk` README](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/packages/sdk/README.md) — full API documentation.

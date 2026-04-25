@@ -1,0 +1,95 @@
+---
+title: Getting Started
+description: Install Lokomotif Kit, scaffold your first module, and run an eval.
+---
+
+# Getting Started
+
+## Prerequisites
+
+- **Node.js** ≥ 20.10
+- **pnpm** 9.x (via [Corepack](https://nodejs.org/api/corepack.html): `corepack enable`)
+- **Python** ≥ 3.12
+- **uv** for Python dependency management — [installation](https://docs.astral.sh/uv/getting-started/installation/)
+
+## Install
+
+```bash
+git clone https://github.com/lokomotif-ai/lokomotif-kit.git
+cd lokomotif-kit
+corepack enable
+pnpm install
+cd packages/eval && uv sync
+cd ../..
+```
+
+## Verify the install
+
+```bash
+pnpm typecheck
+pnpm lint
+pnpm test
+pnpm validate:modules
+```
+
+Each command should exit cleanly. If anything fails, file an issue with the output before continuing.
+
+## Scaffold a module
+
+Modules belong to exactly one RTCSG concern: role, task, context, style, or guardrail. Use the CLI to scaffold a frontmatter-complete skeleton:
+
+```bash
+pnpm -F @lokomotif/cli start -- modules new role finance/aml-analyst
+```
+
+This writes:
+
+- `modules/roles/finance/aml-analyst.yaml` — the module skeleton with TODO markers.
+- `modules/roles/finance/__tests__/aml-analyst.eval.yaml` — the eval test placeholder.
+
+Replace TODOs with content adapted from real Lokomotif practice. Modules must reflect actual practice — see [Authoring Modules](/module-authoring) for the rule and the policy behind it.
+
+## Validate the module
+
+```bash
+pnpm validate:modules
+```
+
+The schema validator walks `modules/**/*.yaml`, validates each file, and reports failures with JSON Pointer paths. A green run means every module is shape-correct.
+
+## Run the eval
+
+```bash
+cd packages/eval
+uv run lokomotif-eval run
+```
+
+The harness loads each module and its sibling `__tests__/<name>.eval.yaml`, runs every check, and reports pass/fail. The default LLM judge is the deterministic stub — CI runs without API keys.
+
+## Compose a flow
+
+A flow combines modules into a single prompt:
+
+```yaml
+# flow.yaml
+name: aml-review
+modules:
+  - roles/finance/aml-analyst
+  - tasks/general/structured-summary
+  - contexts/finance/kvkk-compliance
+  - styles/cross-industry/executive-board-brief
+  - guardrails/cross-industry/pii-tr
+```
+
+```bash
+pnpm -F @lokomotif/cli start -- compose flow.yaml
+```
+
+The CLI canonicalizes the order to **R → T → C → S → G**, deduplicates, and emits a single prompt. For programmatic use, call `compose()` from `@lokomotif/sdk`.
+
+## Next steps
+
+- [The Method](/method) — RTCSG, the Maturity Spectrum, the Three-Horizon Adoption Journey.
+- [Authoring Modules](/module-authoring) — frontmatter, body shapes per kind, source-material rules.
+- [Eval Harness](/eval-harness) — eval YAML format, judges, and how to add your own.
+- [Blueprints](/blueprints) — Anthropic SDK, Dify, n8n, LangGraph adapters.

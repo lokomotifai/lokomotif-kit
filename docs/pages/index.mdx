@@ -1,0 +1,51 @@
+---
+title: Lokomotif Kit
+description: The open-source methodology core for Corporate AI Adoption. RTCSG and the Three-Horizon Adoption Journey, in code.
+---
+
+# Lokomotif Kit
+
+**The open-source methodology core for Corporate AI Adoption.**
+
+Lokomotif Kit publishes the method behind Lokomotif AI's practice — RTCSG and the Three-Horizon Adoption Journey — so practitioners, partners, and client teams can apply it directly. The internal Workbench and the optional managed Control Plane sit on top of it.
+
+## What this is
+
+A model-agnostic, runtime-agnostic library of:
+
+- **RTCSG modules** — composable units across the five layers of the prompt architecture.
+- **A schema** — every module conforms to a JSON Schema validated at lint time, build time, and install time.
+- **A CLI** — `lokomotif` to list, validate, scaffold, compose, evaluate, and deploy.
+- **An SDK** — `@lokomotif/sdk` with zero vendor dependencies; runtime adapters live in blueprints.
+- **An eval harness** — Python test runner (deterministic + LLM judges) gating every module.
+- **Blueprints** — Anthropic SDK, Dify, n8n, LangGraph adapters that turn a composed flow into runtime-specific output.
+
+## What this is not
+
+- Not a prompt library. Modules carry context, governance, and measurement — not just string templates.
+- Not a framework that requires a runtime. Modules port across runtimes by design.
+- Not a curated marketplace. Quality is gated by schema, eval, and review.
+- Not a substitute for engagement. The Kit publishes the method; the practice it embodies is delivered through Adoption Sprint, Workflow Rewire, and Agentic Scale.
+
+## RTCSG in one paragraph
+
+Every module belongs to exactly one of five concerns: **R**ole (who the AI acts as), **T**ask & Format (what must be done, how structured), **C**ontext & Constraint (the organizational reality), **S**tyle & Tone (audience-calibrated voice), **G**uardrail (what the model must not do). Composition happens at flow time — a role module never embeds guardrails; a task module never carries context. The Kit enforces the separation.
+
+## Where to start
+
+- [Getting Started](/getting-started) — install, scaffold a module, run an eval.
+- [The Method](/method) — RTCSG, the Maturity Spectrum, the Three-Horizon Adoption Journey.
+- [CLI](/cli) — `lokomotif` reference.
+- [Glossary](/glossary) — terms the firm owns, phrases to use, phrases to retire.
+
+## Status
+
+`v0.1.0` is in development. The schema, CLI commands, and SDK surface may change before the first stable release. Track the build sequence in the [implementation plan](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/IMPLEMENTATION_PLAN.md).
+
+## Frontier connection
+
+Lokomotif AI is **Anthropic Ambassador İstanbul**. The Kit reflects current frontier practice in agentic systems and responsible AI.
+
+---
+
+Apache 2.0 · [GitHub](https://github.com/lokomotif-ai/lokomotif-kit) · [kit@lokomotif.ai](mailto:kit@lokomotif.ai)

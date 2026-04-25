@@ -1,0 +1,181 @@
+---
+title: Authoring Modules
+description: How to write an RTCSG module that passes schema, eval, and review.
+---
+
+# Authoring Modules
+
+A module is a methodology artifact, not a prompt fragment. This page describes the rules that govern how they get written.
+
+## The non-negotiables
+
+- **One concern per module.** A role module never embeds guardrails; a task module never carries context. The schema enforces this.
+- **Modules reflect real practice.** Never invent module content from thin air. Every module's `source_reference` field carries the real source — an anonymized engagement artifact, a public regulation, or a Lokomotif methodology document.
+- **Bilingual where applicable.** Modules declare their `languages` and carry localized fields for human-readable content.
+- **Eval-gated.** Every module ships with at least one passing eval suite under its sibling `__tests__/` directory.
+- **Model-agnostic.** Modules in `modules/` never hardcode model names, provider APIs, or vendor-specific features. Vendor-specific code lives in `blueprints/`.
+
+## File layout
+
+```
+modules/
+├── <kind-plural>/
+│   └── <industry>/
+│       ├── __tests__/
+│       │   └── <name>.eval.yaml
+│       └── <name>.yaml
+```
+
+`<kind-plural>` is `roles | tasks | contexts | styles | guardrails`. `<industry>` is one of the 16 entries in the [industry taxonomy](/glossary#industry-taxonomy). `<name>` is kebab-case.
+
+## Frontmatter
+
+Every module starts with the same frontmatter:
+
+```yaml
+id: roles/finance/aml-analyst
+version: 0.1.0
+kind: role
+title: "Short, human-readable title"
+description: "One-sentence description of what this module does."
+industry: ["finance"]
+languages: ["tr", "en"]
+owner: lokomotif-core
+license: Apache-2.0
+source_reference: "Anonymized AML engagement artifact, 2025-Q4."
+tags: ["aml", "fintech"]
+```
+
+Required: `id`, `version`, `kind`, `title`, `description`, `languages`, `owner`, `license`, `body`.
+
+The `id` pattern is `<kind-plural>/<industry>/<name>` and must match the file path.
+
+## Body shapes
+
+The `body` content depends on `kind`. The table below is a reference; the canonical specification lives in [`packages/schema/schemas/module.schema.json`](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/packages/schema/schemas/module.schema.json).
+
+### Role
+
+```yaml
+body:
+  identity:
+    en: "Acting as a senior AML analyst…"
+    tr: "Kıdemli bir AML uzmanı olarak…"
+  expertise:
+    - en: "MASAK regulations"
+      tr: "MASAK düzenlemeleri"
+  perspective:
+    en: "Sceptical reviewer of suspicious transactions."
+  authority:
+    en: "Recommends escalation; does not act unilaterally."
+```
+
+### Task
+
+```yaml
+body:
+  instructions:
+    en: "Summarize the case file…"
+  output_format:
+    type: structured
+    description:
+      en: "Markdown headings: Summary, Risk indicators, Recommendation."
+  examples:
+    - input: { en: "…" }
+      output: { en: "…" }
+  constraints:
+    - en: "Output must not exceed 500 words."
+```
+
+### Context
+
+```yaml
+body:
+  domain:
+    en: "Turkish fintech under KVKK and BDDK."
+  data_boundaries:
+    - en: "No direct access to customer PII."
+  regulatory_references:
+    - framework: KVKK
+      section: "Article 6"
+      summary: { en: "Special category data." }
+  operating_constraints:
+    - en: "Single-pass output. No follow-up clarifications."
+```
+
+### Style
+
+```yaml
+body:
+  voice:
+    en: "Confident, specific, methodology-led."
+  audience:
+    en: "Board members and C-suite."
+  register: executive
+  examples:
+    - en: "We reduced cycle time by 40%."
+  avoid:
+    - en: "Empty intensifiers."
+```
+
+### Guardrail
+
+```yaml
+body:
+  forbidden:
+    - rule:
+        en: "Never surface raw TC Kimlik numbers."
+      rationale:
+        en: "KVKK Article 6 — special category data."
+  required_actions:
+    - en: "Mask detected PII before output."
+  escalation:
+    en: "Defer to the Data Protection Officer."
+  audit_requirements:
+    - en: "Log every detection with rule id and pattern."
+  severity: critical
+```
+
+## The `LocalizedString` primitive
+
+Human-readable fields take a `LocalizedString` — an object with `tr` and/or `en` keys. At least one language must be present. Empty strings are rejected.
+
+```yaml
+identity:
+  tr: "Kıdemli AML uzmanı."
+  en: "Senior AML analyst."
+```
+
+Cross-field parity (every field present in every declared language) is enforced softly at lint time, not at schema time, because it is normal to add the second language in a follow-up PR.
+
+## Source-material rule
+
+Every module's `source_reference` field cites the real source it derives from. Three categories:
+
+- **Engagement-derived** — anonymized prompts, briefs, role definitions, governance specs from real Lokomotif deliveries.
+- **Public regulatory** — citable regulations (KVKK, BDDK, MASAK, ISO standards, etc.).
+- **Lokomotif methodology documents** — the Brief itself, internal practice notes shared with explicit authorization.
+
+A module without a `source_reference` is treated as "from thin air" and rejected at PR review. The Kit's methodology-led claim depends on this rule. See [RFC 0001](/rfcs) for the policy in detail.
+
+## Eval test alongside
+
+Every module has a sibling `__tests__/<name>.eval.yaml` carrying at least one check. See [Eval Harness](/eval-harness) for the format.
+
+## Validating locally
+
+```bash
+pnpm validate:modules
+cd packages/eval && uv run lokomotif-eval run --module <id>
+```
+
+Both must be green before opening a PR. CI re-runs them.
+
+## What a reviewer looks for
+
+- **Schema clean.** Every field shaped correctly; the `id` matches the path.
+- **One concern.** No leakage between RTCSG layers.
+- **Voice on-brand.** No retired phrases (see [Glossary](/glossary)).
+- **Source cited.** `source_reference` accurate and verifiable.
+- **Eval covers the contract.** Checks assert behavior, not just shape.
+- **Bilingual where claimed.** If `languages: [tr, en]`, both languages are populated.

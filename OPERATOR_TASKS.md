@@ -103,6 +103,25 @@ Each blueprint ships with a mocked smoke test in CI. Per the Phase 7 exit criter
 
 Capture log excerpts and screenshots per run; they feed the launch announcement (Brief § 13) as proof points.
 
+## 12. Phase 8 — Vercel deploy + DNS
+
+The docs site (`docs/`) is built and deployed to Vercel. One-time UI setup is required:
+
+- ⬜ Create a Vercel project from the GitHub repo `lokomotif-ai/lokomotif-kit`.
+- ⬜ Set **Root Directory** to `docs`.
+- ⬜ Set **Framework Preset** to Next.js (auto-detected; verify).
+- ⬜ The install/build/output commands are pre-configured in `docs/vercel.json`. Verify Vercel honors them.
+- ⬜ Add the custom domain `kit.lokomotif.ai` and configure DNS:
+  - CNAME record: `kit.lokomotif.ai` → `cname.vercel-dns.com.`
+  - Confirm the TLS certificate provisions automatically.
+- ⬜ Verify the first deploy goes green; confirm `https://kit.lokomotif.ai` resolves.
+- ⬜ Confirm preview deploys are enabled for PRs and production deploys come from `main`.
+
+After the site is live:
+
+- ⬜ Update the GitHub repo's homepage field to `https://kit.lokomotif.ai`.
+- ⬜ Reference the Kit on the Lokomotif AI website's open-source page (Section 8 above).
+
 ---
 
 ## How this file is maintained

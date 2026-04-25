@@ -8,6 +8,17 @@ Per-package changelogs live alongside each package once published. This file tra
 
 ## [Unreleased]
 
+### Added — Phase 8 (documentation site)
+
+- `docs/` — Nextra 3.x site, deployed to Vercel as `kit.lokomotif.ai`. Theme: `nextra-theme-docs`. Locales: `en` (default) and `tr`.
+- EN canonical pages: `index`, `getting-started`, `method`, `module-authoring`, `cli`, `sdk`, `eval-harness`, `blueprints`, `rfcs`, `glossary`. Each page methodology-led, no retired phrases, with cross-links into source READMEs and the implementation plan.
+- TR priority pages (native Turkish, not translated per Brief § 11): `tr/index`, `tr/getting-started`, `tr/method`, `tr/glossary`. Other pages link out to the EN canonical until native Turkish coverage expands.
+- `docs/scripts/voice-gate.mjs` — scans every MDX page for retired phrases (Brief § 11 + CLAUDE.md voice rules); pages opt out via `voice_gate: skip` frontmatter (used by `glossary.mdx` and `tr/glossary.mdx`).
+- `.github/workflows/docs.yml` — runs voice gate, typecheck, and Next.js build on PRs touching `docs/`.
+- `docs/vercel.json` — Vercel project configuration (install + build + output dir + security headers).
+- `pnpm-workspace.yaml`: `docs` added as a workspace member.
+- `OPERATOR_TASKS.md § 12`: Vercel UI setup and DNS for `kit.lokomotif.ai`.
+
 ### Added — Phase 7 (runtime blueprints, four targets in parallel)
 
 - `blueprints/anthropic-sdk/` — `@lokomotif/blueprint-anthropic-sdk`. `adaptToAnthropic` produces `{ system, messages, composition_hash }`; `runWithAnthropic` calls `client.messages.create`. `@anthropic-ai/sdk` is a peer dep.

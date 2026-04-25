@@ -1,0 +1,40 @@
+{
+  "name": "@lokomotif/docs",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Documentation site for Lokomotif Kit (kit.lokomotif.ai).",
+  "license": "Apache-2.0",
+  "homepage": "https://kit.lokomotif.ai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lokomotif-ai/lokomotif-kit.git",
+    "directory": "docs"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start",
+    "voice-gate": "node scripts/voice-gate.mjs",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .next .turbo"
+  },
+  "engines": {
+    "node": ">=20.10.0"
+  },
+  "dependencies": {
+    "next": "^14.2.20",
+    "nextra": "^3.3.1",
+    "nextra-theme-docs": "^3.3.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.10",
+    "@types/react": "^18.3.17",
+    "fast-glob": "^3.3.2",
+    "gray-matter": "^4.0.3",
+    "typescript": "^5.6.3"
+  }
+}

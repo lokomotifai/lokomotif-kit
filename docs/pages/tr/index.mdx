@@ -1,0 +1,50 @@
+---
+title: Lokomotif Kit
+description: Corporate AI Adoption metodolojisinin açık kaynak çekirdeği.
+---
+
+# Lokomotif Kit
+
+**Corporate AI Adoption metodolojisinin açık kaynak çekirdeği.**
+
+Lokomotif Kit, Lokomotif AI'nin pratiğinin arkasındaki metodu — RTCSG ve Üç-Ufuk Adaptasyon Yolculuğu'nu — kamuya açık hale getirir; pratisyenler, partnerler ve müşteri ekipleri doğrudan uygulayabilsin diye. Dahili Workbench ve opsiyonel managed Control Plane bunun üzerine oturur.
+
+## Ne içeriyor
+
+Model-agnostik, runtime-agnostik bir kitaplık:
+
+- **RTCSG modülleri** — prompt mimarisinin beş katmanı boyunca kompoze edilebilen birimler.
+- **Şema** — her modül lint, build ve install anında JSON Schema doğrulamasından geçer.
+- **CLI** — `lokomotif` ile listele, doğrula, scaffold et, kompoze et, değerlendir, dağıt.
+- **SDK** — `@lokomotif/sdk`, sıfır vendor bağımlılığıyla; runtime adapterlar blueprint'lerde yaşar.
+- **Eval harness** — Python test runner (deterministik + LLM judges); her modülü gate'liyor.
+- **Blueprints** — Anthropic SDK, Dify, n8n, LangGraph adapter'ları; kompoze edilmiş bir flow'u runtime-spesifik çıktıya dönüştürür.
+
+## Ne değil
+
+- Prompt kitaplığı değil. Modüller yalnızca string şablon değil — context, governance ve ölçüm taşır.
+- Runtime gerektiren bir framework değil. Modüller runtime'lar arası taşınabilir tasarlandı.
+- Küratörsüz pazaryeri değil. Kalite, schema + eval + review ile kapı tutulur.
+- Engagement'ın yerine geçmez. Kit metodu yayımlar; metodun pratiği Adoption Sprint, Workflow Rewire ve Agentic Scale çalışmalarıyla teslim edilir.
+
+## RTCSG bir paragrafta
+
+Her modül beş concern'den tam olarak birine ait: **R**ole (AI kim gibi davranıyor), **T**ask & Format (ne yapılmalı, nasıl yapılandırılmalı), **C**ontext & Constraint (organizasyonel gerçeklik), **S**tyle & Tone (kitleye ayarlı ses), **G**uardrail (modelin yapmaması gereken). Kompozisyon flow anında olur — role modülü guardrail gömmez; task modülü context taşımaz. Kit bu ayrımı zorlar.
+
+## Nereden başlayayım
+
+- [Başlangıç](/tr/getting-started) — kur, modül scaffold et, eval çalıştır.
+- [Metod](/tr/method) — RTCSG, Olgunluk Spektrumu, Üç-Ufuk Adaptasyon Yolculuğu.
+- [Sözlük](/tr/glossary) — firmanın sahiplendiği terimler, kullanılacak ifadeler, emekliye ayrılmış ifadeler.
+
+## Durum
+
+`v0.1.0` geliştirme aşamasında. İlk stabil sürümden önce schema, CLI komutları ve SDK yüzeyi değişebilir. Build sırası: [implementation plan](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/IMPLEMENTATION_PLAN.md).
+
+## Frontier bağlantısı
+
+Lokomotif AI, **Anthropic Ambassador İstanbul**. Kit, agentic sistemler ve responsible AI alanında güncel frontier pratiğini yansıtır.
+
+---
+
+Apache 2.0 · [GitHub](https://github.com/lokomotif-ai/lokomotif-kit) · [kit@lokomotif.ai](mailto:kit@lokomotif.ai)

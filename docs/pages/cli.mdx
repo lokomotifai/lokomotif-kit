@@ -1,0 +1,116 @@
+---
+title: CLI
+description: lokomotif command-line tool — list, validate, scaffold, compose, evaluate, deploy.
+---
+
+# CLI Reference
+
+The `lokomotif` binary is the first surface practitioners and contributors meet. Every command supports `--json` for machine-readable output and `--root <path>` for testability outside a working repo.
+
+## Install
+
+```bash
+npm install --global @lokomotif/cli
+# or one-shot:
+npx @lokomotif/cli --help
+```
+
+## Commands
+
+```text
+lokomotif modules list                   List RTCSG modules in the current repo.
+lokomotif modules validate <path|glob>   Validate a module file or glob.
+lokomotif modules new <kind> <name>      Scaffold a new module skeleton.
+lokomotif compose <flow.yaml>            Compose a flow into a single prompt.
+lokomotif eval run [-- args]             Run the eval harness (delegates to lokomotif-eval).
+lokomotif deploy <target> <flow.yaml>    Adapt a flow to a runtime blueprint.
+```
+
+## `modules list`
+
+Walks `modules/**/*.yaml` from the repo root and prints id, kind, version, and languages.
+
+```bash
+lokomotif modules list                          # all modules
+lokomotif modules list --kind role              # only roles
+lokomotif modules list --industry finance       # only finance
+lokomotif modules list --json                   # machine output
+```
+
+If invoked outside a Lokomotif repository, the command prints an informational message and exits cleanly.
+
+## `modules validate`
+
+Accepts file paths or globs. Each matching YAML file is parsed and validated against `@lokomotif/schema`. Exit code 1 on any failure.
+
+```bash
+lokomotif modules validate modules/roles/finance/aml-analyst.yaml
+lokomotif modules validate "modules/**/*.yaml"
+lokomotif modules validate --json modules/**/*.yaml
+```
+
+In `--json` mode the full result set is emitted as a single JSON document; the exit code still reflects success or failure.
+
+## `modules new`
+
+Scaffolds `<kind-plural>/<industry>/<name>.yaml` plus an eval test placeholder. Refuses to overwrite without `--force`.
+
+```bash
+lokomotif modules new role finance/aml-analyst
+lokomotif modules new guardrail cross-industry/pii-tr
+lokomotif modules new role finance/aml-analyst --force    # overwrite existing
+```
+
+The output is schema-valid out of the box — frontmatter complete, body skeleton with TODO markers. Replace the TODOs with content adapted from real practice.
+
+## `compose`
+
+Reads a flow YAML, loads each referenced module by ID, sorts in canonical RTCSG order (R → T → C → S → G), and emits a sectioned prompt. Backed by [`@lokomotif/sdk`](/sdk).
+
+```bash
+lokomotif compose flow.yaml                        # plain text prompt
+lokomotif compose flow.yaml --language tr          # Turkish render
+lokomotif compose flow.yaml --json                 # JSON envelope incl. composition_hash
+```
+
+Flow YAML in v0:
+
+```yaml
+name: aml-review
+description: "Optional description."
+modules:
+  - roles/finance/aml-analyst
+  - tasks/general/structured-summary
+  - contexts/finance/kvkk-compliance
+  - styles/cross-industry/executive-board-brief
+  - guardrails/cross-industry/pii-tr
+```
+
+## `eval run`
+
+Spawns `uv run lokomotif-eval run` inside `packages/eval`. Forward extra arguments to the harness after `--`.
+
+```bash
+lokomotif eval run                                 # every eval suite
+lokomotif eval run -- --module roles/finance/aml-analyst
+lokomotif eval run -- --reporter json
+```
+
+See [Eval Harness](/eval-harness) for the harness interface.
+
+## `deploy`
+
+Lists known runtime targets and their shipped/planned status. The CLI dispatcher to the four blueprints (Anthropic SDK, Dify, n8n, LangGraph) lands as part of the launch milestone.
+
+```bash
+lokomotif deploy                                   # list targets
+lokomotif deploy anthropic-sdk flow.yaml           # adapt and emit
+```
+
+## Exit codes
+
+- `0` — success
+- `1` — operation failure (validation errors, missing files, etc.)
+- `2` — usage error (clipanion default for invalid arguments)
+
+In `--json` mode, error details are emitted to stdout as part of the JSON payload; the exit code still indicates success or failure.
