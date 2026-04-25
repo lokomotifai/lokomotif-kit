@@ -6,7 +6,7 @@ import re
 from typing import Any
 
 from lokomotif_eval.eval_loader import Check, DeterministicCheck
-from lokomotif_eval.judges.base import JudgeResult
+from lokomotif_eval.judges.base import Judge, JudgeResult
 
 
 class _DeterministicJudgeBase:
@@ -130,7 +130,7 @@ class ContainsJudge(_DeterministicJudgeBase):
         )
 
 
-def build_deterministic_judges() -> dict[str, _DeterministicJudgeBase]:
+def build_deterministic_judges() -> dict[str, Judge]:
     """Return a mapping from check `kind` to the matching judge."""
     return {
         "regex": RegexJudge(),

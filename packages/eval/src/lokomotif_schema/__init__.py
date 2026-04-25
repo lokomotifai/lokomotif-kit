@@ -18,6 +18,6 @@ from __future__ import annotations
 # Until the first generation run lands, this package is a namespace
 # placeholder — the import is intentionally guarded.
 try:
-    from .module import *  # noqa: F403  (re-export of generated symbols)
+    from .module import *  # type: ignore[import-untyped]  # noqa: F403
 except ImportError:  # pragma: no cover — generation has not yet run
     pass

@@ -15,7 +15,7 @@ from lokomotif_eval.discovery import (
 )
 from lokomotif_eval.pii import scan_for_pii
 from lokomotif_eval.reporter import console_report, render_json
-from lokomotif_eval.runner import EvalRunner
+from lokomotif_eval.runner import EvalRunner, RunSummary
 
 
 @click.group()
@@ -156,15 +156,16 @@ def scan_pii(path: str, as_json: bool) -> None:
         click.echo("No PII candidates found.")
         return
 
-    for f in findings:
-        click.echo(f"{f['file']}:{f['line']}:{f['column']}  [{f['pattern']}]  {f['match']!r}")
+    for finding_record in findings:
+        click.echo(
+            f"{finding_record['file']}:{finding_record['line']}:{finding_record['column']}  "
+            f"[{finding_record['pattern']}]  {finding_record['match']!r}"
+        )
     click.echo(f"\n{len(findings)} candidate(s) found.")
     sys.exit(1)
 
 
-def _empty_summary():
-    from lokomotif_eval.runner import RunSummary
-
+def _empty_summary() -> RunSummary:
     return RunSummary(
         total_modules=0,
         passed_modules=0,
