@@ -87,13 +87,9 @@ body:
     writeFixture(modulesDir, 'roles/cross-industry/test-role.yaml', ROLE_YAML);
 
     expect(() =>
-      loadModules(
-        [
-          'roles/cross-industry/test-role',
-          'roles/cross-industry/does-not-exist',
-        ],
-        { modulesDir },
-      ),
+      loadModules(['roles/cross-industry/test-role', 'roles/cross-industry/does-not-exist'], {
+        modulesDir,
+      }),
     ).toThrow(LoadModuleError);
   });
 });

@@ -37,13 +37,13 @@ if (result.ok && result.data.kind === 'role') {
 
 ## Five kinds
 
-| Kind | Body type | Required body fields |
-|------|-----------|----------------------|
-| `role` | `RoleBody` | `identity`, `expertise` |
-| `task` | `TaskBody` | `instructions`, `output_format` |
-| `context` | `ContextBody` | `domain` |
-| `style` | `StyleBody` | `voice`, `audience` |
-| `guardrail` | `GuardrailBody` | `forbidden` |
+| Kind        | Body type       | Required body fields            |
+| ----------- | --------------- | ------------------------------- |
+| `role`      | `RoleBody`      | `identity`, `expertise`         |
+| `task`      | `TaskBody`      | `instructions`, `output_format` |
+| `context`   | `ContextBody`   | `domain`                        |
+| `style`     | `StyleBody`     | `voice`, `audience`             |
+| `guardrail` | `GuardrailBody` | `forbidden`                     |
 
 Optional fields and refinements live in the schema. See `schemas/module.schema.json` for the full surface.
 
@@ -53,8 +53,8 @@ Every human-readable field is a localized string:
 
 ```yaml
 identity:
-  tr: "Bir AML uzmanı olarak..."
-  en: "Acting as an AML analyst..."
+  tr: 'Bir AML uzmanı olarak...'
+  en: 'Acting as an AML analyst...'
 ```
 
 At least one language must be present. Cross-field parity (every field present in every declared language) is enforced softly at lint time, not at schema time. See `IMPLEMENTATION_PLAN.md` § Cross-cutting disciplines.

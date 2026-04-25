@@ -8,7 +8,7 @@ from pathlib import Path
 from click.testing import CliRunner
 
 from lokomotif_eval.cli import main
-from tests.conftest import VALID_EVAL_YAML, VALID_MODULE_YAML  # noqa: TID252
+from tests.conftest import VALID_EVAL_YAML, VALID_MODULE_YAML
 
 
 def test_version_flag_prints_version() -> None:

@@ -36,14 +36,14 @@ Every module starts with the same frontmatter:
 id: roles/finance/aml-analyst
 version: 0.1.0
 kind: role
-title: "Short, human-readable title"
-description: "One-sentence description of what this module does."
-industry: ["finance"]
-languages: ["tr", "en"]
+title: 'Short, human-readable title'
+description: 'One-sentence description of what this module does.'
+industry: ['finance']
+languages: ['tr', 'en']
 owner: lokomotif-core
 license: Apache-2.0
-source_reference: "Anonymized AML engagement artifact, 2025-Q4."
-tags: ["aml", "fintech"]
+source_reference: 'Anonymized AML engagement artifact, 2025-Q4.'
+tags: ['aml', 'fintech']
 ```
 
 Required: `id`, `version`, `kind`, `title`, `description`, `languages`, `owner`, `license`, `body`.
@@ -59,15 +59,15 @@ The `body` content depends on `kind`. The table below is a reference; the canoni
 ```yaml
 body:
   identity:
-    en: "Acting as a senior AML analyst…"
-    tr: "Kıdemli bir AML uzmanı olarak…"
+    en: 'Acting as a senior AML analyst…'
+    tr: 'Kıdemli bir AML uzmanı olarak…'
   expertise:
-    - en: "MASAK regulations"
-      tr: "MASAK düzenlemeleri"
+    - en: 'MASAK regulations'
+      tr: 'MASAK düzenlemeleri'
   perspective:
-    en: "Sceptical reviewer of suspicious transactions."
+    en: 'Sceptical reviewer of suspicious transactions.'
   authority:
-    en: "Recommends escalation; does not act unilaterally."
+    en: 'Recommends escalation; does not act unilaterally.'
 ```
 
 ### Task
@@ -75,16 +75,16 @@ body:
 ```yaml
 body:
   instructions:
-    en: "Summarize the case file…"
+    en: 'Summarize the case file…'
   output_format:
     type: structured
     description:
-      en: "Markdown headings: Summary, Risk indicators, Recommendation."
+      en: 'Markdown headings: Summary, Risk indicators, Recommendation.'
   examples:
-    - input: { en: "…" }
-      output: { en: "…" }
+    - input: { en: '…' }
+      output: { en: '…' }
   constraints:
-    - en: "Output must not exceed 500 words."
+    - en: 'Output must not exceed 500 words.'
 ```
 
 ### Context
@@ -92,15 +92,15 @@ body:
 ```yaml
 body:
   domain:
-    en: "Turkish fintech under KVKK and BDDK."
+    en: 'Turkish fintech under KVKK and BDDK.'
   data_boundaries:
-    - en: "No direct access to customer PII."
+    - en: 'No direct access to customer PII.'
   regulatory_references:
     - framework: KVKK
-      section: "Article 6"
-      summary: { en: "Special category data." }
+      section: 'Article 6'
+      summary: { en: 'Special category data.' }
   operating_constraints:
-    - en: "Single-pass output. No follow-up clarifications."
+    - en: 'Single-pass output. No follow-up clarifications.'
 ```
 
 ### Style
@@ -108,14 +108,14 @@ body:
 ```yaml
 body:
   voice:
-    en: "Confident, specific, methodology-led."
+    en: 'Confident, specific, methodology-led.'
   audience:
-    en: "Board members and C-suite."
+    en: 'Board members and C-suite.'
   register: executive
   examples:
-    - en: "We reduced cycle time by 40%."
+    - en: 'We reduced cycle time by 40%.'
   avoid:
-    - en: "Empty intensifiers."
+    - en: 'Empty intensifiers.'
 ```
 
 ### Guardrail
@@ -124,15 +124,15 @@ body:
 body:
   forbidden:
     - rule:
-        en: "Never surface raw TC Kimlik numbers."
+        en: 'Never surface raw TC Kimlik numbers.'
       rationale:
-        en: "KVKK Article 6 — special category data."
+        en: 'KVKK Article 6 — special category data.'
   required_actions:
-    - en: "Mask detected PII before output."
+    - en: 'Mask detected PII before output.'
   escalation:
-    en: "Defer to the Data Protection Officer."
+    en: 'Defer to the Data Protection Officer.'
   audit_requirements:
-    - en: "Log every detection with rule id and pattern."
+    - en: 'Log every detection with rule id and pattern.'
   severity: critical
 ```
 
@@ -142,8 +142,8 @@ Human-readable fields take a `LocalizedString` — an object with `tr` and/or `e
 
 ```yaml
 identity:
-  tr: "Kıdemli AML uzmanı."
-  en: "Senior AML analyst."
+  tr: 'Kıdemli AML uzmanı.'
+  en: 'Senior AML analyst.'
 ```
 
 Cross-field parity (every field present in every declared language) is enforced softly at lint time, not at schema time, because it is normal to add the second language in a follow-up PR.

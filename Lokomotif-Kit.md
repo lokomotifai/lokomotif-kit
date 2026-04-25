@@ -55,12 +55,14 @@ Modules are the primary content of this repo. Packages exist to serve modules. I
 ## Commands
 
 Install:
+
 ```bash
 pnpm install
 cd packages/eval && uv sync
 ```
 
 Develop:
+
 ```bash
 pnpm dev                    # turborepo dev mode across TS packages
 pnpm build                  # build all TS packages
@@ -72,6 +74,7 @@ pnpm -F cli dev             # CLI in watch mode
 ```
 
 Eval:
+
 ```bash
 cd packages/eval
 uv run pytest               # all eval tests
@@ -80,6 +83,7 @@ uv run pytest --cov         # with coverage
 ```
 
 CLI (end-user commands, not dev):
+
 ```bash
 lokomotif modules list
 lokomotif modules validate <path>
@@ -105,14 +109,14 @@ lokomotif deploy <target> <flow.yaml>
 Every module YAML file has this frontmatter:
 
 ```yaml
-id: <kind>/<industry>/<name>           # e.g., roles/finance/compliance-analyst
-version: 1.0.0                          # semver; breaking changes require major bump
+id: <kind>/<industry>/<name> # e.g., roles/finance/compliance-analyst
+version: 1.0.0 # semver; breaking changes require major bump
 kind: role | task | context | style | guardrail
-title: "Short human-readable title"
-description: "One-sentence description of what this module does"
-industry: [finance, retail, ...]        # optional; see taxonomy below
-languages: [tr, en]                     # which languages the content is available in
-owner: lokomotif-core                   # or contributor handle
+title: 'Short human-readable title'
+description: 'One-sentence description of what this module does'
+industry: [finance, retail, ...] # optional; see taxonomy below
+languages: [tr, en] # which languages the content is available in
+owner: lokomotif-core # or contributor handle
 license: Apache-2.0
 ```
 
@@ -121,6 +125,7 @@ Then the body, schema varies by `kind`. See `packages/schema/` for exact definit
 **Industry taxonomy** (extend via RFC): `finance`, `banking`, `insurance`, `retail`, `e-commerce`, `logistics`, `healthcare`, `manufacturing`, `energy`, `telco`, `media`, `hr`, `legal`, `public-sector`, `education`.
 
 **Naming:**
+
 - IDs are kebab-case: `roles/finance/aml-analyst`
 - File names match IDs: `modules/roles/finance/aml-analyst.yaml`
 - Every module directory has a sibling `__tests__/` directory with eval tests

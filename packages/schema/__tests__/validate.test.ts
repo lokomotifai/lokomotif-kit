@@ -25,9 +25,7 @@ describe('validate — valid fixtures', () => {
   const fixtures = loadFixtures('valid');
 
   it('covers every RTCSG kind', () => {
-    const kinds = new Set(
-      fixtures.map(({ data }) => (data as { kind?: string }).kind ?? '?'),
-    );
+    const kinds = new Set(fixtures.map(({ data }) => (data as { kind?: string }).kind ?? '?'));
     expect(kinds).toEqual(new Set(['role', 'task', 'context', 'style', 'guardrail']));
   });
 

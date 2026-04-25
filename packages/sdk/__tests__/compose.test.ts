@@ -1,12 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import {
-  FlowError,
-  compose,
-  composeFlow,
-  loadModule,
-  loadModules,
-} from '../src/index.js';
+import { FlowError, compose, composeFlow, loadModule, loadModules } from '../src/index.js';
 
 import {
   ROLE_YAML,
@@ -98,10 +92,7 @@ describe('compose (pure)', () => {
     writeFixture(modulesDir, 'guardrails/cross-industry/test-guardrail.yaml', GUARDRAIL_YAML);
     writeFixture(modulesDir, 'styles/cross-industry/test-style.yaml', STYLE_YAML);
     const modules = loadModules(
-      [
-        'guardrails/cross-industry/test-guardrail',
-        'styles/cross-industry/test-style',
-      ],
+      ['guardrails/cross-industry/test-guardrail', 'styles/cross-industry/test-style'],
       { modulesDir },
     );
     expect(() => compose(modules)).toThrow(/empty in the structural slots|role or a task/);

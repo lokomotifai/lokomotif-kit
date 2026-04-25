@@ -67,5 +67,5 @@ def test_stub_rejects_non_llm_check() -> None:
 
 
 def test_stub_satisfies_judge_protocol() -> None:
-    judge: Judge = StubLLMJudge()  # noqa: F841 — type-narrowing assertion
+    judge: Judge = StubLLMJudge()
     assert isinstance(judge.evaluate(_llm("x"), "x"), JudgeResult)

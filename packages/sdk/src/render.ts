@@ -111,8 +111,7 @@ function renderContext(module: ContextModule, opts: ComposeOptions): string {
     parts.push('');
     parts.push('Regulatory references:');
     for (const ref of module.body.regulatory_references) {
-      const summary =
-        ref.summary !== undefined ? `: ${pickLanguage(ref.summary, lang, fb)}` : '';
+      const summary = ref.summary !== undefined ? `: ${pickLanguage(ref.summary, lang, fb)}` : '';
       const section = ref.section !== undefined ? ` ${ref.section}` : '';
       parts.push(`- ${ref.framework}${section}${summary}`);
     }

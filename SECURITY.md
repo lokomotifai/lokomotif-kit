@@ -23,9 +23,9 @@ We credit reporters who request acknowledgment in the release notes of the fix.
 
 Lokomotif Kit is in active development. Until v1.0.0, only the most recent release receives security fixes.
 
-| Version | Supported |
-|---------|-----------|
-| `0.x` | Latest minor only |
+| Version | Supported         |
+| ------- | ----------------- |
+| `0.x`   | Latest minor only |
 
 Once v1.0.0 ships, the latest two minor versions will receive security fixes.
 

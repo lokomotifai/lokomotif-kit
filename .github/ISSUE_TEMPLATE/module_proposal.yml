@@ -1,6 +1,6 @@
 name: Module proposal
 description: Propose a new RTCSG module.
-labels: ['module', 'triage']
+labels: ["module", "triage"]
 body:
   - type: markdown
     attributes:
@@ -22,7 +22,7 @@ body:
     id: id
     attributes:
       label: Proposed module ID
-      description: 'Format: <kind>/<industry>/<name>. Example: roles/finance/aml-analyst'
+      description: "Format: <kind>/<industry>/<name>. Example: roles/finance/aml-analyst"
     validations:
       required: true
   - type: dropdown

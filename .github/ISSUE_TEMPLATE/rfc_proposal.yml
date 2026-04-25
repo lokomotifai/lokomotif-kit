@@ -1,6 +1,6 @@
 name: RFC — Request for Comments
 description: Propose a durable change to schema, scope, or convention.
-labels: ['rfc', 'discussion']
+labels: ["rfc", "discussion"]
 body:
   - type: markdown
     attributes:

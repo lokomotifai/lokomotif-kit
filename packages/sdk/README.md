@@ -61,7 +61,7 @@ const composed = await composeFlow(
   { modulesDir: '/abs/path/to/modules', language: 'tr' },
 );
 
-console.log(composed.text);            // RTCSG-ordered, sectioned prompt
+console.log(composed.text); // RTCSG-ordered, sectioned prompt
 console.log(composed.compositionHash); // 16-char deterministic hash for OTel
 console.log(composed.byKind.role?.id); // bucketed access
 ```

@@ -1,42 +1,42 @@
 version: 2
 updates:
-  - package-ecosystem: 'npm'
-    directory: '/'
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
+      interval: "weekly"
+      day: "monday"
     open-pull-requests-limit: 10
     groups:
       typescript:
         patterns:
-          - 'typescript'
-          - 'typescript-eslint'
-          - '@types/*'
+          - "typescript"
+          - "typescript-eslint"
+          - "@types/*"
       eslint:
         patterns:
-          - 'eslint*'
-          - '@eslint/*'
+          - "eslint*"
+          - "@eslint/*"
       vitest:
         patterns:
-          - 'vitest'
-          - '@vitest/*'
+          - "vitest"
+          - "@vitest/*"
       changesets:
         patterns:
-          - '@changesets/*'
+          - "@changesets/*"
       turbo:
         patterns:
-          - 'turbo'
+          - "turbo"
 
-  - package-ecosystem: 'pip'
-    directory: '/packages/eval'
+  - package-ecosystem: "pip"
+    directory: "/packages/eval"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
+      interval: "weekly"
+      day: "monday"
     open-pull-requests-limit: 5
 
-  - package-ecosystem: 'github-actions'
-    directory: '/'
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
+      interval: "weekly"
+      day: "monday"
     open-pull-requests-limit: 5

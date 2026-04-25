@@ -25,14 +25,7 @@ export {
   isIndustry,
   isLanguage,
 } from './enums.js';
-export type {
-  Kind,
-  Industry,
-  Language,
-  Register,
-  OutputFormatType,
-  Severity,
-} from './enums.js';
+export type { Kind, Industry, Language, Register, OutputFormatType, Severity } from './enums.js';
 export type {
   LocalizedString,
   LocalizedStringArray,

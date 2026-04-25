@@ -3,11 +3,7 @@ import { resolve } from 'node:path';
 import { Command, Option } from 'clipanion';
 
 import { isLanguage, type Language } from '@lokomotif/schema';
-import {
-  composeFlowFile,
-  FlowError,
-  LoadModuleError,
-} from '@lokomotif/sdk';
+import { composeFlowFile, FlowError, LoadModuleError } from '@lokomotif/sdk';
 
 import { writeJson, writeLine } from '../lib/output.js';
 import { findModulesDir } from '../lib/repo-root.js';
@@ -99,9 +95,7 @@ modules:
         this.context.stderr.write(`error: ${err.message}\n`);
         return 1;
       }
-      this.context.stderr.write(
-        `error: ${err instanceof Error ? err.message : String(err)}\n`,
-      );
+      this.context.stderr.write(`error: ${err instanceof Error ? err.message : String(err)}\n`);
       return 1;
     }
   }

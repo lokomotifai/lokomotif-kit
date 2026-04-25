@@ -39,7 +39,9 @@ export type BuildGraphOptions = {
    * the produced output. The blueprint does not call any provider; the
    * caller wires whichever client is appropriate for their runtime.
    */
-  readonly llm: (state: LokomotifGraphState) => Promise<{ llm_output: string }> | { llm_output: string };
+  readonly llm: (
+    state: LokomotifGraphState,
+  ) => Promise<{ llm_output: string }> | { llm_output: string };
 };
 
 export const LOKOMOTIF_GRAPH_LAYOUT = {

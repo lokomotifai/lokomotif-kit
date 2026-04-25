@@ -31,38 +31,44 @@ The foundational document that defines how Lokomotif AI thinks, positions, and b
 ## Contents
 
 ### Part 1 — Foundation
-- [01  Executive Summary](#01--executive-summary)
-- [02  Worldview](#02--worldview)
-- [03  The Category We Claim](#03--the-category-we-claim)
+
+- [01 Executive Summary](#01--executive-summary)
+- [02 Worldview](#02--worldview)
+- [03 The Category We Claim](#03--the-category-we-claim)
 
 ### Part 2 — Our Models
-- [04  The AI Maturity Spectrum](#04--the-ai-maturity-spectrum)
-- [05  The RTCSG Method](#05--the-rtcsg-method)
-- [06  The Three-Horizon Adoption Journey](#06--the-three-horizon-adoption-journey)
-- [07  The Leveraged Agency Model](#07--the-leveraged-agency-model)
+
+- [04 The AI Maturity Spectrum](#04--the-ai-maturity-spectrum)
+- [05 The RTCSG Method](#05--the-rtcsg-method)
+- [06 The Three-Horizon Adoption Journey](#06--the-three-horizon-adoption-journey)
+- [07 The Leveraged Agency Model](#07--the-leveraged-agency-model)
 
 ### Part 3 — Differentiation
-- [08  The Five Pillars](#08--the-five-pillars)
-- [09  Competitive Landscape](#09--competitive-landscape)
+
+- [08 The Five Pillars](#08--the-five-pillars)
+- [09 Competitive Landscape](#09--competitive-landscape)
 
 ### Part 4 — Brand System
-- [10  Voice & Category Construction Discipline](#10--voice--category-construction-discipline)
-- [11  The Glossary](#11--the-glossary)
+
+- [10 Voice & Category Construction Discipline](#10--voice--category-construction-discipline)
+- [11 The Glossary](#11--the-glossary)
 
 ### Part 5 — Go-to-Market
-- [12  Audiences & Buyer Dynamics](#12--audiences--buyer-dynamics)
-- [13  The GTM Engine](#13--the-gtm-engine)
-- [14  The Diagnostic Funnel](#14--the-diagnostic-funnel)
+
+- [12 Audiences & Buyer Dynamics](#12--audiences--buyer-dynamics)
+- [13 The GTM Engine](#13--the-gtm-engine)
+- [14 The Diagnostic Funnel](#14--the-diagnostic-funnel)
 
 ### Part 6 — Build Direction
-- [15  Website as System](#15--website-as-system)
-- [16  Open Strategic Decisions](#16--open-strategic-decisions)
+
+- [15 Website as System](#15--website-as-system)
+- [16 Open Strategic Decisions](#16--open-strategic-decisions)
 
 ---
 
 # PART 1 — FOUNDATION
 
-*What we believe, what we claim, why the position we hold is possible.*
+_What we believe, what we claim, why the position we hold is possible._
 
 ---
 
@@ -108,11 +114,11 @@ The implication: the bottleneck is no longer the technology. It is the operating
 
 Through the last three years, the dominant mode of AI adoption has cycled through three phases. Most Turkish firms selling AI services still live in the first two. Lokomotif's opportunity — and obligation — is to lead the third.
 
-| Phase | Dominant question | Winners of the phase | What buyers paid for |
-|---|---|---|---|
-| **Phase 1** (2022–24) | Can AI do this? | Training firms, literacy academies | Tool literacy and curiosity |
-| **Phase 2** (2024–25) | Can we ship this? | Dev shops, integration agencies | Implementation services |
-| **Phase 3** (2026+) | Why hasn't this scaled? | Methodology-led adoption partners | Operating model redesign and agentic transformation |
+| Phase                 | Dominant question       | Winners of the phase               | What buyers paid for                                |
+| --------------------- | ----------------------- | ---------------------------------- | --------------------------------------------------- |
+| **Phase 1** (2022–24) | Can AI do this?         | Training firms, literacy academies | Tool literacy and curiosity                         |
+| **Phase 2** (2024–25) | Can we ship this?       | Dev shops, integration agencies    | Implementation services                             |
+| **Phase 3** (2026+)   | Why hasn't this scaled? | Methodology-led adoption partners  | Operating model redesign and agentic transformation |
 
 ### Three forces that define the Phase 3 opportunity
 
@@ -165,7 +171,7 @@ A category claim only holds if the claimant can defend it. Five structural asset
 
 # PART 2 — OUR MODELS
 
-*The frameworks that structure every engagement, every page of thought leadership, and every strategic conversation. These are the intellectual property of the firm.*
+_The frameworks that structure every engagement, every page of thought leadership, and every strategic conversation. These are the intellectual property of the firm._
 
 ---
 
@@ -175,12 +181,12 @@ Every enterprise client exists at a point along an AI maturity spectrum. The poi
 
 ### The four states
 
-| State | Indicators | Common mistake | What the state needs |
-|---|---|---|---|
-| **AI-Absent** | No policy. No ownership. No experimentation. AI is treated as a future discussion. | Waiting until "the dust settles" — it will not. | Category education, exec-level framing, a first pilot that ships. |
-| **AI-Curious** | Scattered pilots in isolated pockets. Individual productivity wins. No operating model, no measurement, no scale plan. | Mistaking individual wins for organizational transformation. | A diagnostic that maps use cases to ROI, plus the first disciplined engagement with baseline metrics. |
-| **AI-Integrated** | AI embedded in named workflows. Measurement exists. Governance frameworks in draft. Roles partially redefined. | Treating integration as the finish line instead of the entry ramp to the real transformation. | Workflow redesign at scale — rewire processes end-to-end, not automate the old ones faster. |
-| **AI-Native** | AI assumed in process design. Agents operate with guardrails. Governance architecture live. Operating model rebuilt for autonomous systems. | Assuming the transformation is complete — agentic inflection will reopen it. | Agentic workflow design, observability, phased scaling, institutional governance maturity. |
+| State             | Indicators                                                                                                                                  | Common mistake                                                                                | What the state needs                                                                                  |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| **AI-Absent**     | No policy. No ownership. No experimentation. AI is treated as a future discussion.                                                          | Waiting until "the dust settles" — it will not.                                               | Category education, exec-level framing, a first pilot that ships.                                     |
+| **AI-Curious**    | Scattered pilots in isolated pockets. Individual productivity wins. No operating model, no measurement, no scale plan.                      | Mistaking individual wins for organizational transformation.                                  | A diagnostic that maps use cases to ROI, plus the first disciplined engagement with baseline metrics. |
+| **AI-Integrated** | AI embedded in named workflows. Measurement exists. Governance frameworks in draft. Roles partially redefined.                              | Treating integration as the finish line instead of the entry ramp to the real transformation. | Workflow redesign at scale — rewire processes end-to-end, not automate the old ones faster.           |
+| **AI-Native**     | AI assumed in process design. Agents operate with guardrails. Governance architecture live. Operating model rebuilt for autonomous systems. | Assuming the transformation is complete — agentic inflection will reopen it.                  | Agentic workflow design, observability, phased scaling, institutional governance maturity.            |
 
 ### What the spectrum is used for
 
@@ -245,7 +251,7 @@ Clients progress through three named practices, entered via a Diagnostic and oft
 
 ### Horizon 1 — Adoption Sprint (2–4 weeks)
 
-*Move from intention to action.*
+_Move from intention to action._
 
 The first working proof of concept inside the client's real workflow. Entered from AI-Absent or AI-Curious state. The outcome is not a deck. It is a deployed, measured, teachable pilot that a client team can operate and extend.
 
@@ -253,7 +259,7 @@ The first working proof of concept inside the client's real workflow. Entered fr
 
 ### Horizon 2 — Workflow Rewire (6–12 weeks)
 
-*Redesign the processes, not just the tools.*
+_Redesign the processes, not just the tools._
 
 End-to-end workflow reconstruction with AI embedded, roles redefined, and measurement built in. Entered by clients who have pilot experience (AI-Curious or early AI-Integrated) and now need structural change. The outcome is not a tool rollout. It is a redesigned operating rhythm for a named function or value stream.
 
@@ -261,7 +267,7 @@ End-to-end workflow reconstruction with AI embedded, roles redefined, and measur
 
 ### Horizon 3 — Agentic Scale (8–16 weeks)
 
-*Move beyond assistance into autonomous operation.*
+_Move beyond assistance into autonomous operation._
 
 Design, test, and scale agentic workflows with the governance architecture to match. Entered by AI-Integrated clients ready to cross into AI-Native operation. The outcome is a production-grade agentic system with observability, guardrails, and an operational handbook the client team owns.
 
@@ -283,11 +289,11 @@ The future shape is different. The AI age makes it possible to productize what s
 
 Services → Productized Service → Product. The ladder has three rungs and one compounding layer beneath all of them.
 
-| Rung | What it looks like | Economics | Examples for Lokomotif |
-|---|---|---|---|
-| **Rung 1 — Services** | Custom engagements delivered by senior teams. Each client receives bespoke work. | High revenue per engagement, bounded by team capacity. Margin improves with method and repetition. | The Three Horizons: Adoption Sprint, Workflow Rewire, Agentic Scale. Today's revenue. |
-| **Rung 2 — Productized Service** | Fixed-scope, fixed-price, fixed-timeline offerings. Method is encoded into a repeatable package. Human expertise remains but is standardized. | Lower revenue per unit, higher volume, more predictable. Enables mid-market reach the bespoke model cannot serve profitably. | The Diagnostic. Open Programs (productized trainings). Sector-specific readiness packages. Role-specific enablement bundles. |
-| **Rung 3 — Product and Agents** | Self-serve software and agentic systems that embody the firm's method. The client buys access, not engagement. | Low incremental delivery cost, high operational leverage. Market reach independent of team capacity. | An RTCSG prompt architecture platform. An AI maturity measurement tool. Sector-calibrated agentic templates. Governance-in-a-box for mid-market. |
+| Rung                             | What it looks like                                                                                                                            | Economics                                                                                                                    | Examples for Lokomotif                                                                                                                           |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Rung 1 — Services**            | Custom engagements delivered by senior teams. Each client receives bespoke work.                                                              | High revenue per engagement, bounded by team capacity. Margin improves with method and repetition.                           | The Three Horizons: Adoption Sprint, Workflow Rewire, Agentic Scale. Today's revenue.                                                            |
+| **Rung 2 — Productized Service** | Fixed-scope, fixed-price, fixed-timeline offerings. Method is encoded into a repeatable package. Human expertise remains but is standardized. | Lower revenue per unit, higher volume, more predictable. Enables mid-market reach the bespoke model cannot serve profitably. | The Diagnostic. Open Programs (productized trainings). Sector-specific readiness packages. Role-specific enablement bundles.                     |
+| **Rung 3 — Product and Agents**  | Self-serve software and agentic systems that embody the firm's method. The client buys access, not engagement.                                | Low incremental delivery cost, high operational leverage. Market reach independent of team capacity.                         | An RTCSG prompt architecture platform. An AI maturity measurement tool. Sector-calibrated agentic templates. Governance-in-a-box for mid-market. |
 
 ### The compounding layer: audience
 
@@ -319,7 +325,7 @@ A rough, directional sketch of where the ladder leads — subject to annual revi
 
 # PART 3 — DIFFERENTIATION
 
-*What makes the firm distinctive in a crowded market — and how that distinctiveness holds up against global and local competitors.*
+_What makes the firm distinctive in a crowded market — and how that distinctiveness holds up against global and local competitors._
 
 ---
 
@@ -353,13 +359,13 @@ Baselines, deltas, and ROI cases are built into every engagement from week one. 
 
 The firm competes across five overlapping categories, against very different kinds of rivals. Differentiation is different in each one.
 
-| Competitor type | What they sell | What they lack | Our differentiation |
-|---|---|---|---|
-| **Big Seven** (Accenture, Deloitte, McKinsey, BCG, PwC, EY, Bain) | Strategy plus large-scale implementation. Global footprint. | Speed. Local sector intimacy. Hands-on enablement. Methodology owned at the firm level rather than the partner level. | Faster, operationally grounded, locally native. Method is the firm's, not any individual's. |
-| **Turkish digital consulting firms** | Digital transformation with AI retrofitted onto classical engagements. | AI-native methodology. Live practitioner network. Frontier connection. | AI-native by design, not AI-adjacent by update. |
-| **Turkish training firms and academies** | Generic AI literacy courses. Certificate-focused curricula. | Operating model design. Engagement model. Measurable outcomes beyond satisfaction scores. | Systems are designed, not courses delivered. |
-| **AI dev shops and integration agencies** | Integration work, automation builds, MVP delivery, outcome-based engineering pods. | Adoption architecture. Governance. Method. Measurement discipline. Organizational change. | The model of work is designed; features are not merely shipped. |
-| **Global AI-native boutiques** (Tenex, Faculty, Adoptify-style firms) | Transformation and engineering services. Content libraries, newsletters, high-velocity pricing models. | Turkish market presence. Turkish-language nuance. Local sector depth. A live community on the ground. | A 2,700-member Turkish-native practitioner ecosystem anchored in a physical hub. |
+| Competitor type                                                       | What they sell                                                                                         | What they lack                                                                                                        | Our differentiation                                                                         |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| **Big Seven** (Accenture, Deloitte, McKinsey, BCG, PwC, EY, Bain)     | Strategy plus large-scale implementation. Global footprint.                                            | Speed. Local sector intimacy. Hands-on enablement. Methodology owned at the firm level rather than the partner level. | Faster, operationally grounded, locally native. Method is the firm's, not any individual's. |
+| **Turkish digital consulting firms**                                  | Digital transformation with AI retrofitted onto classical engagements.                                 | AI-native methodology. Live practitioner network. Frontier connection.                                                | AI-native by design, not AI-adjacent by update.                                             |
+| **Turkish training firms and academies**                              | Generic AI literacy courses. Certificate-focused curricula.                                            | Operating model design. Engagement model. Measurable outcomes beyond satisfaction scores.                             | Systems are designed, not courses delivered.                                                |
+| **AI dev shops and integration agencies**                             | Integration work, automation builds, MVP delivery, outcome-based engineering pods.                     | Adoption architecture. Governance. Method. Measurement discipline. Organizational change.                             | The model of work is designed; features are not merely shipped.                             |
+| **Global AI-native boutiques** (Tenex, Faculty, Adoptify-style firms) | Transformation and engineering services. Content libraries, newsletters, high-velocity pricing models. | Turkish market presence. Turkish-language nuance. Local sector depth. A live community on the ground.                 | A 2,700-member Turkish-native practitioner ecosystem anchored in a physical hub.            |
 
 ### Observations from the global benchmark
 
@@ -383,7 +389,7 @@ Five assets cannot be replicated by any competitor — global or local — on an
 
 # PART 4 — BRAND SYSTEM
 
-*How the firm sounds, what it says, what it refuses to say. The language discipline that turns a category claim into an occupied category.*
+_How the firm sounds, what it says, what it refuses to say. The language discipline that turns a category claim into an occupied category._
 
 ---
 
@@ -458,8 +464,8 @@ These are named frameworks and category terms that should be used as proper-noun
 Operational category vocabulary that should appear naturally across surfaces — without feeling repeated.
 
 - operating model design
-- workflow redesign  /  workflow rewire
-- agentic transformation  /  agentic scale  /  agentic workflows
+- workflow redesign / workflow rewire
+- agentic transformation / agentic scale / agentic workflows
 - measurable transformation
 - methodology-led
 - frontier-connected
@@ -499,7 +505,7 @@ The firm publishes in English and Turkish. Two language rules hold:
 
 # PART 5 — GO-TO-MARKET
 
-*How the firm reaches buyers, earns trust, and converts attention into engagements. The three-engine model that turns a category claim into pipeline.*
+_How the firm reaches buyers, earns trust, and converts attention into engagements. The three-engine model that turns a category claim into pipeline._
 
 ---
 
@@ -569,13 +575,13 @@ Events are not a marketing activity. They are the primary mechanism through whic
 
 **Format portfolio.** Each format serves a distinct purpose in the funnel — top (category education, leadership framing), middle (applied method, peer-to-peer trust), bottom (method-in-action, case conversion). They are not interchangeable; they are programmed together.
 
-| Format | Audience | Scale | Primary function | Funnel position |
-|---|---|---|---|---|
-| **Sector summits** | LOB leaders in a named sector | 100–300 | Category authority | Top of funnel |
-| **Executive webinars** | C-suite and senior leaders | 50–200 | Leadership framing | Top / mid |
-| **Space workshops** | Decision-makers and their teams | 20–40 | Applied method | Mid / bottom |
-| **Demo days** | Active prospects | 15–50 | Case conversion | Bottom of funnel |
-| **Community meetups** | Practitioners, emerging leaders | 50–200 | Community flywheel | Long-tail / talent |
+| Format                 | Audience                        | Scale   | Primary function   | Funnel position    |
+| ---------------------- | ------------------------------- | ------- | ------------------ | ------------------ |
+| **Sector summits**     | LOB leaders in a named sector   | 100–300 | Category authority | Top of funnel      |
+| **Executive webinars** | C-suite and senior leaders      | 50–200  | Leadership framing | Top / mid          |
+| **Space workshops**    | Decision-makers and their teams | 20–40   | Applied method     | Mid / bottom       |
+| **Demo days**          | Active prospects                | 15–50   | Case conversion    | Bottom of funnel   |
+| **Community meetups**  | Practitioners, emerging leaders | 50–200  | Community flywheel | Long-tail / talent |
 
 **Measurement principle.** Events are judged on pipeline generated, not attendance. Low-attendance, high-conversion events are wins. Every event is tied to a sector, tied to a content thesis, followed by structured outreach within 14 days, staffed senior-to-senior, and measured against pipeline.
 
@@ -641,7 +647,7 @@ Either works. Mixing the two — offering complimentary to some clients, paid to
 
 # PART 6 — BUILD DIRECTION
 
-*The strategic constraints for the website rebuild, the anatomy patterns for additive content types (trainings, events, playbooks, case studies), and the open decisions that will shape the firm's next phase.*
+_The strategic constraints for the website rebuild, the anatomy patterns for additive content types (trainings, events, playbooks, case studies), and the open decisions that will shape the firm's next phase._
 
 ---
 

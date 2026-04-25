@@ -26,16 +26,16 @@ Both documents take precedence over this plan when there is conflict. This plan 
 
 ## 2. Locked decisions (v1.0)
 
-| # | Decision | Value |
-|---|----------|-------|
-| 1 | Versioning tool | Changesets |
-| 2 | Docs domain | `kit.lokomotif.ai` |
-| 3 | NPM scope | `@lokomotif/*` (claimed by the Lead Maintainer before Phase 3 publishes) |
-| 4 | Lead Maintainer | Fatih Güner |
-| 5 | Security contact | `kit@lokomotif.ai` |
-| 6 | First canonical modules — source material | **Partial.** Pass 1 resolved via public sources (RFC 0001). Pass 2 still pending engagement artifacts. See § 3. |
-| 7 | README tagline | Lead Maintainer-approved (Phase 0 deliverable) |
-| 8 | Phase cadence | Sequential. Parallelization allowed within explicit phases. |
+| #   | Decision                                  | Value                                                                                                           |
+| --- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| 1   | Versioning tool                           | Changesets                                                                                                      |
+| 2   | Docs domain                               | `kit.lokomotif.ai`                                                                                              |
+| 3   | NPM scope                                 | `@lokomotif/*` (claimed by the Lead Maintainer before Phase 3 publishes)                                        |
+| 4   | Lead Maintainer                           | Fatih Güner                                                                                                     |
+| 5   | Security contact                          | `kit@lokomotif.ai`                                                                                              |
+| 6   | First canonical modules — source material | **Partial.** Pass 1 resolved via public sources (RFC 0001). Pass 2 still pending engagement artifacts. See § 3. |
+| 7   | README tagline                            | Lead Maintainer-approved (Phase 0 deliverable)                                                                  |
+| 8   | Phase cadence                             | Sequential. Parallelization allowed within explicit phases.                                                     |
 
 ---
 
@@ -349,14 +349,14 @@ Once Phase 1 files are in place and committed, the Lead Maintainer must:
 
 ## 7. Risks and mitigations
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| Schema design churn after Phase 2 | High | High | RFC discipline; major-bump tolerance pre-1.0. |
-| Eval harness slow → contributors skip locally | Medium | Medium | Coverage budget on harness itself; CI-only deep eval where needed. |
-| Voice drift in docs over time | Medium | High | Lint for retired phrases; voice review in PR template. |
-| Komünite confused with marketing channel | Low | Severe | Brief § 13 quoted in `GOVERNANCE.md` and `CONTRIBUTING.md`. Komünite uninstrumented. |
-| Module content invented "from thin air" | Medium | Severe | Module Proposal template requires anonymized source-material reference. PR review enforces. |
-| Vendor lock-in creeping into modules | Medium | High | CI grep for vendor strings in `modules/`. Blueprint isolation reviewed. |
+| Risk                                          | Likelihood | Impact | Mitigation                                                                                  |
+| --------------------------------------------- | ---------- | ------ | ------------------------------------------------------------------------------------------- |
+| Schema design churn after Phase 2             | High       | High   | RFC discipline; major-bump tolerance pre-1.0.                                               |
+| Eval harness slow → contributors skip locally | Medium     | Medium | Coverage budget on harness itself; CI-only deep eval where needed.                          |
+| Voice drift in docs over time                 | Medium     | High   | Lint for retired phrases; voice review in PR template.                                      |
+| Komünite confused with marketing channel      | Low        | Severe | Brief § 13 quoted in `GOVERNANCE.md` and `CONTRIBUTING.md`. Komünite uninstrumented.        |
+| Module content invented "from thin air"       | Medium     | Severe | Module Proposal template requires anonymized source-material reference. PR review enforces. |
+| Vendor lock-in creeping into modules          | Medium     | High   | CI grep for vendor strings in `modules/`. Blueprint isolation reviewed.                     |
 
 ---
 

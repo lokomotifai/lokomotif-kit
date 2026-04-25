@@ -12,11 +12,11 @@ This file is operational. It is read once per launch. After v0.1.0 ships, update
 
 **Audiences for each artifact:**
 
-| Artifact | Audience | Channel |
-|---|---|---|
-| Insights post | LOB leaders, executive sponsors | `lokomotif.ai/insights` (Tier 2 cadence per Brief § 13) |
-| Anthropic Ambassador post | Anthropic ecosystem, builders | Anthropic Ambassador channel + Anthropic-aligned community feeds |
-| Komünite Space event | Practitioners, contributors | Live at Komünite Space + recording to `kit.lokomotif.ai` |
+| Artifact                  | Audience                        | Channel                                                          |
+| ------------------------- | ------------------------------- | ---------------------------------------------------------------- |
+| Insights post             | LOB leaders, executive sponsors | `lokomotif.ai/insights` (Tier 2 cadence per Brief § 13)          |
+| Anthropic Ambassador post | Anthropic ecosystem, builders   | Anthropic Ambassador channel + Anthropic-aligned community feeds |
+| Komünite Space event      | Practitioners, contributors     | Live at Komünite Space + recording to `kit.lokomotif.ai`         |
 
 **Success looks like:**
 
@@ -142,28 +142,34 @@ The methodology, in code. RTCSG and the Three-Horizon Adoption Journey, packaged
 ### What's in this release
 
 **Schema and contracts**
+
 - `@lokomotif/schema` — JSON Schema for every RTCSG kind, with TypeScript types and a Result-returning `validate()`.
 - `@lokomotif/otel-schema` — OpenTelemetry semantic conventions for module, flow, compose, and eval attributes.
 
 **Tools**
+
 - `@lokomotif/cli` — `lokomotif` binary: `modules list / validate / new`, `compose`, `eval run`, `deploy`.
 - `@lokomotif/sdk` — runtime-agnostic composition library (zero vendor SDK dependencies).
 
 **Eval harness**
+
 - `lokomotif-eval` (Python) — JSON Pointer targets, deterministic + LLM-judged checks, a stub LLM judge for CI without API keys.
 
 **Runtime blueprints**
+
 - `@lokomotif/blueprint-anthropic-sdk`
 - `@lokomotif/blueprint-dify`
 - `@lokomotif/blueprint-n8n`
 - `@lokomotif/blueprint-langgraph`
 
 **Canonical modules (Pass 1, public-sourced per RFC 0001)**
+
 - `guardrails/cross-industry/pii-tr` — KVKK-aware PII guardrail.
 - `contexts/finance/kvkk-compliance` — KVKK + BDDK fintech context.
 - `styles/cross-industry/executive-board-brief` — Lokomotif executive voice.
 
 **Documentation**
+
 - `kit.lokomotif.ai` (Nextra, deployed to Vercel) — EN canonical with TR priority pages; voice gate against Brief § 11 retired phrases.
 
 ### Status

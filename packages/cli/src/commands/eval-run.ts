@@ -30,7 +30,8 @@ lokomotif eval run -- --reporter json
   });
 
   json = Option.Boolean('--json', false, {
-    description: 'Emit a JSON status envelope instead of streaming harness output. Useful for CI metadata wrappers.',
+    description:
+      'Emit a JSON status envelope instead of streaming harness output. Useful for CI metadata wrappers.',
   });
 
   rootOverride = Option.String('--root', {

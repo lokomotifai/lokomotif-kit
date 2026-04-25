@@ -1,11 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { parse as parseYaml } from 'yaml';
 
-import {
-  DIFY_BLUEPRINT_DEFAULTS,
-  adaptToDify,
-  renderDifyYaml,
-} from '../src/index.js';
+import { DIFY_BLUEPRINT_DEFAULTS, adaptToDify, renderDifyYaml } from '../src/index.js';
 
 import { fixtureComposition } from './fixtures.js';
 
@@ -79,7 +75,10 @@ describe('renderDifyYaml', () => {
     const composed = fixtureComposition();
     const def = adaptToDify(composed, { appName: 'demo' });
     const yamlText = renderDifyYaml(def);
-    const parsed = parseYaml(yamlText) as { app: { mode: string }; lokomotif: { composition_hash: string } };
+    const parsed = parseYaml(yamlText) as {
+      app: { mode: string };
+      lokomotif: { composition_hash: string };
+    };
     expect(parsed.app.mode).toBe('workflow');
     expect(parsed.lokomotif.composition_hash).toBe(composed.compositionHash);
   });

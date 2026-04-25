@@ -29,13 +29,13 @@ Each module under `modules/` carries a sibling `__tests__/<name>.eval.yaml`:
 
 ```yaml
 module: roles/finance/aml-analyst
-description: "Eval suite for the AML analyst role."
+description: 'Eval suite for the AML analyst role.'
 checks:
   - id: identity-mentions-aml
     judge: deterministic
     kind: regex
     target: /body/identity/en
-    pattern: "AML|anti-money laundering"
+    pattern: 'AML|anti-money laundering'
     flags: i
 
   - id: identity-not-empty-tr
@@ -46,20 +46,20 @@ checks:
   - id: voice-sounds-senior
     judge: llm
     target: /body/identity
-    rubric: "Identity should sound like a senior practitioner."
+    rubric: 'Identity should sound like a senior practitioner.'
     threshold: 0.7
 ```
 
 ## Check kinds
 
-| `judge` | `kind` | Required args | Pass condition |
-|---------|--------|---------------|----------------|
-| `deterministic` | `regex` | `pattern`, optional `flags` | regex matches the target text |
-| `deterministic` | `not_empty` | — | target is non-null and non-empty |
-| `deterministic` | `array_length` | `min`, `max` | array length in bounds |
-| `deterministic` | `equals` | `expected` | target equals the expected value |
-| `deterministic` | `contains` | `substring` | target contains the substring |
-| `llm` | — | `rubric`, `threshold` | judge score ≥ threshold |
+| `judge`         | `kind`         | Required args               | Pass condition                   |
+| --------------- | -------------- | --------------------------- | -------------------------------- |
+| `deterministic` | `regex`        | `pattern`, optional `flags` | regex matches the target text    |
+| `deterministic` | `not_empty`    | —                           | target is non-null and non-empty |
+| `deterministic` | `array_length` | `min`, `max`                | array length in bounds           |
+| `deterministic` | `equals`       | `expected`                  | target equals the expected value |
+| `deterministic` | `contains`     | `substring`                 | target contains the substring    |
+| `llm`           | —              | `rubric`, `threshold`       | judge score ≥ threshold          |
 
 `target` is a JSON Pointer (RFC 6901) into the module — `/body/identity/en`, `/body/expertise/0`, and so on. Empty pointer `""` or `"/"` returns the document root.
 

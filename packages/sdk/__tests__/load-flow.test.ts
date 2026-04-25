@@ -24,10 +24,7 @@ modules:
     const flow = loadFlow(path);
     expect(flow.name).toBe('example');
     expect(flow.description).toBe('An example flow.');
-    expect(flow.modules).toEqual([
-      'roles/finance/aml-analyst',
-      'tasks/finance/case-review',
-    ]);
+    expect(flow.modules).toEqual(['roles/finance/aml-analyst', 'tasks/finance/case-review']);
   });
 
   it('throws when the file is missing', () => {

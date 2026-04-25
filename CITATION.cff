@@ -1,25 +1,25 @@
 cff-version: 1.2.0
 title: Lokomotif Kit
-message: "If you use Lokomotif Kit in research or industry, please cite as follows."
+message: 'If you use Lokomotif Kit in research or industry, please cite as follows.'
 type: software
-version: "0.1.0"
-date-released: "2026-04-25"
+version: '0.1.0'
+date-released: '2026-04-25'
 license: Apache-2.0
-repository-code: "https://github.com/lokomotifai/lokomotif-kit"
-url: "https://kit.lokomotif.ai"
+repository-code: 'https://github.com/lokomotifai/lokomotif-kit'
+url: 'https://kit.lokomotif.ai'
 authors:
-  - given-names: "Fatih"
-    family-names: "Güner"
-    email: "kit@lokomotif.ai"
-    affiliation: "Lokomotif AI"
+  - given-names: 'Fatih'
+    family-names: 'Güner'
+    email: 'kit@lokomotif.ai'
+    affiliation: 'Lokomotif AI'
 keywords:
-  - "agentic-ai"
-  - "ai-adoption"
-  - "rtcsg"
-  - "methodology"
-  - "open-source"
-  - "turkey"
-  - "kvkk"
+  - 'agentic-ai'
+  - 'ai-adoption'
+  - 'rtcsg'
+  - 'methodology'
+  - 'open-source'
+  - 'turkey'
+  - 'kvkk'
 abstract: >-
   Lokomotif Kit is the open-source methodology core for Corporate AI
   Adoption. It publishes the RTCSG prompt architecture, the AI

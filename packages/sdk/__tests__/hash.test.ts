@@ -44,14 +44,11 @@ describe('compositionHash', () => {
     const modulesDir = makeTempModulesDir();
     seedAllKinds(modulesDir);
     const a = compositionHash(
-      loadModules(
-        ['roles/cross-industry/test-role', 'tasks/cross-industry/test-task'],
-        { modulesDir },
-      ),
+      loadModules(['roles/cross-industry/test-role', 'tasks/cross-industry/test-task'], {
+        modulesDir,
+      }),
     );
-    const b = compositionHash(
-      loadModules(['roles/cross-industry/test-role'], { modulesDir }),
-    );
+    const b = compositionHash(loadModules(['roles/cross-industry/test-role'], { modulesDir }));
     expect(a).not.toBe(b);
   });
 });

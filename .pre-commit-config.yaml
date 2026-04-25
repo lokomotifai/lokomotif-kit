@@ -15,20 +15,20 @@ repos:
     rev: v5.0.0
     hooks:
       - id: trailing-whitespace
-        exclude: '^LICENSE$'
+        exclude: "^LICENSE$"
       - id: end-of-file-fixer
-        exclude: '^LICENSE$'
+        exclude: "^LICENSE$"
       - id: check-merge-conflict
       - id: check-added-large-files
-        args: ['--maxkb=1024']
+        args: ["--maxkb=1024"]
       - id: check-yaml
-        args: ['--allow-multiple-documents']
+        args: ["--allow-multiple-documents"]
       - id: check-json
       - id: check-toml
       - id: check-symlinks
       - id: detect-private-key
       - id: mixed-line-ending
-        args: ['--fix=lf']
+        args: ["--fix=lf"]
 
   - repo: https://github.com/gitleaks/gitleaks
     rev: v8.21.2
@@ -39,16 +39,16 @@ repos:
     rev: v0.8.4
     hooks:
       - id: ruff
-        files: '^packages/eval/'
-        args: ['--fix']
+        files: "^packages/eval/"
+        args: ["--fix"]
       - id: ruff-format
-        files: '^packages/eval/'
+        files: "^packages/eval/"
 
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.35.1
     hooks:
       - id: yamllint
-        args: ['-c', '.yamllint.yaml']
+        args: ["-c", ".yamllint.yaml"]
         exclude: '^(pnpm-lock\.yaml|\.changeset/)'
 
   # PII detection.

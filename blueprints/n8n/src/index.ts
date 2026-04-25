@@ -43,7 +43,11 @@ export type N8nWorkflow = {
     readonly schemaVersion: number;
     readonly lokomotif: {
       readonly composition_hash: string;
-      readonly modules: ReadonlyArray<{ readonly id: string; readonly version: string; readonly kind: string }>;
+      readonly modules: ReadonlyArray<{
+        readonly id: string;
+        readonly version: string;
+        readonly kind: string;
+      }>;
     };
   };
 };

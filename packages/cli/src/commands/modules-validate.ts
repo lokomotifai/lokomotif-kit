@@ -6,12 +6,7 @@ import fg from 'fast-glob';
 import type { ValidationError } from '@lokomotif/schema';
 
 import { loadModuleFile } from '../lib/module-loader.js';
-import {
-  writeJson,
-  writeLine,
-  writeValidationErrors,
-  writeValidationOk,
-} from '../lib/output.js';
+import { writeJson, writeLine, writeValidationErrors, writeValidationOk } from '../lib/output.js';
 
 type FileResult =
   | { readonly path: string; readonly ok: true }
@@ -27,7 +22,10 @@ export class ModulesValidateCommand extends Command {
 
 In \`--json\` mode, the full result set is emitted as a single JSON document; the exit code still reflects success or failure.`,
     examples: [
-      ['Validate a single module', 'lokomotif modules validate modules/roles/finance/aml-analyst.yaml'],
+      [
+        'Validate a single module',
+        'lokomotif modules validate modules/roles/finance/aml-analyst.yaml',
+      ],
       ['Validate a glob', 'lokomotif modules validate "modules/**/*.yaml"'],
       ['JSON output for CI', 'lokomotif modules validate --json modules/**/*.yaml'],
     ],

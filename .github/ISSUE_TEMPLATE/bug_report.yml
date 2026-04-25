@@ -1,6 +1,6 @@
 name: Bug report
 description: Report a defect in Lokomotif Kit (CLI, SDK, schema, eval, blueprints).
-labels: ['bug', 'triage']
+labels: ["bug", "triage"]
 body:
   - type: markdown
     attributes:
@@ -43,6 +43,6 @@ body:
     id: environment
     attributes:
       label: Environment
-      description: 'OS, Node version, pnpm version, Python version (if relevant).'
+      description: "OS, Node version, pnpm version, Python version (if relevant)."
     validations:
       required: true

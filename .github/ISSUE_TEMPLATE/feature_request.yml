@@ -1,6 +1,6 @@
 name: Feature request
 description: Propose a new capability for Lokomotif Kit.
-labels: ['enhancement', 'triage']
+labels: ["enhancement", "triage"]
 body:
   - type: markdown
     attributes:
@@ -34,4 +34,4 @@ body:
         - Context & Constraint
         - Style & Tone
         - Guardrail
-        - 'N/A — tooling'
+        - "N/A — tooling"

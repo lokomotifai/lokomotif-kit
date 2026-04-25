@@ -81,9 +81,9 @@ const composed = composeFlow(
   { modulesDir, language: 'tr' },
 );
 
-console.log(composed.text);             // RTCSG-ordered, sectioned prompt
-console.log(composed.compositionHash);  // 16-char deterministic hash
-console.log(composed.byKind.role?.id);  // bucketed access
+console.log(composed.text); // RTCSG-ordered, sectioned prompt
+console.log(composed.compositionHash); // 16-char deterministic hash
+console.log(composed.byKind.role?.id); // bucketed access
 ```
 
 The pure form, `compose(modules, options)`, accepts pre-loaded modules and skips disk I/O. Use it when you already have `Module` objects in memory.

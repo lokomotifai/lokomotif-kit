@@ -8,8 +8,8 @@ This document explains who maintains the project, how decisions are made, how RF
 
 The Kit is maintained by the **Lokomotif Core Team**.
 
-| Role | Person | Mandate |
-|------|--------|---------|
+| Role            | Person      | Mandate                                                |
+| --------------- | ----------- | ------------------------------------------------------ |
 | Lead Maintainer | Fatih Güner | Final authority on schema changes, scope, and releases |
 
 The maintainer roster grows by invitation only. Active contributors with sustained, on-voice contributions across at least one release cycle may be invited to join. Joining the Core Team is a delegation of trust, not a reward for volume.

@@ -47,7 +47,7 @@ def _make_results() -> tuple[list[ModuleResult], RunSummary]:
             ),
         ),
     )
-    summary = EvalRunner._summarize([passed, failing])  # noqa: SLF001 — internal helper
+    summary = EvalRunner._summarize([passed, failing])
     return [passed, failing], summary
 
 

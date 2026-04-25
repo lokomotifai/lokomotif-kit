@@ -1,10 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import {
-  N8N_BLUEPRINT_DEFAULTS,
-  adaptToN8n,
-  renderN8nJson,
-} from '../src/index.js';
+import { N8N_BLUEPRINT_DEFAULTS, adaptToN8n, renderN8nJson } from '../src/index.js';
 
 import { fixtureComposition } from './fixtures.js';
 
@@ -24,7 +20,9 @@ describe('adaptToN8n', () => {
     const llm = wf.nodes.find((n) => n.id === 'llm');
     expect(llm).toBeDefined();
     const messageValues = (
-      (llm?.parameters['messages'] ?? {}) as { messageValues: ReadonlyArray<{ role: string; message: string }> }
+      (llm?.parameters['messages'] ?? {}) as {
+        messageValues: ReadonlyArray<{ role: string; message: string }>;
+      }
     ).messageValues;
     expect(messageValues[0]?.role).toBe('system');
     expect(messageValues[0]?.message).toContain('## Role');

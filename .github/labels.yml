@@ -5,134 +5,134 @@
 # ---------- Type ----------
 
 - name: bug
-  color: 'd73a4a'
-  description: 'Something does not work as documented.'
+  color: "d73a4a"
+  description: "Something does not work as documented."
 - name: enhancement
-  color: 'a2eeef'
-  description: 'New feature or improvement.'
+  color: "a2eeef"
+  description: "New feature or improvement."
 - name: rfc
-  color: '7057ff'
-  description: 'Request for Comments — durable decision needed.'
+  color: "7057ff"
+  description: "Request for Comments — durable decision needed."
 - name: discussion
-  color: 'cfd3d7'
-  description: 'Open conversation; convert to issue when actionable.'
+  color: "cfd3d7"
+  description: "Open conversation; convert to issue when actionable."
 - name: question
-  color: 'd876e3'
-  description: 'Question that may not require code changes.'
+  color: "d876e3"
+  description: "Question that may not require code changes."
 - name: triage
-  color: 'fbca04'
-  description: 'Awaiting maintainer review.'
+  color: "fbca04"
+  description: "Awaiting maintainer review."
 
 # ---------- Area (which package or surface) ----------
 
-- name: 'area/schema'
-  color: '0e8a16'
-  description: 'JSON Schema or contract change.'
-- name: 'area/cli'
-  color: '0e8a16'
-  description: '@lokomotif/cli'
-- name: 'area/sdk'
-  color: '0e8a16'
-  description: '@lokomotif/sdk'
-- name: 'area/eval'
-  color: '0e8a16'
-  description: 'Python eval harness in packages/eval.'
-- name: 'area/otel-schema'
-  color: '0e8a16'
-  description: '@lokomotif/otel-schema'
-- name: 'area/blueprints'
-  color: '0e8a16'
-  description: 'Runtime blueprints under blueprints/.'
-- name: 'area/docs'
-  color: '0e8a16'
-  description: 'Documentation site (kit.lokomotif.ai).'
-- name: 'area/modules'
-  color: '0e8a16'
-  description: 'Canonical RTCSG modules under modules/.'
-- name: 'area/build'
-  color: '0e8a16'
-  description: 'Build, CI, tooling, repo policy.'
+- name: "area/schema"
+  color: "0e8a16"
+  description: "JSON Schema or contract change."
+- name: "area/cli"
+  color: "0e8a16"
+  description: "@lokomotif/cli"
+- name: "area/sdk"
+  color: "0e8a16"
+  description: "@lokomotif/sdk"
+- name: "area/eval"
+  color: "0e8a16"
+  description: "Python eval harness in packages/eval."
+- name: "area/otel-schema"
+  color: "0e8a16"
+  description: "@lokomotif/otel-schema"
+- name: "area/blueprints"
+  color: "0e8a16"
+  description: "Runtime blueprints under blueprints/."
+- name: "area/docs"
+  color: "0e8a16"
+  description: "Documentation site (kit.lokomotif.ai)."
+- name: "area/modules"
+  color: "0e8a16"
+  description: "Canonical RTCSG modules under modules/."
+- name: "area/build"
+  color: "0e8a16"
+  description: "Build, CI, tooling, repo policy."
 
 # ---------- RTCSG kind ----------
 
-- name: 'kind/role'
-  color: 'c2e0c6'
-- name: 'kind/task'
-  color: 'c2e0c6'
-- name: 'kind/context'
-  color: 'c2e0c6'
-- name: 'kind/style'
-  color: 'c2e0c6'
-- name: 'kind/guardrail'
-  color: 'c2e0c6'
+- name: "kind/role"
+  color: "c2e0c6"
+- name: "kind/task"
+  color: "c2e0c6"
+- name: "kind/context"
+  color: "c2e0c6"
+- name: "kind/style"
+  color: "c2e0c6"
+- name: "kind/guardrail"
+  color: "c2e0c6"
 
 # ---------- Industry (most common) ----------
 
-- name: 'industry/finance'
-  color: 'fef2c0'
-- name: 'industry/banking'
-  color: 'fef2c0'
-- name: 'industry/insurance'
-  color: 'fef2c0'
-- name: 'industry/retail'
-  color: 'fef2c0'
-- name: 'industry/e-commerce'
-  color: 'fef2c0'
-- name: 'industry/logistics'
-  color: 'fef2c0'
-- name: 'industry/healthcare'
-  color: 'fef2c0'
-- name: 'industry/manufacturing'
-  color: 'fef2c0'
-- name: 'industry/energy'
-  color: 'fef2c0'
-- name: 'industry/telco'
-  color: 'fef2c0'
-- name: 'industry/media'
-  color: 'fef2c0'
-- name: 'industry/hr'
-  color: 'fef2c0'
-- name: 'industry/legal'
-  color: 'fef2c0'
-- name: 'industry/public-sector'
-  color: 'fef2c0'
-- name: 'industry/education'
-  color: 'fef2c0'
-- name: 'industry/cross-industry'
-  color: 'fef2c0'
+- name: "industry/finance"
+  color: "fef2c0"
+- name: "industry/banking"
+  color: "fef2c0"
+- name: "industry/insurance"
+  color: "fef2c0"
+- name: "industry/retail"
+  color: "fef2c0"
+- name: "industry/e-commerce"
+  color: "fef2c0"
+- name: "industry/logistics"
+  color: "fef2c0"
+- name: "industry/healthcare"
+  color: "fef2c0"
+- name: "industry/manufacturing"
+  color: "fef2c0"
+- name: "industry/energy"
+  color: "fef2c0"
+- name: "industry/telco"
+  color: "fef2c0"
+- name: "industry/media"
+  color: "fef2c0"
+- name: "industry/hr"
+  color: "fef2c0"
+- name: "industry/legal"
+  color: "fef2c0"
+- name: "industry/public-sector"
+  color: "fef2c0"
+- name: "industry/education"
+  color: "fef2c0"
+- name: "industry/cross-industry"
+  color: "fef2c0"
 
 # ---------- Lifecycle (newcomers) ----------
 
-- name: 'good first issue'
-  color: '7057ff'
-  description: 'Approachable for newcomers.'
-- name: 'help wanted'
-  color: '008672'
-  description: 'Maintainer would welcome a contribution here.'
+- name: "good first issue"
+  color: "7057ff"
+  description: "Approachable for newcomers."
+- name: "help wanted"
+  color: "008672"
+  description: "Maintainer would welcome a contribution here."
 
 # ---------- Priority ----------
 
-- name: 'priority/critical'
-  color: 'b60205'
-  description: 'Drop other work; address now.'
-- name: 'priority/high'
-  color: 'd93f0b'
-- name: 'priority/medium'
-  color: 'fbca04'
-- name: 'priority/low'
-  color: '0e8a16'
+- name: "priority/critical"
+  color: "b60205"
+  description: "Drop other work; address now."
+- name: "priority/high"
+  color: "d93f0b"
+- name: "priority/medium"
+  color: "fbca04"
+- name: "priority/low"
+  color: "0e8a16"
 
 # ---------- Status ----------
 
-- name: 'status/blocked'
-  color: 'e99695'
-  description: 'Cannot progress until something else lands.'
-- name: 'status/in-progress'
-  color: 'fbca04'
-  description: 'A maintainer or contributor is actively working on this.'
-- name: 'status/needs-info'
-  color: 'd4c5f9'
-  description: 'Awaiting clarification from the reporter.'
-- name: 'status/wontfix'
-  color: 'ffffff'
-  description: 'Not in scope for the Kit.'
+- name: "status/blocked"
+  color: "e99695"
+  description: "Cannot progress until something else lands."
+- name: "status/in-progress"
+  color: "fbca04"
+  description: "A maintainer or contributor is actively working on this."
+- name: "status/needs-info"
+  color: "d4c5f9"
+  description: "Awaiting clarification from the reporter."
+- name: "status/wontfix"
+  color: "ffffff"
+  description: "Not in scope for the Kit."

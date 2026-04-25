@@ -44,15 +44,15 @@ Refuses to overwrite existing files unless \`--force\` is passed.`,
 
   async execute(): Promise<number> {
     if (!isKind(this.kindArg)) {
-      this.fail(`Unknown kind '${this.kindArg}'. Expected one of: role, task, context, style, guardrail.`);
+      this.fail(
+        `Unknown kind '${this.kindArg}'. Expected one of: role, task, context, style, guardrail.`,
+      );
       return 1;
     }
     const kind: Kind = this.kindArg;
 
     if (!NAME_PATTERN.test(this.nameArg)) {
-      this.fail(
-        `Argument must be in 'industry/name' form, kebab-case. Got '${this.nameArg}'.`,
-      );
+      this.fail(`Argument must be in 'industry/name' form, kebab-case. Got '${this.nameArg}'.`);
       return 1;
     }
 

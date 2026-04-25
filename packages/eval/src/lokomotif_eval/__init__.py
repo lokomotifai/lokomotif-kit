@@ -45,7 +45,6 @@ from lokomotif_eval.runner import CheckResult, EvalRunner, ModuleResult, RunSumm
 from lokomotif_eval.targets import PointerError, resolve_pointer
 
 __all__ = [
-    "__version__",
     "ArrayLengthJudge",
     "Check",
     "CheckResult",
@@ -66,6 +65,7 @@ __all__ = [
     "RegexJudge",
     "RunSummary",
     "StubLLMJudge",
+    "__version__",
     "build_deterministic_judges",
     "console_report",
     "discover_eval_suites",

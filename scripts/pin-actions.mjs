@@ -99,9 +99,7 @@ async function main() {
   // Walk the workflows dir manually to avoid an extra dep.
   const { readdirSync } = await import('node:fs');
   const workflowsDir = resolve(REPO_ROOT, WORKFLOW_GLOB);
-  const files = readdirSync(workflowsDir).filter(
-    (f) => f.endsWith('.yml') || f.endsWith('.yaml'),
-  );
+  const files = readdirSync(workflowsDir).filter((f) => f.endsWith('.yml') || f.endsWith('.yaml'));
 
   if (files.length === 0) {
     console.log(`No workflow files found under ${WORKFLOW_GLOB}.`);

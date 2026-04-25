@@ -29,13 +29,7 @@ describe('compose', () => {
     );
     const flowPath = writeRepoFile(repo, 'flow.yaml', FLOW_YAML);
 
-    const { exitCode, stdout } = await runCli([
-      'compose',
-      flowPath,
-      '--root',
-      repo,
-      '--json',
-    ]);
+    const { exitCode, stdout } = await runCli(['compose', flowPath, '--root', repo, '--json']);
     expect(exitCode).toBe(0);
     const parsed = JSON.parse(stdout) as {
       modules: { id: string; kind: string }[];
@@ -61,12 +55,7 @@ describe('compose', () => {
       'modules:\n  - roles/cross-industry/does-not-exist\n',
     );
 
-    const { exitCode, stderr } = await runCli([
-      'compose',
-      flowPath,
-      '--root',
-      repo,
-    ]);
+    const { exitCode, stderr } = await runCli(['compose', flowPath, '--root', repo]);
     expect(exitCode).toBe(1);
     expect(stderr).toContain('cannot resolve module');
   });
@@ -77,12 +66,7 @@ describe('compose', () => {
     // the missing-flow-file path is the one that fails.
     writeRepoFile(repo, 'modules/roles/cross-industry/test-role.yaml', VALID_ROLE_YAML);
 
-    const { exitCode, stderr } = await runCli([
-      'compose',
-      'nonexistent-flow.yaml',
-      '--root',
-      repo,
-    ]);
+    const { exitCode, stderr } = await runCli(['compose', 'nonexistent-flow.yaml', '--root', repo]);
     expect(exitCode).toBe(1);
     expect(stderr).toContain('flow file not found');
   });

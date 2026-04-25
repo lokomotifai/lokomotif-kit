@@ -48,7 +48,8 @@ export { VERSION };
 // Auto-run when invoked as a script (the common case via the bin shim).
 // Importing the module as a library does not trigger this — the
 // detection guards on `import.meta.url` matching the entry point.
-const isMain = process.argv[1] !== undefined && import.meta.url.endsWith(process.argv[1].replace(/\\/g, '/'));
+const isMain =
+  process.argv[1] !== undefined && import.meta.url.endsWith(process.argv[1].replace(/\\/g, '/'));
 if (isMain || process.argv[1]?.endsWith('lokomotif.js') === true) {
   void buildCli().runExit(process.argv.slice(2));
 }

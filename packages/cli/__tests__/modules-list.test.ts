@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest';
 
-import { makeTempRepo, runCli, VALID_ROLE_YAML, VALID_TASK_YAML, writeRepoFile } from './helpers.js';
+import {
+  makeTempRepo,
+  runCli,
+  VALID_ROLE_YAML,
+  VALID_TASK_YAML,
+  writeRepoFile,
+} from './helpers.js';
 
 describe('modules list', () => {
   it('returns informational message when no modules dir exists', async () => {
@@ -31,10 +37,7 @@ describe('modules list', () => {
     };
     expect(parsed.modules).toHaveLength(2);
     const ids = parsed.modules.map((m) => m.module.id).sort();
-    expect(ids).toEqual([
-      'roles/cross-industry/test-role',
-      'tasks/cross-industry/test-task',
-    ]);
+    expect(ids).toEqual(['roles/cross-industry/test-role', 'tasks/cross-industry/test-task']);
   });
 
   it('filters by --kind', async () => {

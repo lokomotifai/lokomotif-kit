@@ -74,9 +74,7 @@ export function adaptToDify(
     type: 'start',
     title: 'Start',
     data: {
-      variables: [
-        { variable: 'user_input', label: 'User input', type: 'string', required: true },
-      ],
+      variables: [{ variable: 'user_input', label: 'User input', type: 'string', required: true }],
     },
   };
 

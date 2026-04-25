@@ -82,6 +82,9 @@ ignore = [
   "RUF001",  # ambiguous unicode in strings (Turkish characters are intentional)
   "RUF002",  # ambiguous unicode in docstrings (en-dash, Turkish characters)
   "RUF003",  # ambiguous unicode in comments
+  "E501",    # line too long — Turkish/EN docstrings legitimately exceed 100
+  "SIM105",  # try/except/pass is clearer than contextlib.suppress for guard imports
+  "SIM108",  # explicit if/else can be more readable than ternary
 ]
 
 [tool.ruff.lint.per-file-ignores]

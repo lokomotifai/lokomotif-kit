@@ -1,10 +1,10 @@
 # RFC 0001 — Phase 6 partial scope
 
-| Field   | Value |
-|---------|-------|
-| Status  | Accepted |
-| Author  | Fatih Güner (Lead Maintainer) |
-| Date    | 2026-04-25 |
+| Field   | Value                                                   |
+| ------- | ------------------------------------------------------- |
+| Status  | Accepted                                                |
+| Author  | Fatih Güner (Lead Maintainer)                           |
+| Date    | 2026-04-25                                              |
 | Affects | `IMPLEMENTATION_PLAN.md` § Phase 6 · Locked decision #6 |
 
 ## Summary
@@ -29,10 +29,10 @@ Ship Phase 6 in two passes.
 
 Three modules, each with a `source_reference` that cites the public document it derives from.
 
-| Module ID | Source |
-|---|---|
-| `guardrails/cross-industry/pii-tr` | KVKK 6698 sayılı Kanun (Md. 3, 5, 6, 12); MASAK Tebliğ; ISO 13616 (IBAN); NVI TC Kimlik formatı |
-| `contexts/finance/kvkk-compliance` | KVKK 6698 (Md. 4–9); KVKK Kurumu rehberleri; BDDK 2020 Bilgi Sistemleri Yönetmeliği |
+| Module ID                                     | Source                                                                                                    |
+| --------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `guardrails/cross-industry/pii-tr`            | KVKK 6698 sayılı Kanun (Md. 3, 5, 6, 12); MASAK Tebliğ; ISO 13616 (IBAN); NVI TC Kimlik formatı           |
+| `contexts/finance/kvkk-compliance`            | KVKK 6698 (Md. 4–9); KVKK Kurumu rehberleri; BDDK 2020 Bilgi Sistemleri Yönetmeliği                       |
 | `styles/cross-industry/executive-board-brief` | `Lokomotif_AI_Positioning_Brief.md` § 10 (Voice & Category Construction Discipline) + § 11 (The Glossary) |
 
 Each module ships with at least one passing eval suite under its sibling `__tests__/` directory.

@@ -27,7 +27,7 @@ Discriminator: each check carries `judge` ∈ {deterministic, llm}.
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Annotated, Any, Literal, Union
+from typing import Annotated, Any, Literal
 
 import yaml
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
@@ -36,7 +36,9 @@ from pydantic import BaseModel, ConfigDict, Field, ValidationError
 class EvalLoadError(Exception):
     """Raised when an eval YAML cannot be parsed or fails shape validation."""
 
-    def __init__(self, message: str, *, path: Path | None = None, cause: Exception | None = None) -> None:
+    def __init__(
+        self, message: str, *, path: Path | None = None, cause: Exception | None = None
+    ) -> None:
         super().__init__(message)
         self.path = path
         self.cause = cause
@@ -79,7 +81,7 @@ class LLMCheck(_BaseCheck):
 
 
 Check = Annotated[
-    Union[DeterministicCheck, LLMCheck],
+    DeterministicCheck | LLMCheck,
     Field(discriminator="judge"),
 ]
 

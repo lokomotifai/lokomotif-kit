@@ -29,11 +29,7 @@ export {
   EVAL_JUDGE_KINDS,
   MODULE_KINDS,
 } from './attributes.js';
-export type {
-  EvalJudgeKindValue,
-  LokomotifAttributeName,
-  ModuleKindValue,
-} from './attributes.js';
+export type { EvalJudgeKindValue, LokomotifAttributeName, ModuleKindValue } from './attributes.js';
 
 export {
   ALL_SPAN_NAMES,
