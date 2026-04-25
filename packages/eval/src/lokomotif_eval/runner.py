@@ -86,7 +86,9 @@ class EvalRunner:
     deterministic_judges: Mapping[str, Judge] = field(default_factory=build_deterministic_judges)
     llm_judge: LLMJudge = field(default_factory=StubLLMJudge)
 
-    def run_suite(self, suite: EvalSuite, module_data: Any, *, eval_path: Path, module_path: Path) -> ModuleResult:
+    def run_suite(
+        self, suite: EvalSuite, module_data: Any, *, eval_path: Path, module_path: Path
+    ) -> ModuleResult:
         """Run every check in ``suite`` against ``module_data``."""
         results: list[CheckResult] = []
         for check in suite.checks:
@@ -98,7 +100,9 @@ class EvalRunner:
             checks=tuple(results),
         )
 
-    def run_paths(self, eval_paths: list[tuple[Path, Path]]) -> tuple[list[ModuleResult], RunSummary]:
+    def run_paths(
+        self, eval_paths: list[tuple[Path, Path]]
+    ) -> tuple[list[ModuleResult], RunSummary]:
         """Load and execute a list of ``(module_path, eval_path)`` pairs.
 
         Each load failure becomes a single failing CheckResult so the
@@ -184,7 +188,9 @@ def _make_check_result(
     )
 
 
-def _make_check_result_from_outcome(check: Check, outcome: JudgeResult, started: float) -> CheckResult:
+def _make_check_result_from_outcome(
+    check: Check, outcome: JudgeResult, started: float
+) -> CheckResult:
     return _make_check_result(
         check,
         outcome.passed,
@@ -195,7 +201,9 @@ def _make_check_result_from_outcome(check: Check, outcome: JudgeResult, started:
     )
 
 
-def _result_from_load_error(stage: str, module_path: Path, eval_path: Path, message: str) -> ModuleResult:
+def _result_from_load_error(
+    stage: str, module_path: Path, eval_path: Path, message: str
+) -> ModuleResult:
     failure = CheckResult(
         check_id=f"_load:{stage}",
         judge="loader",

@@ -9,12 +9,10 @@ const withNextra = nextra({
 
 export default withNextra({
   reactStrictMode: true,
-  i18n: {
-    locales: ['en', 'tr'],
-    defaultLocale: 'en',
-  },
-  // The site is the category-construction surface; treat redirects and
-  // rewrites with care. Keep them in this file so they're versioned.
+  // i18n is not enabled at the Next.js level — Turkish content lives
+  // under pages/tr/ as a normal sub-route. The theme's language
+  // switcher in theme.config.tsx still works for navigation between
+  // English (/) and Turkish (/tr).
   async redirects() {
     return [];
   },

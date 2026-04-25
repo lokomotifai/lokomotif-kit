@@ -59,7 +59,9 @@ class NotEmptyJudge(_DeterministicJudgeBase):
         try:
             length = len(target_value)
         except TypeError:
-            return JudgeResult(True, 1.0, f"target is non-empty ({type(target_value).__name__})", self.name)
+            return JudgeResult(
+                True, 1.0, f"target is non-empty ({type(target_value).__name__})", self.name
+            )
         passed = length > 0
         return JudgeResult(
             passed=passed,
@@ -76,7 +78,9 @@ class ArrayLengthJudge(_DeterministicJudgeBase):
         if not isinstance(check, DeterministicCheck) or check.kind != "array_length":
             return self._wrong_check_kind(check)  # type: ignore[arg-type]
         if not isinstance(target_value, list):
-            return JudgeResult(False, 0.0, f"target is not a list ({type(target_value).__name__})", self.name)
+            return JudgeResult(
+                False, 0.0, f"target is not a list ({type(target_value).__name__})", self.name
+            )
         length = len(target_value)
         if check.min is not None and length < check.min:
             return JudgeResult(False, 0.0, f"length {length} < min {check.min}", self.name)
