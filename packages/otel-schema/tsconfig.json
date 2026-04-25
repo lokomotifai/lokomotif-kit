@@ -9,9 +9,5 @@
     "__tests__/**/*",
     "vitest.config.ts"
   ],
-  "exclude": ["dist", "node_modules", ".turbo"],
-  "references": [
-    { "path": "../schema" },
-    { "path": "../sdk" }
-  ]
+  "exclude": ["dist", "node_modules", ".turbo"]
 }

@@ -1,0 +1,127 @@
+# Lokomotif Kit — OpenTelemetry semantic conventions.
+# Version: 0.0.0
+# Format: OpenTelemetry semconv (compatible with weaver tooling).
+
+groups:
+  - id: lokomotif.module
+    type: attribute_group
+    brief: Attributes describing a single Lokomotif RTCSG module.
+    attributes:
+      - id: lokomotif.module.id
+        type: string
+        requirement_level: required
+        brief: The module identifier in `<kind-plural>/<industry>/<name>` form.
+        examples: ["roles/finance/aml-analyst"]
+      - id: lokomotif.module.kind
+        type:
+          allow_custom_values: false
+          members:
+            - id: role
+              value: role
+            - id: task
+              value: task
+            - id: context
+              value: context
+            - id: style
+              value: style
+            - id: guardrail
+              value: guardrail
+        requirement_level: required
+        brief: RTCSG concern this module addresses.
+      - id: lokomotif.module.version
+        type: string
+        requirement_level: required
+        brief: Semantic version of the module.
+        examples: ["1.0.0", "0.2.1"]
+      - id: lokomotif.module.industry
+        type: string[]
+        requirement_level: recommended
+        brief: Industries the module is calibrated for. See the schema's industry taxonomy.
+        examples: [["finance"], ["e-commerce", "retail"]]
+      - id: lokomotif.module.languages
+        type: string[]
+        requirement_level: recommended
+        brief: Languages the module body is available in (ISO 639-1 codes).
+        examples: [["tr", "en"]]
+
+  - id: lokomotif.flow
+    type: attribute_group
+    brief: Attributes describing a composed flow.
+    attributes:
+      - id: lokomotif.flow.name
+        type: string
+        requirement_level: recommended
+        brief: Flow name as supplied in the flow definition.
+      - id: lokomotif.flow.composition_hash
+        type: string
+        requirement_level: required
+        brief: Stable 16-character hex hash of the canonical (id, version) tuples in the composition.
+        note: Two compositions with the same module set and versions produce the same hash regardless of input order. Use this as a primary correlator across spans.
+        examples: ["1a2b3c4d5e6f7a8b"]
+      - id: lokomotif.flow.module_count
+        type: int
+        requirement_level: recommended
+        brief: Number of modules in the composition.
+
+  - id: lokomotif.compose
+    type: attribute_group
+    brief: Attributes describing a single composition / render operation.
+    attributes:
+      - id: lokomotif.compose.render_language
+        type: string
+        requirement_level: recommended
+        brief: ISO 639-1 code of the language selected for rendering.
+        examples: ["tr", "en"]
+      - id: lokomotif.compose.fallback_language
+        type: string
+        requirement_level: opt_in
+        brief: Fallback language used when the primary language was missing for a field.
+      - id: lokomotif.compose.byte_length
+        type: int
+        requirement_level: opt_in
+        brief: Byte length of the rendered prompt (UTF-8).
+
+  - id: lokomotif.eval
+    type: attribute_group
+    brief: Attributes describing a single eval execution.
+    attributes:
+      - id: lokomotif.eval.id
+        type: string
+        requirement_level: required
+        brief: Identifier of the eval test that ran.
+      - id: lokomotif.eval.module_id
+        type: string
+        requirement_level: recommended
+        brief: ID of the module the eval covers.
+      - id: lokomotif.eval.judge
+        type:
+          allow_custom_values: true
+          members:
+            - id: deterministic
+              value: deterministic
+            - id: llm
+              value: llm
+        requirement_level: required
+        brief: Class of judge that produced the eval result.
+      - id: lokomotif.eval.passed
+        type: boolean
+        requirement_level: required
+        brief: Whether the eval passed its acceptance threshold.
+      - id: lokomotif.eval.score
+        type: double
+        requirement_level: recommended
+        brief: Normalized eval score in the range [0.0, 1.0]. Deterministic judges typically emit 0 or 1; LLM judges emit a continuous score.
+      - id: lokomotif.eval.duration_ms
+        type: int
+        requirement_level: opt_in
+        brief: Wall-clock duration of the eval in milliseconds.
+
+  - id: lokomotif.spans
+    type: span
+    brief: Canonical span names for Kit operations.
+    attributes: []
+    span_names:
+      - lokomotif.module.load
+      - lokomotif.flow.compose
+      - lokomotif.flow.deploy
+      - lokomotif.eval.run

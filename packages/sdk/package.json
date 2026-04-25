@@ -1,13 +1,13 @@
 {
-  "name": "@lokomotif/cli",
+  "name": "@lokomotif/sdk",
   "version": "0.0.0",
-  "description": "The lokomotif command-line tool. List, validate, scaffold, compose, evaluate, and deploy RTCSG modules.",
+  "description": "Runtime-agnostic TypeScript SDK for composing RTCSG modules into prompts.",
   "license": "Apache-2.0",
   "homepage": "https://kit.lokomotif.ai",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lokomotif-ai/lokomotif-kit.git",
-    "directory": "packages/cli"
+    "directory": "packages/sdk"
   },
   "bugs": {
     "url": "https://github.com/lokomotif-ai/lokomotif-kit/issues"
@@ -19,9 +19,6 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "bin": {
-    "lokomotif": "./bin/lokomotif.js"
-  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -30,7 +27,6 @@
   },
   "files": [
     "dist/",
-    "bin/",
     "README.md",
     "CHANGELOG.md",
     "LICENSE"
@@ -49,22 +45,15 @@
     "test:watch": "vitest",
     "lint": "eslint src __tests__",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "start": "tsx src/index.ts",
     "clean": "rm -rf dist .turbo"
   },
   "dependencies": {
     "@lokomotif/schema": "workspace:*",
-    "@lokomotif/sdk": "workspace:*",
-    "clipanion": "^4.0.0-rc.4",
-    "fast-glob": "^3.3.2",
-    "picocolors": "^1.1.1",
-    "typanion": "^3.14.0",
     "yaml": "^2.6.1"
   },
   "devDependencies": {
     "@types/node": "^20.17.10",
     "@vitest/coverage-v8": "^2.1.8",
-    "execa": "^9.5.2",
     "vitest": "^2.1.8"
   }
 }

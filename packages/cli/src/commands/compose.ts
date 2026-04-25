@@ -1,36 +1,16 @@
-import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import { Command, Option } from 'clipanion';
-import { parse as parseYaml } from 'yaml';
 
-import type { Module } from '@lokomotif/schema';
+import { isLanguage, type Language } from '@lokomotif/schema';
+import {
+  composeFlowFile,
+  FlowError,
+  LoadModuleError,
+} from '@lokomotif/sdk';
 
-import { loadModuleFile } from '../lib/module-loader.js';
 import { writeJson, writeLine } from '../lib/output.js';
 import { findModulesDir } from '../lib/repo-root.js';
-
-type Flow = {
-  readonly name?: string;
-  readonly description?: string;
-  readonly modules: readonly string[];
-};
-
-const RTCSG_ORDER: Record<Module['kind'], number> = {
-  role: 0,
-  task: 1,
-  context: 2,
-  style: 3,
-  guardrail: 4,
-};
-
-const RTCSG_HEADERS: Record<Module['kind'], string> = {
-  role: '## Role',
-  task: '## Task',
-  context: '## Context',
-  style: '## Style',
-  guardrail: '## Guardrail',
-};
 
 export class ComposeCommand extends Command {
   static override paths = [['compose']];
@@ -38,9 +18,7 @@ export class ComposeCommand extends Command {
   static override usage = Command.Usage({
     category: 'Flow',
     description: 'Compose a flow into a single prompt string.',
-    details: `Reads a flow definition (YAML), loads each referenced module by ID, sorts them in RTCSG order (Role → Task → Context → Style → Guardrail), and emits a single prompt with section headers.
-
-This is the CLI's local composer — sufficient for previewing and testing. Production composition logic moves to \`@lokomotif/sdk\` in Phase 4 of the implementation plan.
+    details: `Reads a flow definition (YAML), loads each referenced module by ID, sorts them in canonical RTCSG order (Role → Task → Context → Style → Guardrail), and emits a sectioned prompt. Backed by \`@lokomotif/sdk\` — same composition logic as blueprints and other consumers.
 
 The flow YAML schema in v0:
 
@@ -55,7 +33,8 @@ modules:
 `,
     examples: [
       ['Compose a flow', 'lokomotif compose flow.yaml'],
-      ['JSON output', 'lokomotif compose flow.yaml --json'],
+      ['Render in Turkish', 'lokomotif compose flow.yaml --language tr'],
+      ['JSON output (with composition hash)', 'lokomotif compose flow.yaml --json'],
     ],
   });
 
@@ -65,30 +44,17 @@ modules:
     description: 'Repository root. Defaults to the current working directory.',
   });
 
+  language = Option.String('--language', {
+    description: 'Render language for LocalizedString fields.',
+  });
+
+  fallbackLanguage = Option.String('--fallback-language', {
+    description: 'Fallback language when the primary is missing for a field. Defaults to en.',
+  });
+
   flowPath = Option.String({ required: true, name: 'flow.yaml' });
 
   async execute(): Promise<number> {
-    const flowAbs = resolve(process.cwd(), this.flowPath);
-    if (!existsSync(flowAbs)) {
-      this.context.stderr.write(`error: flow file not found: ${flowAbs}\n`);
-      return 1;
-    }
-
-    let flow: Flow;
-    try {
-      flow = parseYaml(readFileSync(flowAbs, 'utf-8')) as Flow;
-    } catch (err: unknown) {
-      this.context.stderr.write(
-        `error: failed to parse flow YAML: ${err instanceof Error ? err.message : String(err)}\n`,
-      );
-      return 1;
-    }
-
-    if (!Array.isArray(flow.modules) || flow.modules.length === 0) {
-      this.context.stderr.write('error: flow.modules must be a non-empty array of module IDs.\n');
-      return 1;
-    }
-
     const cwd = this.rootOverride ?? process.cwd();
     const modulesDir = findModulesDir(cwd);
     if (modulesDir === null) {
@@ -96,61 +62,53 @@ modules:
       return 1;
     }
 
-    const loaded: Module[] = [];
-    for (const id of flow.modules) {
-      const path = resolveModulePath(modulesDir, id);
-      if (path === null) {
-        this.context.stderr.write(`error: cannot resolve module '${id}'.\n`);
-        return 1;
-      }
-      const result = loadModuleFile(path);
-      if (!result.ok) {
-        this.context.stderr.write(`error: module '${id}' failed validation.\n`);
-        return 1;
-      }
-      loaded.push(result.module);
-    }
+    const flowAbs = resolve(process.cwd(), this.flowPath);
+    const language = pickLang(this.language);
+    const fallbackLanguage = pickLang(this.fallbackLanguage);
 
-    const sorted = [...loaded].sort((a, b) => RTCSG_ORDER[a.kind] - RTCSG_ORDER[b.kind]);
-    const prompt = renderPrompt(sorted, flow);
-
-    if (this.json) {
-      writeJson(this.context.stdout, {
-        flow: { name: flow.name, description: flow.description },
-        modules: sorted.map((m) => ({ id: m.id, kind: m.kind, version: m.version })),
-        prompt,
+    try {
+      const composed = composeFlowFile(flowAbs, {
+        modulesDir,
+        ...(language !== undefined ? { language } : {}),
+        ...(fallbackLanguage !== undefined ? { fallbackLanguage } : {}),
       });
-    } else {
-      writeLine(this.context.stdout, prompt);
+
+      if (this.json) {
+        writeJson(this.context.stdout, {
+          flow: composed.flow,
+          composition_hash: composed.compositionHash,
+          modules: composed.modules.map((m) => ({
+            id: m.id,
+            kind: m.kind,
+            version: m.version,
+          })),
+          prompt: composed.text,
+        });
+      } else {
+        writeLine(this.context.stdout, composed.text);
+      }
+      return 0;
+    } catch (err: unknown) {
+      if (err instanceof LoadModuleError) {
+        this.context.stderr.write(
+          `error: cannot resolve module '${err.moduleId}' (${err.reason}).\n`,
+        );
+        return 1;
+      }
+      if (err instanceof FlowError) {
+        this.context.stderr.write(`error: ${err.message}\n`);
+        return 1;
+      }
+      this.context.stderr.write(
+        `error: ${err instanceof Error ? err.message : String(err)}\n`,
+      );
+      return 1;
     }
-    return 0;
   }
 }
 
-function resolveModulePath(modulesDir: string, id: string): string | null {
-  // id format: <kind-plural>/<industry>/<name>
-  // file path: <modulesDir>/<kind-plural>/<industry>/<name>.yaml
-  const candidate = `${modulesDir}/${id}.yaml`;
-  return existsSync(candidate) ? candidate : null;
-}
-
-function renderPrompt(modules: readonly Module[], flow: Flow): string {
-  const lines: string[] = [];
-  if (flow.name !== undefined) {
-    lines.push(`# ${flow.name}`);
-  }
-  if (flow.description !== undefined) {
-    lines.push('', flow.description);
-  }
-  for (const module of modules) {
-    lines.push('', RTCSG_HEADERS[module.kind], '', `_(${module.id} v${module.version})_`);
-    lines.push('', renderBody(module));
-  }
-  return `${lines.join('\n')}\n`;
-}
-
-function renderBody(module: Module): string {
-  // For Phase 3, render the body as YAML-equivalent indented text. The
-  // SDK in Phase 4 takes over with proper RTCSG composition rules.
-  return JSON.stringify(module.body, null, 2);
+function pickLang(input: string | undefined): Language | undefined {
+  if (input === undefined) return undefined;
+  if (!isLanguage(input)) return undefined;
+  return input;
 }
