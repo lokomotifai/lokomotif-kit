@@ -155,6 +155,58 @@ Per Brief § 13: Komünite stays uninstrumented. The dedicated `#lokomotif-kit` 
 - ⬜ Designate a Komünite host (not the Lead Maintainer if Lokomotif Core wants explicit separation between firm-side and Kit-side).
 - ⬜ Document explicitly that the channel is not instrumented (no bot tracking, no analytics).
 
+## 14. Phase 10 — launch (v0.1.0)
+
+The full launch protocol lives in [`LAUNCH.md`](./LAUNCH.md). The checklist below mirrors that file and is the single tracking surface on launch day. Tick items in order.
+
+### Pre-launch hardening
+
+- ⬜ Run `node scripts/pin-actions.mjs` (with `GITHUB_TOKEN` exported); review and commit the SHA-pinned workflow files.
+- ⬜ Trigger `.github/workflows/scorecards.yml` via workflow_dispatch; verify the OpenSSF Scorecard score on `https://scorecard.dev/viewer/?uri=github.com/lokomotif-ai/lokomotif-kit` is **≥ 7**. Address any flagged checks before launch.
+- ⬜ Confirm README badges render on github.com (CI, CodeQL, Scorecard, License, Docs).
+- ⬜ Lead Maintainer reviews `README.md`, `docs/pages/index.mdx`, and the Insights post draft in `LAUNCH.md` § 5 for voice fidelity.
+
+### Verify Phase 0–9 operator items
+
+The launch is gated on the earlier sections of this file. Re-confirm every section is ✅:
+
+- ⬜ § 1 — local lockfiles + pre-commit + first CI green.
+- ⬜ § 2 — GitHub repo configuration + Discussions enabled.
+- ⬜ § 3 — npm scope claimed + `NPM_TOKEN` in secrets + Sigstore provenance enabled.
+- ⬜ § 4 — secrets in repo settings.
+- ⬜ § 5 — Vercel project + DNS + `https://kit.lokomotif.ai` resolves.
+- ⬜ § 9 — Phase 6 Pass 2 status documented (Pass 1 ships in v0.1.0; Pass 2 still tracked here for v0.2.0).
+- ⬜ § 10 — pre-commit PII hook activated.
+- ⬜ § 11 — every blueprint has had one manual end-to-end run.
+- ⬜ § 12 — docs site live and current.
+- ⬜ § 13 — Discussions categories + label sync first run + release rehearsal on a `0.0.x` tag + Komünite channel created.
+
+### Release sequence
+
+Per `RELEASING.md` and `LAUNCH.md` § 3:
+
+- ⬜ Author the v0.1.0 changeset on a release branch (`pnpm changeset`, select all eight published packages, **minor** bump, body from `LAUNCH.md` § 4).
+- ⬜ Open and merge the changeset PR.
+- ⬜ Review and merge the auto-opened `chore: version packages` PR.
+- ⬜ Verify each of eight published packages on npm at `0.1.0` with provenance attestations.
+- ⬜ Verify GitHub Releases rendered for each tag.
+
+### Launch artifacts
+
+In order; each cross-references the previous so the press cycle reads as one coordinated release.
+
+- ⬜ Publish the Insights post (`LAUNCH.md` § 5) on `lokomotif.ai/insights`.
+- ⬜ Publish the Anthropic Ambassador announcement (`LAUNCH.md` § 6) to the Ambassador channel.
+- ⬜ Schedule and run the Komünite Space launch event (`LAUNCH.md` § 7); upload the recording to `kit.lokomotif.ai/talks/launch-walkthrough` once the talks section is added to docs.
+- ⬜ Reference the Kit on the Lokomotif AI website's Insights / Open Source page.
+
+### Post-launch verification
+
+- ⬜ 24-hour monitoring per `LAUNCH.md` § 8 (CI runs, npm publishes, Vercel builds, security inbox).
+- ⬜ Open a roadmap issue for v0.2.0 (Pass 2 modules + first sector library).
+- ⬜ Update `IMPLEMENTATION_PLAN.md` to note "v0.1.0 shipped on YYYY-MM-DD" via a `docs:` commit (substantive scope changes go through RFC 0002).
+- ⬜ Archive completed sections of this file under a `## Done` heading once they are fully ticked.
+
 ---
 
 ## How this file is maintained

@@ -8,6 +8,14 @@ Per-package changelogs live alongside each package once published. This file tra
 
 ## [Unreleased]
 
+### Added — Phase 10 (launch preparation)
+
+- `LAUNCH.md` — comprehensive launch protocol covering the pre-launch checklist, the v0.1.0 release sequence, drafts for the Insights post (Tier 2), the Anthropic Ambassador announcement, and the Komünite Space event brief, plus 24-hour post-launch monitoring.
+- `scripts/pin-actions.mjs` — SHA-pin every GitHub Action reference in `.github/workflows/*.yml` with the original tag preserved as a trailing comment. Idempotent; pass `--refresh` to re-resolve. Satisfies the OpenSSF Scorecard `Pinned-Dependencies` check.
+- `CITATION.cff` — academic/enterprise citation file pointing at v0.1.0.
+- `README.md` and `README.tr.md` — launch badges (CI, CodeQL, OpenSSF Scorecard, License, Docs); "documentation lives at" line finalized for the launch state.
+- `OPERATOR_TASKS.md § 14` — final launch checklist consolidating pre-launch hardening, the release sequence, the launch artifacts, and post-launch verification.
+
 ### Added — Phase 9 (community + release hygiene)
 
 - `commitlint.config.cjs` — Conventional Commits enforcement at commit-msg time. Hooked through pre-commit's `commit-msg` stage so a single `pre-commit install` wires both stages (`default_install_hook_types`).

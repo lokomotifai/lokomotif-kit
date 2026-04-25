@@ -1,5 +1,11 @@
 # Lokomotif Kit
 
+[![CI](https://github.com/lokomotif-ai/lokomotif-kit/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/lokomotif-ai/lokomotif-kit/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/lokomotif-ai/lokomotif-kit/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/lokomotif-ai/lokomotif-kit/actions/workflows/codeql.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/lokomotif-ai/lokomotif-kit/badge)](https://scorecard.dev/viewer/?uri=github.com/lokomotif-ai/lokomotif-kit)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![Docs: kit.lokomotif.ai](https://img.shields.io/badge/docs-kit.lokomotif.ai-7057ff.svg)](https://kit.lokomotif.ai)
+
 **The open-source methodology core for Corporate AI Adoption.**
 
 Lokomotif Kit is the reference implementation of **RTCSG** and the **Three-Horizon Adoption Journey** — the methodology Lokomotif AI uses to design how organizations work with AI. The Kit publishes the method so practitioners, partners, and client teams can apply it directly. The internal Workbench and the optional managed Control Plane sit on top of it.
@@ -65,7 +71,7 @@ cd packages/eval && uv sync
 
 ## Documentation
 
-Documentation will live at [kit.lokomotif.ai](https://kit.lokomotif.ai). Until the docs site ships, consult [`Lokomotif-Kit.md`](./Lokomotif-Kit.md) for contributor-facing conventions and [`IMPLEMENTATION_PLAN.md`](./IMPLEMENTATION_PLAN.md) for the build sequence.
+Documentation lives at [kit.lokomotif.ai](https://kit.lokomotif.ai). For contributor conventions see [`Lokomotif-Kit.md`](./Lokomotif-Kit.md); for the build sequence see [`IMPLEMENTATION_PLAN.md`](./IMPLEMENTATION_PLAN.md); for what's coming next see [`ROADMAP.md`](./ROADMAP.md).
 
 ## Contributing
 

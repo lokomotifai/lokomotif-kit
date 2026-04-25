@@ -1,5 +1,9 @@
 # Lokomotif Kit
 
+[![CI](https://github.com/lokomotif-ai/lokomotif-kit/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/lokomotif-ai/lokomotif-kit/actions/workflows/ci.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/lokomotif-ai/lokomotif-kit/badge)](https://scorecard.dev/viewer/?uri=github.com/lokomotif-ai/lokomotif-kit)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+
 **Corporate AI Adoption metodolojisinin açık kaynak çekirdeği.**
 
 Lokomotif Kit, Lokomotif AI'nin geliştirdiği **RTCSG** ve **Üç-Ufuk Adaptasyon Yolculuğu** metodolojisinin referans implementasyonudur. Kit, metodu kamuya açar — pratisyenler, partnerler ve müşteri ekipleri doğrudan uygulayabilsin diye. Dahili Workbench ve opsiyonel managed Control Plane bunun üzerine oturur.
@@ -65,7 +69,7 @@ cd packages/eval && uv sync
 
 ## Dökümantasyon
 
-Dökümantasyon [kit.lokomotif.ai](https://kit.lokomotif.ai) adresinde yaşayacak. Site yayına girene dek katkı kuralları için [`Lokomotif-Kit.md`](./Lokomotif-Kit.md), build sırası için [`IMPLEMENTATION_PLAN.md`](./IMPLEMENTATION_PLAN.md).
+Dökümantasyon [kit.lokomotif.ai](https://kit.lokomotif.ai) adresinde. Katkı kuralları için [`Lokomotif-Kit.md`](./Lokomotif-Kit.md); build sırası için [`IMPLEMENTATION_PLAN.md`](./IMPLEMENTATION_PLAN.md); yol haritası için [`ROADMAP.md`](./ROADMAP.md).
 
 ## Katkıda bulunma
 

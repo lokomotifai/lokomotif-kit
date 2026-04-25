@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+title: Lokomotif Kit
+message: "If you use Lokomotif Kit in research or industry, please cite as follows."
+type: software
+version: "0.1.0"
+date-released: "2026-04-25"
+license: Apache-2.0
+repository-code: "https://github.com/lokomotif-ai/lokomotif-kit"
+url: "https://kit.lokomotif.ai"
+authors:
+  - given-names: "Fatih"
+    family-names: "Güner"
+    email: "kit@lokomotif.ai"
+    affiliation: "Lokomotif AI"
+keywords:
+  - "agentic-ai"
+  - "ai-adoption"
+  - "rtcsg"
+  - "methodology"
+  - "open-source"
+  - "turkey"
+  - "kvkk"
+abstract: >-
+  Lokomotif Kit is the open-source methodology core for Corporate AI
+  Adoption. It publishes the RTCSG prompt architecture, the AI
+  Maturity Spectrum, and the Three-Horizon Adoption Journey as JSON
+  schemas, a TypeScript composition SDK, a Python evaluation harness,
+  a CLI, and runtime adapters (Anthropic SDK, Dify, n8n, LangGraph).
+  The Kit is model-agnostic and runtime-agnostic by design; vendor
+  adapters live in dedicated blueprint packages so the methodology
+  surface stays portable.
