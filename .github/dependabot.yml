@@ -6,6 +6,24 @@ updates:
       interval: "weekly"
       day: "monday"
     open-pull-requests-limit: 10
+    # Docs site is pinned to Nextra v3 / Next 14 / React 18.
+    # Major bumps require the migration RFC tracked in ROADMAP.md (Q3 2026).
+    # Patch and minor updates still flow normally.
+    ignore:
+      - dependency-name: "nextra"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "nextra-theme-docs"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "next"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@types/react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@types/react-dom"
+        update-types: ["version-update:semver-major"]
     groups:
       typescript:
         patterns:
