@@ -40,7 +40,7 @@ import {
 ```ts
 import { loadModule } from '@lokomotif/sdk';
 
-const module = loadModule('roles/finance/aml-analyst', {
+const module = loadModule('contexts/finance/kvkk-compliance', {
   modulesDir: '/abs/path/to/modules',
 });
 ```
@@ -51,9 +51,10 @@ const module = loadModule('roles/finance/aml-analyst', {
 import { loadModules, LoadModuleError } from '@lokomotif/sdk';
 
 try {
-  const mods = loadModules(['roles/finance/aml-analyst', 'tasks/general/structured-summary'], {
-    modulesDir,
-  });
+  const mods = loadModules(
+    ['contexts/finance/kvkk-compliance', 'styles/cross-industry/executive-board-brief'],
+    { modulesDir },
+  );
 } catch (err) {
   if (err instanceof LoadModuleError && err.reason === 'validation-error') {
     console.error('schema problems:', err.validationErrors);
@@ -69,10 +70,9 @@ import { composeFlow } from '@lokomotif/sdk';
 
 const composed = composeFlow(
   {
-    name: 'aml-review',
+    name: 'kvkk-board-brief',
     modules: [
-      'roles/finance/aml-analyst',
-      'tasks/general/structured-summary',
+      'roles/finance/your-role', // a role you author in your project
       'contexts/finance/kvkk-compliance',
       'styles/cross-industry/executive-board-brief',
       'guardrails/cross-industry/pii-tr',
@@ -83,14 +83,16 @@ const composed = composeFlow(
 
 console.log(composed.text); // RTCSG-ordered, sectioned prompt
 console.log(composed.compositionHash); // 16-char deterministic hash
-console.log(composed.byKind.role?.id); // bucketed access
+console.log(composed.byKind.context?.[0]?.id); // bucketed access
 ```
+
+Every composition needs at least one role or task — `compose` throws `FlowError` if both slots are empty. The Pass-1 modules that ship with v0.1.0 are contexts, styles, and guardrails only; you supply the role or task from your project until Pass-2 ships in v0.2.0.
 
 The pure form, `compose(modules, options)`, accepts pre-loaded modules and skips disk I/O. Use it when you already have `Module` objects in memory.
 
 ## RTCSG ordering
 
-Composition canonicalizes module order to **R → T → C → S → G**. RTCSG enforces at most one role per composition; multiple of any other kind are accepted and rendered in their input order. Duplicate module IDs throw a `FlowError`. A composition with neither role nor task throws — the structural slots cannot be empty.
+Composition canonicalizes module order to **R → T → C → S → G**. RTCSG enforces at most one role per composition; multiple of any other kind are accepted and rendered in their input order. Duplicate module IDs throw a `FlowError`. A composition with neither role nor task throws — the structural slots cannot both be empty.
 
 `renderPrompt` emits sections under markdown-style `## Role`, `## Task`, `## Context`, `## Style`, `## Guardrail` headers. Localized fields are rendered in `language` (or `fallbackLanguage`, default `en`) preference order.
 
@@ -118,7 +120,7 @@ Other tools (the CLI, the four blueprints) depend on the SDK without taking on e
 
 ## Status
 
-`v0.0.x` — pre-release. Surface may evolve before v1.0.0 via RFC.
+`v0.1.0` — early release. Surface may evolve before v1.0.0 via RFC.
 
 ## See also
 

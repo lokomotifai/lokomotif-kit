@@ -15,7 +15,7 @@ A module without an eval is a hypothesis. Evals turn hypotheses into contracts: 
 
 ```bash
 uv run lokomotif-eval run                    # every eval suite under modules/
-uv run lokomotif-eval run --module roles/finance/aml-analyst
+uv run lokomotif-eval run --module contexts/finance/kvkk-compliance
 uv run lokomotif-eval run --reporter json    # machine-readable output
 uv run lokomotif-eval list                   # discovered suites
 uv run lokomotif-eval scan-pii path/         # Turkey-aware PII scan
@@ -28,14 +28,14 @@ The same harness is reachable through the Node CLI as `lokomotif eval run`.
 Each module under `modules/` carries a sibling `__tests__/<name>.eval.yaml`:
 
 ```yaml
-module: roles/finance/aml-analyst
-description: 'Eval suite for the AML analyst role.'
+module: roles/finance/your-role
+description: 'Eval suite shape — replace with your role module.'
 checks:
-  - id: identity-mentions-aml
+  - id: identity-mentions-domain
     judge: deterministic
     kind: regex
     target: /body/identity/en
-    pattern: 'AML|anti-money laundering'
+    pattern: 'compliance|risk|review'
     flags: i
 
   - id: identity-not-empty-tr

@@ -36,18 +36,18 @@ Each command should exit cleanly. If anything fails, file an issue with the outp
 
 ## Scaffold a module
 
-Modules belong to exactly one RTCSG concern: role, task, context, style, or guardrail. Use the CLI to scaffold a frontmatter-complete skeleton:
+Modules belong to exactly one RTCSG concern: role, task, context, style, or guardrail. Use the CLI to scaffold a frontmatter-complete skeleton — every composition needs at least a role or a task, so a role is a good place to start in your own project:
 
 ```bash
-pnpm -F @lokomotif/cli start -- modules new role finance/aml-analyst
+pnpm -F @lokomotif/cli start -- modules new role finance/your-role
 ```
 
 This writes:
 
-- `modules/roles/finance/aml-analyst.yaml` — the module skeleton with TODO markers.
-- `modules/roles/finance/__tests__/aml-analyst.eval.yaml` — the eval test placeholder.
+- `modules/roles/finance/your-role.yaml` — the module skeleton with TODO markers.
+- `modules/roles/finance/__tests__/your-role.eval.yaml` — the eval test placeholder.
 
-Replace TODOs with content adapted from real Lokomotif practice. Modules must reflect actual practice — see [Authoring Modules](/module-authoring) for the rule and the policy behind it.
+Replace TODOs with content adapted from real practice. Modules must reflect actual practice — see [Authoring Modules](/module-authoring) for the rule and the policy behind it.
 
 ## Validate the module
 
@@ -72,10 +72,9 @@ A flow combines modules into a single prompt:
 
 ```yaml
 # flow.yaml
-name: aml-review
+name: kvkk-board-brief
 modules:
-  - roles/finance/aml-analyst
-  - tasks/general/structured-summary
+  - roles/finance/your-role # the role you scaffolded above
   - contexts/finance/kvkk-compliance
   - styles/cross-industry/executive-board-brief
   - guardrails/cross-industry/pii-tr
@@ -85,7 +84,9 @@ modules:
 pnpm -F @lokomotif/cli start -- compose flow.yaml
 ```
 
-The CLI canonicalizes the order to **R → T → C → S → G**, deduplicates, and emits a single prompt. For programmatic use, call `compose()` from `@lokomotif/sdk`.
+The CLI canonicalizes the order to **R → T → C → S → G**, deduplicates, and emits a single prompt. Every composition needs at least one role or task — `compose` throws if both slots are empty. For programmatic use, call `compose()` from `@lokomotif/sdk`.
+
+> **What ships in v0.1.0.** Three Pass-1 modules: `contexts/finance/kvkk-compliance`, `styles/cross-industry/executive-board-brief`, `guardrails/cross-industry/pii-tr`. Roles and tasks (`roles/finance/aml-analyst`, `tasks/general/structured-summary`) ship as Pass-2 in v0.2.0 — author your own in the meantime. See [`ROADMAP.md`](https://github.com/lokomotifai/lokomotif-kit/blob/main/ROADMAP.md).
 
 ## Next steps
 

@@ -44,7 +44,7 @@ If invoked outside a Lokomotif repository, the command prints an informational m
 Accepts file paths or globs. Each matching YAML file is parsed and validated against `@lokomotif/schema`. Exit code 1 on any failure.
 
 ```bash
-lokomotif modules validate modules/roles/finance/aml-analyst.yaml
+lokomotif modules validate modules/contexts/finance/kvkk-compliance.yaml
 lokomotif modules validate "modules/**/*.yaml"
 lokomotif modules validate --json modules/**/*.yaml
 ```
@@ -56,9 +56,9 @@ In `--json` mode the full result set is emitted as a single JSON document; the e
 Scaffolds `<kind-plural>/<industry>/<name>.yaml` plus an eval test placeholder. Refuses to overwrite without `--force`.
 
 ```bash
-lokomotif modules new role finance/aml-analyst
-lokomotif modules new guardrail cross-industry/pii-tr
-lokomotif modules new role finance/aml-analyst --force    # overwrite existing
+lokomotif modules new context finance/my-context
+lokomotif modules new guardrail cross-industry/my-guardrail
+lokomotif modules new context finance/my-context --force    # overwrite existing
 ```
 
 The output is schema-valid out of the box — frontmatter complete, body skeleton with TODO markers. Replace the TODOs with content adapted from real practice.
@@ -73,14 +73,13 @@ lokomotif compose flow.yaml --language tr          # Turkish render
 lokomotif compose flow.yaml --json                 # JSON envelope incl. composition_hash
 ```
 
-Flow YAML in v0:
+Flow YAML in v0. Every composition needs at least one role or task; here we slot a project-local role in alongside the three Pass-1 modules that ship with v0.1.0:
 
 ```yaml
-name: aml-review
+name: kvkk-board-brief
 description: 'Optional description.'
 modules:
-  - roles/finance/aml-analyst
-  - tasks/general/structured-summary
+  - roles/finance/your-role # author this in your project
   - contexts/finance/kvkk-compliance
   - styles/cross-industry/executive-board-brief
   - guardrails/cross-industry/pii-tr
@@ -92,7 +91,7 @@ Spawns `uv run lokomotif-eval run` inside `packages/eval`. Forward extra argumen
 
 ```bash
 lokomotif eval run                                 # every eval suite
-lokomotif eval run -- --module roles/finance/aml-analyst
+lokomotif eval run -- --module contexts/finance/kvkk-compliance
 lokomotif eval run -- --reporter json
 ```
 

@@ -36,18 +36,18 @@ Her komut temiz çıkış vermeli. Bir şey hata verirse devam etmeden önce ç�
 
 ## Modül scaffold et
 
-Modüller tam olarak bir RTCSG concern'üne ait: role, task, context, style ya da guardrail. CLI ile frontmatter-tam iskelet üret:
+Modüller tam olarak bir RTCSG concern'üne ait: role, task, context, style ya da guardrail. Her composition'ın en az bir role veya task'a ihtiyacı vardır, bu yüzden kendi projende role ile başlamak iyi bir başlangıç:
 
 ```bash
-pnpm -F @lokomotif/cli start -- modules new role finance/aml-analyst
+pnpm -F @lokomotif/cli start -- modules new role finance/your-role
 ```
 
 Bu komut şunları yazar:
 
-- `modules/roles/finance/aml-analyst.yaml` — TODO marker'lı modül iskeleti.
-- `modules/roles/finance/__tests__/aml-analyst.eval.yaml` — eval test placeholder.
+- `modules/roles/finance/your-role.yaml` — TODO marker'lı modül iskeleti.
+- `modules/roles/finance/__tests__/your-role.eval.yaml` — eval test placeholder.
 
-TODO'ları gerçek Lokomotif praktiğine göre uyarla. Modüller gerçek pratiği yansıtmak zorundadır — kural ve arkasındaki politika için [Modül Yazımı](/module-authoring) (EN canonical, TR yakında).
+TODO'ları gerçek pratiğe göre uyarla. Modüller gerçek pratiği yansıtmak zorundadır — kural ve arkasındaki politika için [Modül Yazımı](/module-authoring) (EN canonical, TR yakında).
 
 ## Modülü doğrula
 
@@ -72,10 +72,9 @@ Bir flow modülleri tek bir prompt'ta birleştirir:
 
 ```yaml
 # flow.yaml
-name: aml-review
+name: kvkk-board-brief
 modules:
-  - roles/finance/aml-analyst
-  - tasks/general/structured-summary
+  - roles/finance/your-role # yukarıda scaffold ettiğin role
   - contexts/finance/kvkk-compliance
   - styles/cross-industry/executive-board-brief
   - guardrails/cross-industry/pii-tr
@@ -85,7 +84,9 @@ modules:
 pnpm -F @lokomotif/cli start -- compose flow.yaml
 ```
 
-CLI sırayı **R → T → C → S → G**'ye kanonikleştirir, tekrarlananları siler ve tek bir prompt üretir. Programatik kullanım için `@lokomotif/sdk`'dan `compose()` fonksiyonunu çağır.
+CLI sırayı **R → T → C → S → G**'ye kanonikleştirir, tekrarlananları siler ve tek bir prompt üretir. Her composition'ın en az bir role veya task içermesi gerekir — `compose` her ikisi de boşsa hata verir. Programatik kullanım için `@lokomotif/sdk`'dan `compose()` fonksiyonunu çağır.
+
+> **v0.1.0'da gelen modüller.** Üç Pass-1 modülü: `contexts/finance/kvkk-compliance`, `styles/cross-industry/executive-board-brief`, `guardrails/cross-industry/pii-tr`. Roller ve task'lar (`roles/finance/aml-analyst`, `tasks/general/structured-summary`) Pass-2 olarak v0.2.0'da gelecek — o zamana kadar kendi rolünü/task'ını yazmalısın. Bkz. [`ROADMAP.md`](https://github.com/lokomotifai/lokomotif-kit/blob/main/ROADMAP.md).
 
 ## Sonraki adımlar
 

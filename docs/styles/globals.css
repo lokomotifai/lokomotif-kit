@@ -1,0 +1,4 @@
+/* Logo wordmark is dark (#20333C). Invert it in dark mode so it stays legible. */
+html.dark .lokomotif-logo {
+  filter: invert(1) brightness(1.05);
+}
