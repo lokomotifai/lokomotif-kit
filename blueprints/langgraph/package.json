@@ -56,7 +56,7 @@
   },
   "devDependencies": {
     "@langchain/core": "^0.3.27",
-    "@langchain/langgraph": "^0.2.34",
+    "@langchain/langgraph": "^1.2.9",
     "@types/node": "^20.17.10",
     "@vitest/coverage-v8": "^2.1.8",
     "vitest": "^2.1.8"
