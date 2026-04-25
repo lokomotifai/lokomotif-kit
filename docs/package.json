@@ -24,7 +24,7 @@
     "node": ">=20.10.0"
   },
   "dependencies": {
-    "next": "^14.2.35",
+    "next": "^16.2.4",
     "nextra": "^3.3.1",
     "nextra-theme-docs": "^3.3.1",
     "react": "^18.3.1",
