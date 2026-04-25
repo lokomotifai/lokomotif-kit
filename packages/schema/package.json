@@ -1,6 +1,6 @@
 {
   "name": "@lokomotif/schema",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "JSON Schema and TypeScript validator for Lokomotif RTCSG modules.",
   "license": "Apache-2.0",
   "homepage": "https://kit.lokomotif.ai",

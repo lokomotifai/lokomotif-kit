@@ -1,6 +1,6 @@
 {
   "name": "@lokomotif/blueprint-n8n",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Adapt Lokomotif RTCSG flows to n8n workflow JSON.",
   "license": "Apache-2.0",
   "homepage": "https://kit.lokomotif.ai",

@@ -1,6 +1,6 @@
 {
   "name": "@lokomotif/cli",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "The lokomotif command-line tool. List, validate, scaffold, compose, evaluate, and deploy RTCSG modules.",
   "license": "Apache-2.0",
   "homepage": "https://kit.lokomotif.ai",
