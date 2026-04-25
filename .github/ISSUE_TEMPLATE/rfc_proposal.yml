@@ -1,0 +1,44 @@
+name: RFC — Request for Comments
+description: Propose a durable change to schema, scope, or convention.
+labels: ['rfc', 'discussion']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        See [GOVERNANCE.md § RFC process](../../GOVERNANCE.md). The Lead Maintainer marks RFCs as `accepted`, `revising`, or `declined` within 14 days of opening.
+  - type: input
+    id: title
+    attributes:
+      label: RFC title
+      description: Short and descriptive. Becomes the doc filename.
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why is this needed now?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Detailed proposal
+      description: What changes. How it is implemented. Schema deltas if any.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: true
+  - type: textarea
+    id: migration
+    attributes:
+      label: Migration plan
+      description: For breaking changes. How do we get from current to proposed without breaking users?
+  - type: textarea
+    id: open-questions
+    attributes:
+      label: Open questions

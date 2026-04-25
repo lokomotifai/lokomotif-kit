@@ -1,0 +1,78 @@
+name: Module proposal
+description: Propose a new RTCSG module.
+labels: ['module', 'triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Modules must reflect real Lokomotif practice — anonymized engagement artifacts are required. See [CONTRIBUTING.md § Adding a module](../../CONTRIBUTING.md).
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Module kind
+      options:
+        - Role (R)
+        - Task & Format (T)
+        - Context & Constraint (C)
+        - Style & Tone (S)
+        - Guardrail (G)
+    validations:
+      required: true
+  - type: input
+    id: id
+    attributes:
+      label: Proposed module ID
+      description: 'Format: <kind>/<industry>/<name>. Example: roles/finance/aml-analyst'
+    validations:
+      required: true
+  - type: dropdown
+    id: industry
+    attributes:
+      label: Industry
+      options:
+        - finance
+        - banking
+        - insurance
+        - retail
+        - e-commerce
+        - logistics
+        - healthcare
+        - manufacturing
+        - energy
+        - telco
+        - media
+        - hr
+        - legal
+        - public-sector
+        - education
+        - cross-industry
+    validations:
+      required: true
+  - type: checkboxes
+    id: languages
+    attributes:
+      label: Languages
+      options:
+        - label: Turkish (tr)
+        - label: English (en)
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: What does this module enable a practitioner to do?
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source material reference
+      description: Anonymized reference to the engagement, prompt, or artifact this module is derived from. Modules without source material are not accepted.
+    validations:
+      required: true
+  - type: textarea
+    id: eval
+    attributes:
+      label: Eval approach
+      description: How will this module be tested? Deterministic checks? LLM-judged with rubric?
+    validations:
+      required: true

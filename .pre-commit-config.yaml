@@ -1,0 +1,51 @@
+# Lokomotif Kit pre-commit configuration.
+# Install hooks: pre-commit install
+# Run on all files: pre-commit run --all-files
+
+default_language_version:
+  python: python3.12
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: '^LICENSE$'
+      - id: end-of-file-fixer
+        exclude: '^LICENSE$'
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ['--maxkb=1024']
+      - id: check-yaml
+        args: ['--allow-multiple-documents']
+      - id: check-json
+      - id: check-toml
+      - id: check-symlinks
+      - id: detect-private-key
+      - id: mixed-line-ending
+        args: ['--fix=lf']
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.21.2
+    hooks:
+      - id: gitleaks
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.4
+    hooks:
+      - id: ruff
+        files: '^packages/eval/'
+        args: ['--fix']
+      - id: ruff-format
+        files: '^packages/eval/'
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+        args: ['-c', '.yamllint.yaml']
+        exclude: '^(pnpm-lock\.yaml|\.changeset/)'
+
+  # PII detection placeholder.
+  # Replaced in Phase 6 by a detector backed by `guardrails/pii-tr`.
+  # See IMPLEMENTATION_PLAN.md § Phase 6.

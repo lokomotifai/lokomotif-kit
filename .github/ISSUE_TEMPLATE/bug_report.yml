@@ -1,0 +1,48 @@
+name: Bug report
+description: Report a defect in Lokomotif Kit (CLI, SDK, schema, eval, blueprints).
+labels: ['bug', 'triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Security issues belong in [SECURITY.md](../../SECURITY.md), not here.
+  - type: input
+    id: package
+    attributes:
+      label: Package
+      description: Affected package — e.g. `@lokomotif/cli`, `@lokomotif/schema`, `packages/eval`.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Version of the affected package.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Minimum steps. Include commands and inputs.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: 'OS, Node version, pnpm version, Python version (if relevant).'
+    validations:
+      required: true

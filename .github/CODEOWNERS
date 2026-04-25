@@ -1,0 +1,15 @@
+# Lokomotif Kit — code owners.
+# Reviews are routed automatically based on these rules.
+# Until additional maintainers are seated, the Lead Maintainer owns every path.
+
+* @fatihguner
+
+# Schema changes are the highest-leverage area; reviewed by the Lead Maintainer.
+/packages/schema/ @fatihguner
+
+# Modules require methodology fluency.
+/modules/ @fatihguner
+
+# Docs surfaces enforce voice.
+/docs/ @fatihguner
+*.md @fatihguner

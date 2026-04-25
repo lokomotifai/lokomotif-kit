@@ -1,0 +1,42 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+    open-pull-requests-limit: 10
+    groups:
+      typescript:
+        patterns:
+          - 'typescript'
+          - 'typescript-eslint'
+          - '@types/*'
+      eslint:
+        patterns:
+          - 'eslint*'
+          - '@eslint/*'
+      vitest:
+        patterns:
+          - 'vitest'
+          - '@vitest/*'
+      changesets:
+        patterns:
+          - '@changesets/*'
+      turbo:
+        patterns:
+          - 'turbo'
+
+  - package-ecosystem: 'pip'
+    directory: '/packages/eval'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+    open-pull-requests-limit: 5
