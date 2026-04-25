@@ -1,0 +1,101 @@
+[project]
+name = "lokomotif-eval"
+version = "0.0.0"
+description = "Lokomotif Kit eval harness — Python test runner for RTCSG modules."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.12"
+authors = [
+  { name = "Lokomotif Core Team", email = "kit@lokomotif.ai" }
+]
+keywords = ["lokomotif", "rtcsg", "eval", "ai", "adoption"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Quality Assurance",
+  "Topic :: Software Development :: Testing"
+]
+
+dependencies = [
+  "pyyaml>=6.0",
+  "pydantic>=2.10",
+  "click>=8.1"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3",
+  "pytest-cov>=6.0",
+  "mypy>=1.13",
+  "ruff>=0.8",
+  "types-pyyaml"
+]
+
+[project.scripts]
+lokomotif-eval = "lokomotif_eval.cli:main"
+
+[project.urls]
+Homepage = "https://kit.lokomotif.ai"
+Repository = "https://github.com/lokomotif-ai/lokomotif-kit"
+Issues = "https://github.com/lokomotif-ai/lokomotif-kit/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lokomotif_eval"]
+
+[tool.uv]
+dev-dependencies = [
+  "pytest>=8.3",
+  "pytest-cov>=6.0",
+  "mypy>=1.13",
+  "ruff>=0.8",
+  "types-pyyaml"
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+  "E",    # pycodestyle errors
+  "W",    # pycodestyle warnings
+  "F",    # pyflakes
+  "I",    # isort
+  "N",    # pep8-naming
+  "UP",   # pyupgrade
+  "B",    # flake8-bugbear
+  "SIM",  # flake8-simplify
+  "RUF",  # ruff-specific
+  "TID"   # flake8-tidy-imports
+]
+ignore = []
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
+files = ["src", "tests"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = [
+  "-ra",
+  "--strict-config",
+  "--strict-markers",
+  "--cov=lokomotif_eval",
+  "--cov-report=term-missing"
+]

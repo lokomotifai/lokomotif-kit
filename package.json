@@ -1,0 +1,52 @@
+{
+  "name": "@lokomotif/kit-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The open-source methodology core for Corporate AI Adoption.",
+  "license": "Apache-2.0",
+  "homepage": "https://kit.lokomotif.ai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lokomotif-ai/lokomotif-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lokomotif-ai/lokomotif-kit/issues",
+    "email": "kit@lokomotif.ai"
+  },
+  "author": {
+    "name": "Lokomotif Core Team",
+    "email": "kit@lokomotif.ai",
+    "url": "https://lokomotif.ai"
+  },
+  "engines": {
+    "node": ">=20.10.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "lint": "eslint . --no-error-on-unmatched-pattern --max-warnings 0 && turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "validate:modules": "turbo run validate:modules",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build && changeset publish",
+    "clean": "turbo run clean && rm -rf node_modules .turbo"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.10",
+    "@eslint/js": "^9.16.0",
+    "@types/node": "^20.17.10",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.4.2",
+    "turbo": "^2.3.3",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.18.0"
+  }
+}
