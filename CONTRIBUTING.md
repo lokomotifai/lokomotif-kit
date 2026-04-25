@@ -2,7 +2,7 @@
 
 Lokomotif Kit publishes the method behind Lokomotif AI's Corporate AI Adoption practice. Contributions raise the quality of that published method. Read this guide in full before opening a pull request.
 
-For project-wide context, see [`Lokomotif-Kit.md`](./Lokomotif-Kit.md). For decision-making process, see [`GOVERNANCE.md`](./GOVERNANCE.md). For the build sequence, see [`IMPLEMENTATION_PLAN.md`](./IMPLEMENTATION_PLAN.md).
+For project-wide context, see [`Lokomotif-Kit.md`](./Lokomotif-Kit.md). For decision-making process, see [`GOVERNANCE.md`](./GOVERNANCE.md). For the build sequence, see [`IMPLEMENTATION_PLAN.md`](./IMPLEMENTATION_PLAN.md). For what's coming next, see [`ROADMAP.md`](./ROADMAP.md). For the release ritual, see [`RELEASING.md`](./RELEASING.md).
 
 ## Ground rules
 
@@ -67,7 +67,9 @@ Naming: `type/short-description`. Examples: `feat/finance-roles`, `fix/schema-va
 
 ### Commits
 
-[Conventional Commits](https://www.conventionalcommits.org). Common types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`.
+[Conventional Commits](https://www.conventionalcommits.org). Allowed types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `build`, `ci`, `perf`, `style`, `revert`.
+
+Commit messages are linted by `commitlint` at commit-msg time. The hook is wired through the pre-commit framework — run `pre-commit install` once and the `commit-msg` stage is installed alongside `pre-commit`. See `commitlint.config.cjs` for the active rule set.
 
 Sign every commit. We use the [Developer Certificate of Origin](https://developercertificate.org/) — `git commit -s` adds the `Signed-off-by` trailer. Pull requests without sign-off are not merged.
 

@@ -122,6 +122,39 @@ After the site is live:
 - ⬜ Update the GitHub repo's homepage field to `https://kit.lokomotif.ai`.
 - ⬜ Reference the Kit on the Lokomotif AI website's open-source page (Section 8 above).
 
+## 13. Phase 9 — community + release readiness
+
+GitHub Discussions, label sync, and a release-ritual rehearsal land here. Most Phase 9 work is in code (commitlint, ROADMAP, RELEASING, labels.yml, sync workflow); the items below need the operator.
+
+### Discussions
+
+- ⬜ Enable GitHub Discussions on the repository (Settings → General → Features).
+- ⬜ Configure Discussion categories: `Q&A`, `Show and Tell`, `Ideas`, `Announcements`. The default `General` can stay.
+- ⬜ Pin a welcome post in `Q&A` linking to `CONTRIBUTING.md` and `kit.lokomotif.ai`.
+
+### Labels
+
+- ⬜ The first push to `main` after this commit triggers `.github/workflows/labels.yml` and applies the taxonomy in `.github/labels.yml`. Verify the workflow runs green and that the labels appear under Issues.
+- ⬜ If the workflow fails on first run (e.g. requires elevated permission grant), re-run after the maintainer approves.
+
+### Release ritual rehearsal
+
+Per `RELEASING.md` § _Rehearsing the ritual_:
+
+- ⬜ Open a small no-op PR with a changeset for one published package.
+- ⬜ Merge it; wait for the Release workflow to open the version PR.
+- ⬜ Merge the version PR.
+- ⬜ Verify the tag is created on `main`, the package publishes to npm, the provenance attestation is verifiable (`npm view @lokomotif/<pkg>@<version> --json | jq .dist.attestations`), and the GitHub Release renders the changelog entry.
+- ⬜ If anything is wrong, rotate `NPM_TOKEN` and address the issue before v0.1.0.
+
+### Komünite channel
+
+Per Brief § 13: Komünite stays uninstrumented. The dedicated `#lokomotif-kit` channel (or named equivalent) is for community health, not pipeline.
+
+- ⬜ Create the channel inside Komünite.
+- ⬜ Designate a Komünite host (not the Lead Maintainer if Lokomotif Core wants explicit separation between firm-side and Kit-side).
+- ⬜ Document explicitly that the channel is not instrumented (no bot tracking, no analytics).
+
 ---
 
 ## How this file is maintained

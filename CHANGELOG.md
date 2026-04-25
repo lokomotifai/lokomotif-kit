@@ -8,6 +8,17 @@ Per-package changelogs live alongside each package once published. This file tra
 
 ## [Unreleased]
 
+### Added — Phase 9 (community + release hygiene)
+
+- `commitlint.config.cjs` — Conventional Commits enforcement at commit-msg time. Hooked through pre-commit's `commit-msg` stage so a single `pre-commit install` wires both stages (`default_install_hook_types`).
+- Root `package.json`: `@commitlint/cli` and `@commitlint/config-conventional` added to devDeps.
+- `ROADMAP.md` — directional roadmap beyond Phase 10 launch (Q2 2026 → Q1 2027), with a note on Brief § 07 product ladder beyond.
+- `RELEASING.md` — operational ritual for Changesets-driven releases, including a rehearsal protocol on a `0.0.x` tag before v0.1.0.
+- `.github/labels.yml` — full label taxonomy (type, area, RTCSG kind, industry, lifecycle, priority, status).
+- `.github/workflows/labels.yml` — pushes to `main` that touch the labels file sync the repo via `EndBug/label-sync` (`delete-other-labels: true` for a clean taxonomy).
+- `CONTRIBUTING.md` — links to ROADMAP and RELEASING; commit type list expanded to match commitlint config; commit-msg hook described.
+- `OPERATOR_TASKS.md § 13`: Discussions, label sync verification, release rehearsal, and Komünite channel (uninstrumented).
+
 ### Added — Phase 8 (documentation site)
 
 - `docs/` — Nextra 3.x site, deployed to Vercel as `kit.lokomotif.ai`. Theme: `nextra-theme-docs`. Locales: `en` (default) and `tr`.

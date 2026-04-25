@@ -1,9 +1,14 @@
 # Lokomotif Kit pre-commit configuration.
 # Install hooks: pre-commit install
 # Run on all files: pre-commit run --all-files
+#
+# default_install_hook_types pulls in commit-msg too so a single
+# `pre-commit install` wires both stages.
 
 default_language_version:
   python: python3.12
+
+default_install_hook_types: [pre-commit, commit-msg]
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -46,6 +51,19 @@ repos:
         args: ['-c', '.yamllint.yaml']
         exclude: '^(pnpm-lock\.yaml|\.changeset/)'
 
-  # PII detection placeholder.
-  # Replaced in Phase 6 by a detector backed by `guardrails/pii-tr`.
-  # See IMPLEMENTATION_PLAN.md § Phase 6.
+  # PII detection.
+  # Operator activation lives in OPERATOR_TASKS.md § 10. Once `uv sync`
+  # has been run inside packages/eval the hook can be re-enabled below.
+
+  # Conventional Commits — runs on commit-msg via the pre-commit
+  # framework's commit-msg stage. commitlint is invoked through pnpm
+  # so the workspace's pinned version is used.
+  - repo: local
+    hooks:
+      - id: commitlint
+        name: Conventional Commits
+        language: system
+        entry: pnpm exec commitlint --edit
+        stages: [commit-msg]
+        always_run: true
+        pass_filenames: true
