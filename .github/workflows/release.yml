@@ -1,8 +1,13 @@
 name: Release
 
+# Manual-trigger only until the first release rehearsal (Phase F in
+# OPERATOR_TASKS.md § 13). Restoring the push trigger before the first
+# release with NPM_TOKEN configured would publish v0.0.0 packages to
+# npm — Changesets sees them as "unpublished" and tries to ship them.
+# After the rehearsal succeeds on a 0.0.x tag, push: branches: [main]
+# can be restored.
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: write
