@@ -1,0 +1,13 @@
+# Invalid: identity is an empty LocalizedString (no language present).
+id: roles/cross-industry/test-empty-localized
+version: 1.0.0
+kind: role
+title: "Empty localized string"
+description: "Should fail because identity has no language entries."
+languages: ["en"]
+owner: lokomotif-core
+license: Apache-2.0
+body:
+  identity: {}
+  expertise:
+    - en: "Test."

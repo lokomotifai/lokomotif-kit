@@ -1,0 +1,13 @@
+# Invalid: missing the required `version` field.
+id: roles/cross-industry/test-missing-version
+kind: role
+title: "Missing version"
+description: "Should fail validation because `version` is missing."
+languages: ["en"]
+owner: lokomotif-core
+license: Apache-2.0
+body:
+  identity:
+    en: "Test identity."
+  expertise:
+    - en: "Test expertise."

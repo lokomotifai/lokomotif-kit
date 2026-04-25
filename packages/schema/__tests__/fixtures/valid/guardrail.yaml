@@ -1,0 +1,27 @@
+# Schema fixture — NOT a canonical module.
+id: guardrails/cross-industry/test-fixture-guardrail
+version: 1.0.0
+kind: guardrail
+title: "Test fixture — guardrail"
+description: "A schema fixture used to validate that guardrail-shaped modules pass validation."
+industry: ["cross-industry"]
+languages: ["tr", "en"]
+owner: lokomotif-core
+license: Apache-2.0
+body:
+  forbidden:
+    - rule:
+        tr: "Müşteri kimliklerini açığa çıkarma."
+        en: "Do not surface customer identifiers."
+      rationale:
+        tr: "KVKK uyumu."
+        en: "KVKK compliance."
+    - rule:
+        en: "Do not provide legal advice."
+  required_actions:
+    - en: "When uncertain, defer to a named human reviewer."
+  escalation:
+    en: "Route to compliance@example."
+  audit_requirements:
+    - en: "Log every refusal with the rule that triggered it."
+  severity: high

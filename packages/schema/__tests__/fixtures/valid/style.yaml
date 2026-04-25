@@ -1,0 +1,22 @@
+# Schema fixture — NOT a canonical module.
+id: styles/cross-industry/test-fixture-style
+version: 1.0.0
+kind: style
+title: "Test fixture — style"
+description: "A schema fixture used to validate that style-shaped modules pass validation."
+industry: ["cross-industry"]
+languages: ["tr", "en"]
+owner: lokomotif-core
+license: Apache-2.0
+body:
+  voice:
+    tr: "Kıdemli, somut, övgüsüz."
+    en: "Senior, specific, unhyped."
+  audience:
+    tr: "Test okuyucusu."
+    en: "Test reader."
+  register: professional
+  examples:
+    - en: "We reduced cycle time by 40%."
+  avoid:
+    - en: "Empty superlatives."

@@ -1,0 +1,27 @@
+# Schema fixture — NOT a canonical module.
+id: tasks/cross-industry/test-fixture-task
+version: 1.0.0
+kind: task
+title: "Test fixture — task"
+description: "A schema fixture used to validate that task-shaped modules pass validation."
+industry: ["cross-industry"]
+languages: ["tr", "en"]
+owner: lokomotif-core
+license: Apache-2.0
+body:
+  instructions:
+    tr: "Verilen girdiyi yapılandırılmış bir özete dönüştür."
+    en: "Transform the input into a structured summary."
+  output_format:
+    type: structured
+    description:
+      tr: "Markdown başlıkları altında bölümlenmiş çıktı."
+      en: "Output sectioned under markdown headers."
+  examples:
+    - input:
+        en: "Sample input."
+      output:
+        en: "## Summary\nSample output."
+  constraints:
+    - tr: "Çıktı 200 kelimeyi geçmemeli."
+      en: "Output must not exceed 200 words."

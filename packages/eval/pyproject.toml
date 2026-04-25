@@ -54,7 +54,10 @@ dev-dependencies = [
   "pytest-cov>=6.0",
   "mypy>=1.13",
   "ruff>=0.8",
-  "types-pyyaml"
+  "types-pyyaml",
+  # Used by `packages/schema/scripts/generate-python.ts` to compile the
+  # JSON Schema into Pydantic models under `src/lokomotif_schema/`.
+  "datamodel-code-generator>=0.26"
 ]
 
 [tool.ruff]

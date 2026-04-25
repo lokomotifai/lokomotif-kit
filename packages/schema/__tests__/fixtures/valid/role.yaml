@@ -1,0 +1,24 @@
+# Schema fixture — NOT a canonical module.
+# Used only to assert that valid module shapes pass validation.
+id: roles/cross-industry/test-fixture-role
+version: 1.0.0
+kind: role
+title: "Test fixture — role"
+description: "A schema fixture used to validate that role-shaped modules pass validation."
+industry: ["cross-industry"]
+languages: ["tr", "en"]
+owner: lokomotif-core
+license: Apache-2.0
+tags: ["fixture", "test"]
+body:
+  identity:
+    tr: "Bir kıdemli pratisyen olarak hareket eden test rolüsün."
+    en: "Acting as a senior practitioner. This is a fixture identity."
+  expertise:
+    - tr: "Test alanı bir"
+      en: "Test domain one"
+    - tr: "Test alanı iki"
+      en: "Test domain two"
+  perspective:
+    tr: "Yapıcı eleştirel."
+    en: "Constructive and critical."

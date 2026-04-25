@@ -1,0 +1,15 @@
+# Invalid: industry uses a value outside the taxonomy.
+id: roles/cross-industry/test-bad-industry
+version: 1.0.0
+kind: role
+title: "Unknown industry"
+description: "Should fail because `aerospace` is not in the taxonomy."
+industry: ["aerospace"]
+languages: ["en"]
+owner: lokomotif-core
+license: Apache-2.0
+body:
+  identity:
+    en: "Test."
+  expertise:
+    - en: "Test."

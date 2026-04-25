@@ -1,0 +1,26 @@
+# Schema fixture — NOT a canonical module.
+id: contexts/cross-industry/test-fixture-context
+version: 1.0.0
+kind: context
+title: "Test fixture — context"
+description: "A schema fixture used to validate that context-shaped modules pass validation."
+industry: ["cross-industry"]
+languages: ["tr", "en"]
+owner: lokomotif-core
+license: Apache-2.0
+body:
+  domain:
+    tr: "Genel test alanı."
+    en: "Generic test domain."
+  data_boundaries:
+    - tr: "Müşteri verisine doğrudan erişim yok."
+      en: "No direct access to customer data."
+  regulatory_references:
+    - framework: KVKK
+      summary:
+        tr: "Kişisel verilerin korunması ilkeleri."
+        en: "Personal data protection principles."
+    - framework: GDPR
+      section: "Article 6"
+  operating_constraints:
+    - en: "Single-pass output. No follow-up clarifications."

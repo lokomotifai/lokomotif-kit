@@ -1,0 +1,14 @@
+# Invalid: id uses CamelCase and missing the kind-plural prefix.
+id: BadId/Finance/Whatever
+version: 1.0.0
+kind: role
+title: "Bad ID pattern"
+description: "Should fail because id does not match the required kebab-case pattern."
+languages: ["en"]
+owner: lokomotif-core
+license: Apache-2.0
+body:
+  identity:
+    en: "Test."
+  expertise:
+    - en: "Test."

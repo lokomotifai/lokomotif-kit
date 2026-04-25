@@ -1,0 +1,14 @@
+# Invalid: version is not semver.
+id: roles/cross-industry/test-bad-version
+version: "v1"
+kind: role
+title: "Bad version"
+description: "Should fail because version does not match the semver pattern."
+languages: ["en"]
+owner: lokomotif-core
+license: Apache-2.0
+body:
+  identity:
+    en: "Test."
+  expertise:
+    - en: "Test."

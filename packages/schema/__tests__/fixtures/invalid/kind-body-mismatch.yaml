@@ -1,0 +1,14 @@
+# Invalid: kind is `role` but the body shape is a task body.
+id: roles/cross-industry/test-kind-mismatch
+version: 1.0.0
+kind: role
+title: "Kind/body mismatch"
+description: "Should fail because the body matches a task, not a role."
+languages: ["en"]
+owner: lokomotif-core
+license: Apache-2.0
+body:
+  instructions:
+    en: "Do something."
+  output_format:
+    type: markdown
