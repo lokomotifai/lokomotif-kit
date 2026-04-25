@@ -8,6 +8,20 @@ Per-package changelogs live alongside each package once published. This file tra
 
 ## [Unreleased]
 
+### Added — Phase 6 Pass 1 (canonical modules from public sources)
+
+- `modules/guardrails/cross-industry/pii-tr.yaml` — KVKK-aware PII guardrail with rules for TC Kimlik, IBAN TR, Turkish mobile numbers, email addresses, and passport numbers. Source: KVKK 6698 (Md. 3, 5, 6, 12), MASAK Tebliğ, ISO 13616, NVI TC Kimlik formatı.
+- `modules/contexts/finance/kvkk-compliance.yaml` — Operating context for AI inside Turkish banks, insurance, and fintech. Source: KVKK 6698 (Md. 4–9, 16), KVKK Kurumu rehberleri, BDDK 2020 Bilgi Sistemleri Yönetmeliği.
+- `modules/styles/cross-industry/executive-board-brief.yaml` — Lokomotif executive voice (confident, specific, methodology-led, hype-free). Source: `Lokomotif_AI_Positioning_Brief.md` § 10–11.
+- Eval suites for each module under sibling `__tests__/` directories (deterministic checks against frontmatter, body shape, regulatory citations, voice keywords, source-reference fidelity).
+- `docs/rfcs/0001-phase-6-partial-scope.md` — RFC documenting the two-pass Phase 6 ship.
+
+### Changed
+
+- `IMPLEMENTATION_PLAN.md` v1.0 → v1.1: Phase 6 split into Pass 1 (this commit) and Pass 2 (deferred to engagement-artifact availability). Locked decision #6 marked as partially resolved.
+- `OPERATOR_TASKS.md`: added § 9 (Phase 6 Pass 2 tracker) and § 10 (pre-commit PII hook activation steps).
+- `packages/eval/src/lokomotif_eval/pii.py`: docstring now points at `guardrails/cross-industry/pii-tr` as the canonical specification; the in-code patterns remain the runtime implementation until the canonical module's regex set is wired through the runner.
+
 ### Added — Phase 0 (Repository foundation)
 
 - `LICENSE` (Apache 2.0) and `NOTICE`.

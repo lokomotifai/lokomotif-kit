@@ -1,0 +1,70 @@
+module: styles/cross-industry/executive-board-brief
+description: "Eval suite for the Lokomotif executive board brief style. Asserts the Brief § 10–11 grounding stays intact."
+checks:
+  - id: register-is-executive
+    judge: deterministic
+    kind: equals
+    target: /body/register
+    expected: executive
+
+  - id: voice-mentions-method
+    judge: deterministic
+    kind: regex
+    target: /body/voice/en
+    pattern: "[Mm]ethod"
+
+  - id: voice-cites-rtcsg
+    judge: deterministic
+    kind: regex
+    target: /body/voice/en
+    pattern: "RTCSG"
+
+  - id: voice-cites-three-horizons
+    judge: deterministic
+    kind: regex
+    target: /body/voice/en
+    pattern: "Three Horizons"
+
+  - id: voice-tr-cites-rtcsg
+    judge: deterministic
+    kind: regex
+    target: /body/voice/tr
+    pattern: "RTCSG"
+
+  - id: audience-mentions-c-suite-or-board
+    judge: deterministic
+    kind: regex
+    target: /body/audience/en
+    pattern: "C-suite|Line-of-Business|board"
+    flags: i
+
+  - id: examples-min-three
+    judge: deterministic
+    kind: array_length
+    target: /body/examples
+    min: 3
+
+  - id: avoid-list-min-fifteen
+    judge: deterministic
+    kind: array_length
+    target: /body/avoid
+    min: 15
+
+  - id: avoid-list-blocks-revolutionary
+    judge: deterministic
+    kind: regex
+    target: /body/avoid/1/en
+    pattern: "Revolutionary"
+    flags: i
+
+  - id: avoid-list-blocks-ai-powered
+    judge: deterministic
+    kind: regex
+    target: /body/avoid/0/en
+    pattern: "AI-powered"
+
+  - id: source-reference-cites-brief
+    judge: deterministic
+    kind: regex
+    target: /source_reference
+    pattern: "Lokomotif_AI_Positioning_Brief"

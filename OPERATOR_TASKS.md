@@ -76,6 +76,22 @@ This file tracks setup actions that cannot be automated from inside the reposito
 - ⬜ Reference the Kit in the Anthropic Ambassador profile if appropriate.
 - ⬜ Add the Kit to the Lokomotif AI organizational README on GitHub.
 
+## 9. Phase 6 Pass 2 — engagement-derived modules
+
+Pass 1 (Phase 6) shipped three public-sourced modules in v1.1 of the implementation plan. Pass 2 still requires anonymized Lokomotif practice artifacts. See `docs/rfcs/0001-phase-6-partial-scope.md`.
+
+- ⬜ Source an anonymized AML engagement artifact (prompt / role definition / task brief) and author `modules/roles/finance/aml-analyst.yaml` + eval suite.
+- ⬜ Source a redacted task brief from a Lokomotif Workflow Rewire delivery and author `modules/tasks/general/structured-summary.yaml` + eval suite.
+- ⬜ When both Pass 2 modules ship, mark Decision #6 in `IMPLEMENTATION_PLAN.md` as fully resolved.
+
+## 10. Pre-commit PII hook activation
+
+The canonical PII detector (`guardrails/cross-industry/pii-tr`) shipped in Phase 6 Pass 1. The pre-commit hook still needs operator activation:
+
+- ⬜ Run `cd packages/eval && uv sync` (covered by Section 1).
+- ⬜ Add a local pre-commit hook that runs `uv run lokomotif-eval scan-pii modules/` on every commit (or another scope decided by the Lead Maintainer).
+- ⬜ Verify the hook fails the commit when a PII candidate is introduced into a tracked file.
+
 ---
 
 ## How this file is maintained

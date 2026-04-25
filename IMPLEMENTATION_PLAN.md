@@ -1,9 +1,11 @@
 # Lokomotif Kit — Implementation Plan
 
-**Version:** 1.0
+**Version:** 1.1
 **Status:** 🔒 LOCKED
 **Owner:** Fatih Güner (Lead Maintainer)
-**Effective:** 2026-04-25
+**Effective:** 2026-04-25 (v1.1 amendment 2026-04-25)
+
+> v1.1 changes Phase 6 from a five-module ship to a two-pass ship: three public-sourced modules now (Pass 1) and two engagement-derived modules later (Pass 2). See `docs/rfcs/0001-phase-6-partial-scope.md`.
 
 > This is a locked planning artifact. Changes require an RFC and Lead Maintainer approval. The plan exists to keep the build coherent across phases — not to be revised every sprint. See § 9 for the change procedure.
 
@@ -31,7 +33,7 @@ Both documents take precedence over this plan when there is conflict. This plan 
 | 3 | NPM scope | `@lokomotif/*` (claimed by the Lead Maintainer before Phase 3 publishes) |
 | 4 | Lead Maintainer | Fatih Güner |
 | 5 | Security contact | `kit@lokomotif.ai` |
-| 6 | First canonical modules — source material | Open. Resolved before Phase 6 starts. See § 3. |
+| 6 | First canonical modules — source material | **Partial.** Pass 1 resolved via public sources (RFC 0001). Pass 2 still pending engagement artifacts. See § 3. |
 | 7 | README tagline | Lead Maintainer-approved (Phase 0 deliverable) |
 | 8 | Phase cadence | Sequential. Parallelization allowed within explicit phases. |
 
@@ -204,29 +206,36 @@ The build is partitioned into eleven phases (0–10). Each phase has a definitio
 
 **Dependencies.** Phase 2.
 
-### Phase 6 — First Canonical Modules
+### Phase 6 — First Canonical Modules (two-pass ship per RFC 0001)
 
-**Goal.** Five reference modules — one per RTCSG kind — that establish the standard for everything downstream.
+**Goal.** Reference modules that establish the standard for everything downstream. Shipped in two passes so Phases 7–10 are not blocked on engagement-artifact availability.
 
-**Deliverables:**
+#### Pass 1 — public-sourced modules (shipped in v1.1)
+
+Three modules, each grounded in real, citable, public sources:
+
+- `modules/guardrails/cross-industry/pii-tr.yaml` — KVKK 6698, MASAK Tebliğ, ISO 13616, NVI TC Kimlik formatı.
+- `modules/contexts/finance/kvkk-compliance.yaml` — KVKK 6698 Md. 4–9, BDDK 2020 Bilgi Sistemleri Yönetmeliği.
+- `modules/styles/cross-industry/executive-board-brief.yaml` — `Lokomotif_AI_Positioning_Brief.md` § 10 + § 11.
+
+Each module ships with bilingual body, eval suite under `__tests__/`, and a `source_reference` field carrying the citation.
+
+#### Pass 2 — engagement-derived modules (deferred)
+
+Activated when the Lead Maintainer provides anonymized engagement artifacts:
 
 - `modules/roles/finance/aml-analyst.yaml`
 - `modules/tasks/general/structured-summary.yaml`
-- `modules/contexts/finance/bddk-compliance.yaml`
-- `modules/styles/executive-board-brief.yaml`
-- `modules/guardrails/pii-tr.yaml`
-- Each module:
-  - Bilingual body (`tr` + `en`)
-  - `__tests__/<id>.eval.yaml`
-  - Anonymized source-material reference recorded in the PR
+
+Pass 2 is tracked in `OPERATOR_TASKS.md` § _Phase 6 Pass 2_ so the dependency does not get lost.
 
 **Exit criteria:**
 
-- Every module passes schema validation and at least one eval test.
-- Voice review by Lead Maintainer.
-- `guardrails/pii-tr` replaces the placeholder PII checker in pre-commit.
+- Pass 1: every module passes schema validation and at least one eval test; voice review by Lead Maintainer.
+- Pass 2: same bar; the missing two modules are added to `modules/`.
+- `guardrails/cross-industry/pii-tr` replaces the placeholder PII checker in pre-commit (operator step in `OPERATOR_TASKS.md`).
 
-**Dependencies.** Phase 5. **Blocked on Decision 6 (source material) — see § 3.**
+**Dependencies.** Phase 5. Pass 1 starts immediately; Pass 2 unblocks when Decision 6 is fully resolved.
 
 ### Phase 7 — Blueprints (parallel with Phases 6 and 8)
 

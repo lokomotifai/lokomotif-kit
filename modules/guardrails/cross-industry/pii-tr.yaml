@@ -1,0 +1,61 @@
+id: guardrails/cross-industry/pii-tr
+version: 0.1.0
+kind: guardrail
+title: "KVKK-aware PII guardrail (TR)"
+description: "Detect and refuse to surface Turkish personal data: TC Kimlik, IBAN TR, mobile, email, passport. Aligned with KVKK 6698."
+industry: ["cross-industry"]
+languages: ["tr", "en"]
+owner: lokomotif-core
+license: Apache-2.0
+source_reference: "KVKK 6698 sayılı Kanun (Md. 3, 5, 6, 12); MASAK Tebliğ; ISO 13616 (IBAN); NVI TC Kimlik formatı."
+tags: ["pii", "kvkk", "turkey"]
+body:
+  forbidden:
+    - rule:
+        tr: "TC Kimlik Numarası'nı (11 haneli, NVI formatı) ham çıktıda asla açığa çıkarma."
+        en: "Never surface TC Kimlik numbers (11-digit NVI format) in raw output."
+      rationale:
+        tr: "KVKK Md. 6 — TC Kimlik özel nitelikli kişisel veridir; rıza ve hukuki sebep olmadan işlenemez."
+        en: "KVKK Article 6 — TC Kimlik is special-category personal data; cannot be processed without consent and a lawful basis."
+    - rule:
+        tr: "Türk IBAN bilgisini (TR + 24 hane, ISO 13616) ham çıktıda açığa çıkarma."
+        en: "Never surface Turkish IBAN (TR + 24 digits, ISO 13616) in raw output."
+      rationale:
+        tr: "KVKK Md. 5 — finansal kimlik verileri için bir işleme şartı aranır."
+        en: "KVKK Article 5 — financial identifiers require a processing basis."
+    - rule:
+        tr: "Türk cep telefonu numarasını (+90 5XX XXX XX XX ve yaygın varyantlar) ham çıktıda açığa çıkarma."
+        en: "Never surface Turkish mobile numbers (+90 5XX XXX XX XX and common variants) in raw output."
+      rationale:
+        tr: "KVKK Md. 3 — iletişim verisi kişisel veridir."
+        en: "KVKK Article 3 — contact data is personal data."
+    - rule:
+        tr: "E-posta adreslerini ham çıktıda açığa çıkarma."
+        en: "Never surface email addresses in raw output."
+      rationale:
+        tr: "KVKK Md. 3 — e-posta kişisel verinin tanımı kapsamındadır."
+        en: "KVKK Article 3 — email falls within the personal data definition."
+    - rule:
+        tr: "Pasaport numarasını ham çıktıda açığa çıkarma."
+        en: "Never surface passport numbers in raw output."
+      rationale:
+        tr: "KVKK Md. 6 — pasaport numarası özel nitelikli kişisel veridir."
+        en: "KVKK Article 6 — passport numbers are special-category personal data."
+  required_actions:
+    - tr: "Tespit edilen PII'yi maskele (örn. [REDACTED]) ve guardrail çıktısında nedenini belirt."
+      en: "Mask detected PII (e.g., [REDACTED]) and surface the rationale in the guardrail output."
+    - tr: "Şüpheli durumda veri sorumlusu (DPO) hattına yönlendir; çıktıyı sürdürme."
+      en: "On uncertainty, defer to the Data Protection Officer (DPO) channel; do not continue output."
+    - tr: "Çıktıyı kullanıcıya sunmadan önce her zaman PII tarayıcısından geçir."
+      en: "Always pipe output through the PII scanner before reaching the user."
+  escalation:
+    tr: "Veri sorumlusu (DPO) iletişim hattı."
+    en: "Data Protection Officer (DPO) channel."
+  audit_requirements:
+    - tr: "Her PII tespitini kural kimliği (rule_id), eşleşen pattern adı ve girdi konumu (line/column) ile logla."
+      en: "Log every PII detection with rule_id, matched pattern name, and input location (line/column)."
+    - tr: "Saklama süresi 30 gün; KVKK Md. 7 imha ve anonimleştirme yükümlülüğüne uygun."
+      en: "Retention window 30 days; aligned with KVKK Article 7 deletion and anonymization obligations."
+    - tr: "Aylık denetim raporunu veri sorumlusuna ilet."
+      en: "Forward the monthly audit summary to the Data Protection Officer."
+  severity: critical

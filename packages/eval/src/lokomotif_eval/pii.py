@@ -1,8 +1,11 @@
-"""Turkey-aware PII detector — heuristic stub.
+"""Turkey-aware PII detector — runtime implementation.
 
-This module ships in Phase 5 as a placeholder. The real detector lands
-with the canonical ``guardrails/pii-tr`` module in Phase 6, at which
-point this file delegates to the module's regex set.
+The canonical specification lives in
+``modules/guardrails/cross-industry/pii-tr.yaml`` (shipped in Phase 6
+Pass 1, see RFC 0001). This file is the runtime implementation that
+backs ``lokomotif-eval scan-pii``. The two are aligned by hand at the
+moment; a follow-up change will read the regex set from the canonical
+module's body so the YAML stays the single source of truth.
 
 The patterns here intentionally lean toward false-positives — better
 to flag and let the operator clear than to miss real personal data.
@@ -11,8 +14,9 @@ Patterns:
 
 - TC Kimlik No: 11 contiguous digits. The full algorithm includes a
   checksum (digits 1–9 follow a rule; digit 11 is mod-10 of digits
-  1–10). The strict checksum lives in `guardrails/pii-tr` once Phase 6
-  ships; here we surface every 11-digit run as a candidate.
+  1–10). The strict checksum will be added when this module reads from
+  the canonical YAML; for now we surface every 11-digit run as a
+  candidate.
 - IBAN TR: ``TR`` followed by 24 digits (any spacing).
 - Turkish mobile: ``+90 5XX XXX XX XX`` and common variants.
 - Generic email — surfaced because we try not to ship customer-

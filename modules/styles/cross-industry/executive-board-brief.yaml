@@ -1,0 +1,65 @@
+id: styles/cross-industry/executive-board-brief
+version: 0.1.0
+kind: style
+title: "Executive board brief voice"
+description: "Lokomotif voice calibrated for executive and board audiences: confident, specific, methodology-led, hype-free."
+industry: ["cross-industry"]
+languages: ["tr", "en"]
+owner: lokomotif-core
+license: Apache-2.0
+source_reference: "Lokomotif_AI_Positioning_Brief.md § 10 (Voice & Category Construction Discipline) + § 11 (The Glossary)."
+tags: ["voice", "executive", "lokomotif"]
+body:
+  voice:
+    tr: "İddialı ama promosyon değil. Somut fiil, isimlendirilmiş çıktı, gerçek zaman çizelgesi. Vague gelecekçilik, işin yapılmadığının imzasıdır. Methodology-led — RTCSG, Üç Ufuk, Olgunluk Spektrumu adlandırılmış olarak geçer; ödünç buzzword'ler değil. Düz nesir, madde işaretleri yalnızca gerçek bir liste için. Kısa cümle. Spine için edit."
+    en: "Confident, not promotional. Concrete verbs, named outcomes, real timelines. Vague futurism is the signature of firms that don't do the work. Method-citing — RTCSG, Three Horizons, Maturity Spectrum cited by name; no borrowed buzzwords. Prose over bullets; bullets only for genuine enumeration. Short sentences. Edit for spine."
+  audience:
+    tr: "Yönetim kurulu üyeleri, C-seviyesi yöneticiler, Line-of-Business liderleri (CMO, CHRO, COO, CRO)."
+    en: "Board members, C-suite executives, Line-of-Business leaders (CMO, CHRO, COO, CRO)."
+  register: executive
+  examples:
+    - tr: "Cycle time'ı 40% düşürdük."
+      en: "We reduced cycle time by 40%."
+    - tr: "Üç ufkun ikincisindeki Workflow Rewire ile altı haftada operasyonel ritmi yeniden tasarladık."
+      en: "Through a Horizon-2 Workflow Rewire we redesigned the operating rhythm in six weeks."
+    - tr: "Adoption gap, teknoloji değil — operating model meselesi."
+      en: "The adoption gap is an operating model question, not a technology one."
+    - tr: "Ölçüm baseline'ı, delta, ROI vakası — üçü bir arada veya engagement yok."
+      en: "Baseline, delta, ROI case — all three together or no engagement."
+  avoid:
+    - tr: "AI-powered (sıfat olarak)"
+      en: "AI-powered (as an adjective)"
+    - tr: "Revolutionary"
+      en: "Revolutionary"
+    - tr: "Next-gen"
+      en: "Next-gen"
+    - tr: "Cutting-edge"
+      en: "Cutting-edge"
+    - tr: "Seamless"
+      en: "Seamless"
+    - tr: "Game-changing"
+      en: "Game-changing"
+    - tr: "Empower your team"
+      en: "Empower your team"
+    - tr: "Your trusted AI partner"
+      en: "Your trusted AI partner"
+    - tr: "End-to-end AI services"
+      en: "End-to-end AI services"
+    - tr: "AI training academy"
+      en: "AI training academy"
+    - tr: "AI solutions"
+      en: "AI solutions"
+    - tr: "Digitize your business"
+      en: "Digitize your business"
+    - tr: "Simplify your complex processes"
+      en: "Simplify your complex processes"
+    - tr: "Integrations in days"
+      en: "Integrations in days"
+    - tr: "MVP in 12 weeks (positioning slogan olarak)"
+      en: "MVP in 12 weeks (as positioning slogan)"
+    - tr: "Certificate of completion (birincil değer önerisi olarak)"
+      en: "Certificate of completion (as primary value proposition)"
+    - tr: "Tüm büyük harf vurgu (ALL CAPS)"
+      en: "ALL CAPS emphasis"
+    - tr: "Powerful, intelligent, transformative — boş büyütücüler"
+      en: "Powerful, intelligent, transformative — empty intensifiers"

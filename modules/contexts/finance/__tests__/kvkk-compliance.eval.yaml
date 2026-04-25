@@ -1,0 +1,61 @@
+module: contexts/finance/kvkk-compliance
+description: "Eval suite for the KVKK + BDDK fintech context module."
+checks:
+  - id: domain-non-empty-tr
+    judge: deterministic
+    kind: not_empty
+    target: /body/domain/tr
+
+  - id: domain-non-empty-en
+    judge: deterministic
+    kind: not_empty
+    target: /body/domain/en
+
+  - id: industry-covers-finance
+    judge: deterministic
+    kind: regex
+    target: /industry/0
+    pattern: "^(finance|banking|insurance)$"
+
+  - id: regulatory-references-min-five
+    judge: deterministic
+    kind: array_length
+    target: /body/regulatory_references
+    min: 5
+
+  - id: first-regulatory-reference-is-kvkk
+    judge: deterministic
+    kind: regex
+    target: /body/regulatory_references/0/framework
+    pattern: "KVKK"
+
+  - id: regulatory-references-include-bddk
+    judge: deterministic
+    kind: regex
+    target: /body/regulatory_references/5/framework
+    pattern: "BDDK"
+
+  - id: data-boundaries-min-three
+    judge: deterministic
+    kind: array_length
+    target: /body/data_boundaries
+    min: 3
+
+  - id: data-boundaries-mention-consent
+    judge: deterministic
+    kind: regex
+    target: /body/data_boundaries/0/en
+    pattern: "consent|lawful basis"
+    flags: i
+
+  - id: operating-constraints-mention-pii-guardrail
+    judge: deterministic
+    kind: regex
+    target: /body/operating_constraints/0/en
+    pattern: "guardrails/cross-industry/pii-tr"
+
+  - id: source-reference-cites-6698
+    judge: deterministic
+    kind: regex
+    target: /source_reference
+    pattern: "6698"

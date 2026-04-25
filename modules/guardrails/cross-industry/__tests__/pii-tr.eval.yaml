@@ -1,0 +1,60 @@
+module: guardrails/cross-industry/pii-tr
+description: "Eval suite for the KVKK-aware PII guardrail. Asserts the regulatory grounding stays intact across edits."
+checks:
+  - id: severity-is-critical
+    judge: deterministic
+    kind: equals
+    target: /body/severity
+    expected: critical
+    description: "PII guardrail must remain at the highest severity."
+
+  - id: forbidden-has-at-least-five-rules
+    judge: deterministic
+    kind: array_length
+    target: /body/forbidden
+    min: 5
+    description: "TC Kimlik, IBAN, phone, email, passport — minimum coverage."
+
+  - id: tc-kimlik-rule-cites-kvkk-article-6
+    judge: deterministic
+    kind: regex
+    target: /body/forbidden/0/rationale/tr
+    pattern: "Md\\. 6"
+    description: "TC Kimlik is special-category data per KVKK Md. 6 — citation must remain."
+
+  - id: iban-rule-cites-kvkk
+    judge: deterministic
+    kind: regex
+    target: /body/forbidden/1/rationale/en
+    pattern: "KVKK"
+
+  - id: required-actions-min-three
+    judge: deterministic
+    kind: array_length
+    target: /body/required_actions
+    min: 3
+
+  - id: audit-requirements-min-three
+    judge: deterministic
+    kind: array_length
+    target: /body/audit_requirements
+    min: 3
+
+  - id: escalation-mentions-dpo-en
+    judge: deterministic
+    kind: regex
+    target: /body/escalation/en
+    pattern: "DPO|Data Protection Officer"
+
+  - id: escalation-mentions-dpo-tr
+    judge: deterministic
+    kind: regex
+    target: /body/escalation/tr
+    pattern: "DPO|veri sorumlusu"
+    flags: i
+
+  - id: source-reference-cites-kvkk-6698
+    judge: deterministic
+    kind: regex
+    target: /source_reference
+    pattern: "6698"

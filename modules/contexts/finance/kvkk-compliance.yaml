@@ -1,0 +1,64 @@
+id: contexts/finance/kvkk-compliance
+version: 0.1.0
+kind: context
+title: "KVKK compliance — Turkish fintech context"
+description: "Operating context for AI use in Turkish financial services under KVKK 6698 and BDDK secondary regulation."
+industry: ["finance", "banking", "insurance"]
+languages: ["tr", "en"]
+owner: lokomotif-core
+license: Apache-2.0
+source_reference: "KVKK 6698 sayılı Kanun (Md. 4–9, 16); KVKK Kurumu rehberleri; BDDK 2020 Bilgi Sistemleri Yönetmeliği."
+tags: ["kvkk", "fintech", "compliance", "bddk"]
+body:
+  domain:
+    tr: "Türkiye'de banka, sigorta ve finansal teknoloji şirketlerinde AI sistemlerinin işletilmesi."
+    en: "Operating AI systems inside banks, insurance, and financial technology firms in Turkey."
+  data_boundaries:
+    - tr: "Müşteri kimlik verilerine (TC Kimlik, pasaport) yalnızca açık rıza veya kanuni hüküm temelinde erişim sağlanır (KVKK Md. 5 ve 6)."
+      en: "Access to customer identity data (TC Kimlik, passport) only with explicit consent or a lawful basis (KVKK Articles 5 and 6)."
+    - tr: "Müşteri finansal verisi (IBAN, hesap hareketleri) yurt dışına aktarılamaz; KVKK Md. 9 yeterli koruma kararı şartı."
+      en: "Customer financial data (IBAN, account activity) cannot be transferred abroad without an adequacy decision per KVKK Article 9."
+    - tr: "Açık rıza alınmamış müşterilere ait veriler model eğitiminde kullanılamaz."
+      en: "Data from customers without explicit consent cannot be used for model training."
+    - tr: "Anonimleştirilmiş veri kullanımında geri-tanımlanma riski değerlendirilmiş olmalıdır."
+      en: "When using anonymized data, the re-identification risk assessment must be on file."
+  regulatory_references:
+    - framework: "KVKK 6698"
+      section: "Madde 4"
+      summary:
+        tr: "Kişisel verilerin işlenmesinde genel ilkeler: hukuka uygunluk, doğru ve güncel olma, belirli açık ve meşru amaçlar."
+        en: "General principles for processing personal data: lawfulness, accuracy, specific explicit and legitimate purposes."
+    - framework: "KVKK 6698"
+      section: "Madde 5"
+      summary:
+        tr: "Açık rıza ve istisnai işleme şartları (kanunlarda öngörülme, sözleşme zorunluluğu, hukuki yükümlülük, alenileştirme, hak tesisi, meşru menfaat)."
+        en: "Explicit consent and exceptional processing conditions (statutory provision, contractual necessity, legal obligation, public disclosure, exercise of rights, legitimate interest)."
+    - framework: "KVKK 6698"
+      section: "Madde 6"
+      summary:
+        tr: "Özel nitelikli kişisel verilerin işlenme şartları (sağlık, biyometri, ceza mahkumiyeti, sendika üyeliği, din, etnik köken vb.)."
+        en: "Conditions for processing special-category data (health, biometric, criminal records, union membership, religion, ethnicity, etc.)."
+    - framework: "KVKK 6698"
+      section: "Madde 9"
+      summary:
+        tr: "Kişisel verilerin yurt dışına aktarılmasına ilişkin yeterli koruma ve taahhütname şartları."
+        en: "Adequacy and undertaking requirements for cross-border transfer of personal data."
+    - framework: "KVKK 6698"
+      section: "Madde 16"
+      summary:
+        tr: "Veri sorumluları sicili (VERBİS) ve veri envanteri yükümlülüğü."
+        en: "Data controllers' registry (VERBIS) and data-inventory obligation."
+    - framework: "BDDK"
+      section: "Bilgi Sistemleri Yönetmeliği (2020)"
+      summary:
+        tr: "Bankacılık bilgi sistemleri için yönetim, denetim ve risk yükümlülükleri; outsourcing ve bulut hizmetlerinde önceden bildirim."
+        en: "Governance, audit, and risk obligations for banking information systems; prior notification for outsourcing and cloud."
+  operating_constraints:
+    - tr: "Modelden gelen tüm çıktılar kullanıcıya sunulmadan önce PII guardrail'inden (guardrails/cross-industry/pii-tr) geçirilir."
+      en: "All model outputs pass through the PII guardrail (guardrails/cross-industry/pii-tr) before reaching the user."
+    - tr: "Hassas işlem (ör. sahtekarlık skorlaması, kredi kararı destekleme) için DPO onayı ve insan hakem (human-in-the-loop) gerekir."
+      en: "Sensitive operations (e.g., fraud scoring, credit decisioning) require DPO sign-off and human-in-the-loop review."
+    - tr: "Model eğitiminde kullanılan veriler kayıt altına alınır; veri envanteri Md. 16 yükümlülüğüne tabidir."
+      en: "Data used in model training is logged; the data inventory is subject to Article 16 obligation."
+    - tr: "Yurt dışında çalışan model uç noktaları (US/EU vb.) için yeterli koruma kararı veya KVKK taahhütnamesi şarttır."
+      en: "Model endpoints operating abroad (US/EU etc.) require an adequacy decision or KVKK undertaking."
