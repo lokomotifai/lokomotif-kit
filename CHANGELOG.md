@@ -8,6 +8,14 @@ Per-package changelogs live alongside each package once published. This file tra
 
 ## [Unreleased]
 
+### Added — Phase 7 (runtime blueprints, four targets in parallel)
+
+- `blueprints/anthropic-sdk/` — `@lokomotif/blueprint-anthropic-sdk`. `adaptToAnthropic` produces `{ system, messages, composition_hash }`; `runWithAnthropic` calls `client.messages.create`. `@anthropic-ai/sdk` is a peer dep.
+- `blueprints/dify/` — `@lokomotif/blueprint-dify`. `adaptToDify` produces a workflow-mode `DifyAppDefinition` with start → llm → end nodes; `renderDifyYaml` serializes for Dify import.
+- `blueprints/n8n/` — `@lokomotif/blueprint-n8n`. `adaptToN8n` produces a three-node n8n workflow (manual trigger → Anthropic chat → set output); `renderN8nJson` serializes for n8n import.
+- `blueprints/langgraph/` — `@lokomotif/blueprint-langgraph`. `adaptToLangGraph` (pure layout) and `buildStateGraph` (compose → execute → audit) using `@langchain/langgraph`. Caller supplies the LLM callback; CI smoke tests use a vitest mock.
+- Each blueprint records the composition hash on its output so traces can be correlated back to the originating Lokomotif composition (per `@lokomotif/otel-schema`).
+
 ### Added — Phase 6 Pass 1 (canonical modules from public sources)
 
 - `modules/guardrails/cross-industry/pii-tr.yaml` — KVKK-aware PII guardrail with rules for TC Kimlik, IBAN TR, Turkish mobile numbers, email addresses, and passport numbers. Source: KVKK 6698 (Md. 3, 5, 6, 12), MASAK Tebliğ, ISO 13616, NVI TC Kimlik formatı.

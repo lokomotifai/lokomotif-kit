@@ -92,6 +92,17 @@ The canonical PII detector (`guardrails/cross-industry/pii-tr`) shipped in Phase
 - ⬜ Add a local pre-commit hook that runs `uv run lokomotif-eval scan-pii modules/` on every commit (or another scope decided by the Lead Maintainer).
 - ⬜ Verify the hook fails the commit when a PII candidate is introduced into a tracked file.
 
+## 11. Phase 7 — blueprint end-to-end manual runs
+
+Each blueprint ships with a mocked smoke test in CI. Per the Phase 7 exit criteria, one manual end-to-end run per blueprint is required before launch (Phase 10):
+
+- ⬜ `anthropic-sdk` — set `ANTHROPIC_API_KEY`, compose a Pass 1 flow, send to Anthropic, log the response and the recorded `composition_hash`.
+- ⬜ `dify` — generate a workflow YAML, import into a Dify project, run with sample input.
+- ⬜ `n8n` — generate a workflow JSON, import into n8n, run with sample input.
+- ⬜ `langgraph` — wire a real LLM callback (Anthropic or other), compile the graph, invoke with sample input.
+
+Capture log excerpts and screenshots per run; they feed the launch announcement (Brief § 13) as proof points.
+
 ---
 
 ## How this file is maintained
