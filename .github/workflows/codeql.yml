@@ -9,10 +9,8 @@ on:
     - cron: "0 6 * * 1"
   workflow_dispatch:
 
-permissions:
-  contents: read
-  security-events: write
-  actions: read
+# Top-level minimum-privilege; job-level grants the writes CodeQL needs.
+permissions: read-all
 
 concurrency:
   group: codeql-${{ github.workflow }}-${{ github.ref }}
@@ -23,6 +21,10 @@ jobs:
     name: Analyze (${{ matrix.language }})
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      security-events: write  # CodeQL uploads SARIF results
+      contents: read
+      actions: read
     strategy:
       fail-fast: false
       matrix:

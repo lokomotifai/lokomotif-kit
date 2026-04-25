@@ -15,6 +15,7 @@ A directional roadmap for what's beyond the implementation plan. Specific dates 
 - `roles/finance/aml-analyst` — Pass 2 (engagement-derived) per RFC 0001.
 - `tasks/general/structured-summary` — Pass 2.
 - First sector-specific library: 3–5 finance modules grounded in real engagements. Decision #6 in `IMPLEMENTATION_PLAN.md` flips to fully resolved.
+- **Nextra v4 / Next.js 15+ migration.** Nextra 3.3.x is pinned to Next 14.2.x which carries seven moderate/high CVEs in its transitive tree (postcss <8.5.10, uuid, plus five Next-direct advisories) with no patch available within the 14.2 line. The migration unblocks the OpenSSF Scorecard `Vulnerabilities` check that drags v0.1.0 to 5.5/10. Operator-driven RFC; scope: re-author `_meta.ts`, `theme.config.tsx`, App Router layout if v4 requires it; verify TR locale routing; voice gate unchanged.
 - v0.2.0.
 
 ## Q4 2026 — Observability surface and a real LLM judge

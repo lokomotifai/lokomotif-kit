@@ -9,11 +9,8 @@ name: Release
 on:
   workflow_dispatch:
 
-permissions:
-  contents: write
-  pull-requests: write
-  id-token: write
-  packages: write
+# Top-level minimum-privilege; job-level grants the writes Changesets needs.
+permissions: read-all
 
 concurrency:
   group: release-${{ github.workflow }}-${{ github.ref }}
@@ -24,6 +21,10 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: write       # changesets pushes the version PR
+      pull-requests: write  # changesets opens/updates the PR
+      id-token: write       # Sigstore provenance attestations on npm publish
     steps:
       - name: Checkout
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
