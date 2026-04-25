@@ -31,7 +31,7 @@ const message = await runWithAnthropic(composed, 'Vakayı özetle.', {
 });
 ```
 
-The composed prompt becomes the Anthropic Messages `system` field; the user input becomes a single `user` message. Multi-turn conversation remains the caller's responsibility. The composition hash is exposed so emitters can record `lokomotif.flow.composition_hash` (see [`@lokomotif/otel-schema`](https://github.com/lokomotif-ai/lokomotif-kit/tree/main/packages/otel-schema)).
+The composed prompt becomes the Anthropic Messages `system` field; the user input becomes a single `user` message. Multi-turn conversation remains the caller's responsibility. The composition hash is exposed so emitters can record `lokomotif.flow.composition_hash` (see [`@lokomotif/otel-schema`](https://github.com/lokomotifai/lokomotif-kit/tree/main/packages/otel-schema)).
 
 ## Dify
 
@@ -83,7 +83,7 @@ A new blueprint requires an RFC. Why: the runtime list is the surface that opera
 
 ## See also
 
-- [`blueprints/anthropic-sdk` README](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/blueprints/anthropic-sdk/README.md)
-- [`blueprints/dify` README](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/blueprints/dify/README.md)
-- [`blueprints/n8n` README](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/blueprints/n8n/README.md)
-- [`blueprints/langgraph` README](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/blueprints/langgraph/README.md)
+- [`blueprints/anthropic-sdk` README](https://github.com/lokomotifai/lokomotif-kit/blob/main/blueprints/anthropic-sdk/README.md)
+- [`blueprints/dify` README](https://github.com/lokomotifai/lokomotif-kit/blob/main/blueprints/dify/README.md)
+- [`blueprints/n8n` README](https://github.com/lokomotifai/lokomotif-kit/blob/main/blueprints/n8n/README.md)
+- [`blueprints/langgraph` README](https://github.com/lokomotifai/lokomotif-kit/blob/main/blueprints/langgraph/README.md)

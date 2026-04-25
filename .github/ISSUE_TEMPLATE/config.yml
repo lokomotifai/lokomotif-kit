@@ -1,10 +1,10 @@
 blank_issues_enabled: false
 contact_links:
   - name: Security report
-    url: https://github.com/lokomotif-ai/lokomotif-kit/security/policy
+    url: https://github.com/lokomotifai/lokomotif-kit/security/policy
     about: Vulnerabilities are reported privately to kit@lokomotif.ai. Do not open public issues.
   - name: Discussion
-    url: https://github.com/lokomotif-ai/lokomotif-kit/discussions
+    url: https://github.com/lokomotifai/lokomotif-kit/discussions
     about: Questions, ideas, and conversations that are not yet ready for an issue.
   - name: Lokomotif AI
     url: https://lokomotif.ai

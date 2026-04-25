@@ -96,7 +96,7 @@ Composition canonicalizes module order to **R → T → C → S → G**. RTCSG e
 
 ## Composition hash
 
-`compositionHash(modules)` returns a stable 16-character hex hash of the ordered `(id, version)` tuples. Same input produces the same hash regardless of the order modules were passed in. The hash is the canonical correlator across observability spans — see [`@lokomotif/otel-schema`](https://github.com/lokomotif-ai/lokomotif-kit/tree/main/packages/otel-schema)'s `lokomotif.flow.composition_hash` attribute.
+`compositionHash(modules)` returns a stable 16-character hex hash of the ordered `(id, version)` tuples. Same input produces the same hash regardless of the order modules were passed in. The hash is the canonical correlator across observability spans — see [`@lokomotif/otel-schema`](https://github.com/lokomotifai/lokomotif-kit/tree/main/packages/otel-schema)'s `lokomotif.flow.composition_hash` attribute.
 
 ```ts
 import { compositionHash } from '@lokomotif/sdk';
@@ -123,4 +123,4 @@ Other tools (the CLI, the four blueprints) depend on the SDK without taking on e
 ## See also
 
 - [Blueprints](/blueprints) — runtime adapters that consume `ComposedPrompt`.
-- [`packages/sdk` README](https://github.com/lokomotif-ai/lokomotif-kit/blob/main/packages/sdk/README.md) — full API documentation.
+- [`packages/sdk` README](https://github.com/lokomotifai/lokomotif-kit/blob/main/packages/sdk/README.md) — full API documentation.

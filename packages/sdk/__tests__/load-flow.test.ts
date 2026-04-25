@@ -39,7 +39,7 @@ describe('assertFlow', () => {
   it('rejects non-objects', () => {
     expect(() => assertFlow(null)).toThrow(FlowError);
     expect(() => assertFlow('string')).toThrow(FlowError);
-    expect(() => assertFlow([1, 2, 3])).not.toThrow(); // arrays are objects but lack `modules`; let's verify
+    expect(() => assertFlow([1, 2, 3])).toThrow(FlowError); // arrays lack `modules` field
   });
 
   it('rejects empty modules array', () => {

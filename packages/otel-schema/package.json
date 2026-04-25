@@ -6,11 +6,11 @@
   "homepage": "https://kit.lokomotif.ai",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lokomotif-ai/lokomotif-kit.git",
+    "url": "git+https://github.com/lokomotifai/lokomotif-kit.git",
     "directory": "packages/otel-schema"
   },
   "bugs": {
-    "url": "https://github.com/lokomotif-ai/lokomotif-kit/issues"
+    "url": "https://github.com/lokomotifai/lokomotif-kit/issues"
   },
   "author": {
     "name": "Lokomotif Core Team",

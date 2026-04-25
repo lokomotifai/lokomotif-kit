@@ -12,7 +12,6 @@ import {
   ROLE_YAML,
   SECOND_ROLE_YAML,
   TASK_YAML,
-  CONTEXT_YAML,
   STYLE_YAML,
   GUARDRAIL_YAML,
   makeTempModulesDir,

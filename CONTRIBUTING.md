@@ -28,7 +28,7 @@ If a contribution conflicts with any of the above, the contribution is wrong, no
 ### Install
 
 ```bash
-git clone https://github.com/lokomotif-ai/lokomotif-kit.git
+git clone https://github.com/lokomotifai/lokomotif-kit.git
 cd lokomotif-kit
 corepack enable
 pnpm install

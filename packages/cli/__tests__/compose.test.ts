@@ -73,6 +73,10 @@ describe('compose', () => {
 
   it('errors when flow.yaml is not found', async () => {
     const repo = makeTempRepo();
+    // Provide a modules/ directory so the modules-dir check passes and
+    // the missing-flow-file path is the one that fails.
+    writeRepoFile(repo, 'modules/roles/cross-industry/test-role.yaml', VALID_ROLE_YAML);
+
     const { exitCode, stderr } = await runCli([
       'compose',
       'nonexistent-flow.yaml',

@@ -46,7 +46,7 @@ Execute in order. Any unchecked item blocks launch.
 ### Hardening
 
 - ⬜ All GitHub Actions pinned to commit SHAs. Run `node scripts/pin-actions.mjs` (with `GITHUB_TOKEN` exported) to update the workflows; review the diff and commit.
-- ⬜ OpenSSF Scorecard score on `main` ≥ 7. The score is visible at `https://scorecard.dev/viewer/?uri=github.com/lokomotif-ai/lokomotif-kit` after the first scheduled or workflow-dispatch run.
+- ⬜ OpenSSF Scorecard score on `main` ≥ 7. The score is visible at `https://scorecard.dev/viewer/?uri=github.com/lokomotifai/lokomotif-kit` after the first scheduled or workflow-dispatch run.
 - ⬜ README badges render correctly on github.com (CI green, CodeQL green, Scorecard ≥ 7).
 
 ### Voice review
@@ -213,7 +213,7 @@ Three things to do today, if any of this lands:
 2. Run `npx @lokomotif/cli modules list` against your own modules directory if you have one, or against ours.
 3. If you are writing prompts that need governance — and that is most enterprise prompts — open RTCSG side-by-side with what you have today.
 
-The Kit ships under Apache 2.0. Issues and discussions live on [GitHub](https://github.com/lokomotif-ai/lokomotif-kit). Komünite practitioners get a dedicated channel for builders' questions.
+The Kit ships under Apache 2.0. Issues and discussions live on [GitHub](https://github.com/lokomotifai/lokomotif-kit). Komünite practitioners get a dedicated channel for builders' questions.
 
 A category is not declared. It is occupied. This is one of the surfaces.
 
@@ -237,7 +237,7 @@ The Anthropic SDK blueprint is intentionally thin: `adaptToAnthropic(composed, u
 
 If you build agentic systems and care about governance, observability, and compositional structure as much as throughput, the Kit gives you the spine. We would love to see what you build on it.
 
-License: Apache 2.0. GitHub: [lokomotif-ai/lokomotif-kit](https://github.com/lokomotif-ai/lokomotif-kit).
+License: Apache 2.0. GitHub: [lokomotifai/lokomotif-kit](https://github.com/lokomotifai/lokomotif-kit).
 
 ---
 

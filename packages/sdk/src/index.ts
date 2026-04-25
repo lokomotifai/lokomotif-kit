@@ -31,3 +31,28 @@ export type {
   Flow,
   LoadOptions,
 } from './types.js';
+
+// Re-export the schema-generated module types so SDK consumers do not
+// need a direct dependency on @lokomotif/schema for the most common
+// type imports (`Module`, the discriminated union, the per-kind body
+// types, the LocalizedString primitive).
+export type {
+  ContextBody,
+  ContextModule,
+  ForbiddenRule,
+  GuardrailBody,
+  GuardrailModule,
+  LocalizedString,
+  LocalizedStringArray,
+  Module,
+  ModuleCommon,
+  RegulatoryReference,
+  RoleBody,
+  RoleModule,
+  StyleBody,
+  StyleModule,
+  TaskBody,
+  TaskExample,
+  TaskModule,
+  TaskOutputFormat,
+} from '@lokomotif/schema';

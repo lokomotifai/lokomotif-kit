@@ -96,12 +96,7 @@ async function processFile(absPath) {
 }
 
 async function main() {
-  const { glob } = await import('node:fs/promises').then(
-    () => null,
-    () => null,
-  ).catch(() => ({}));
-  // Node 22+ exposes fs.promises.glob; older runtimes need fast-glob.
-  // We avoid the extra dep and walk the workflows dir manually.
+  // Walk the workflows dir manually to avoid an extra dep.
   const { readdirSync } = await import('node:fs');
   const workflowsDir = resolve(REPO_ROOT, WORKFLOW_GLOB);
   const files = readdirSync(workflowsDir).filter(

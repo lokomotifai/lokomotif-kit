@@ -107,7 +107,7 @@ Capture log excerpts and screenshots per run; they feed the launch announcement 
 
 The docs site (`docs/`) is built and deployed to Vercel. One-time UI setup is required:
 
-- ⬜ Create a Vercel project from the GitHub repo `lokomotif-ai/lokomotif-kit`.
+- ⬜ Create a Vercel project from the GitHub repo `lokomotifai/lokomotif-kit`.
 - ⬜ Set **Root Directory** to `docs`.
 - ⬜ Set **Framework Preset** to Next.js (auto-detected; verify).
 - ⬜ The install/build/output commands are pre-configured in `docs/vercel.json`. Verify Vercel honors them.
@@ -162,7 +162,7 @@ The full launch protocol lives in [`LAUNCH.md`](./LAUNCH.md). The checklist belo
 ### Pre-launch hardening
 
 - ⬜ Run `node scripts/pin-actions.mjs` (with `GITHUB_TOKEN` exported); review and commit the SHA-pinned workflow files.
-- ⬜ Trigger `.github/workflows/scorecards.yml` via workflow_dispatch; verify the OpenSSF Scorecard score on `https://scorecard.dev/viewer/?uri=github.com/lokomotif-ai/lokomotif-kit` is **≥ 7**. Address any flagged checks before launch.
+- ⬜ Trigger `.github/workflows/scorecards.yml` via workflow_dispatch; verify the OpenSSF Scorecard score on `https://scorecard.dev/viewer/?uri=github.com/lokomotifai/lokomotif-kit` is **≥ 7**. Address any flagged checks before launch.
 - ⬜ Confirm README badges render on github.com (CI, CodeQL, Scorecard, License, Docs).
 - ⬜ Lead Maintainer reviews `README.md`, `docs/pages/index.mdx`, and the Insights post draft in `LAUNCH.md` § 5 for voice fidelity.
 

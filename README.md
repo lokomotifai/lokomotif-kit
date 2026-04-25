@@ -1,8 +1,8 @@
 # Lokomotif Kit
 
-[![CI](https://github.com/lokomotif-ai/lokomotif-kit/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/lokomotif-ai/lokomotif-kit/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/lokomotif-ai/lokomotif-kit/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/lokomotif-ai/lokomotif-kit/actions/workflows/codeql.yml)
-[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/lokomotif-ai/lokomotif-kit/badge)](https://scorecard.dev/viewer/?uri=github.com/lokomotif-ai/lokomotif-kit)
+[![CI](https://github.com/lokomotifai/lokomotif-kit/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/lokomotifai/lokomotif-kit/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/lokomotifai/lokomotif-kit/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/lokomotifai/lokomotif-kit/actions/workflows/codeql.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/lokomotifai/lokomotif-kit/badge)](https://scorecard.dev/viewer/?uri=github.com/lokomotifai/lokomotif-kit)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![Docs: kit.lokomotif.ai](https://img.shields.io/badge/docs-kit.lokomotif.ai-7057ff.svg)](https://kit.lokomotif.ai)
 
@@ -62,7 +62,7 @@ Composition happens at flow time, not module time. A role module never embeds gu
 > The Kit is in pre-release. The commands below scaffold the development environment; published packages ship in Phase 3 of the [implementation plan](./IMPLEMENTATION_PLAN.md).
 
 ```bash
-git clone https://github.com/lokomotif-ai/lokomotif-kit.git
+git clone https://github.com/lokomotifai/lokomotif-kit.git
 cd lokomotif-kit
 corepack enable
 pnpm install

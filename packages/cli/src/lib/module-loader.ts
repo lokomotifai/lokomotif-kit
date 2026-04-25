@@ -41,7 +41,11 @@ export function loadModuleFile(filePath: string): LoadResult {
       ],
     };
   }
-  return validate(parsed);
+  const result = validate(parsed);
+  if (result.ok) {
+    return { ok: true, module: result.data };
+  }
+  return { ok: false, errors: result.errors };
 }
 
 /**

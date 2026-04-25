@@ -1,7 +1,7 @@
 # Lokomotif Kit
 
-[![CI](https://github.com/lokomotif-ai/lokomotif-kit/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/lokomotif-ai/lokomotif-kit/actions/workflows/ci.yml)
-[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/lokomotif-ai/lokomotif-kit/badge)](https://scorecard.dev/viewer/?uri=github.com/lokomotif-ai/lokomotif-kit)
+[![CI](https://github.com/lokomotifai/lokomotif-kit/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/lokomotifai/lokomotif-kit/actions/workflows/ci.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/lokomotifai/lokomotif-kit/badge)](https://scorecard.dev/viewer/?uri=github.com/lokomotifai/lokomotif-kit)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
 **Corporate AI Adoption metodolojisinin açık kaynak çekirdeği.**
@@ -60,7 +60,7 @@ Kompozisyon flow anında olur, modül anında değil. Role modülü guardrail g�
 > Kit pre-release aşamasında. Aşağıdaki komutlar geliştirme ortamını kurar; yayımlanmış paketler, [implementasyon planının](./IMPLEMENTATION_PLAN.md) Faz 3'üyle birlikte gelir.
 
 ```bash
-git clone https://github.com/lokomotif-ai/lokomotif-kit.git
+git clone https://github.com/lokomotifai/lokomotif-kit.git
 cd lokomotif-kit
 corepack enable
 pnpm install

@@ -5,8 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from lokomotif_eval.runner import EvalRunner
-
-from tests.conftest import FAILING_EVAL_YAML  # noqa: TID252 — same package
+from tests.conftest import FAILING_EVAL_YAML
 
 
 def test_runner_passes_a_well_formed_module(repo_with_module: tuple[Path, Path, Path]) -> None:
@@ -73,7 +72,7 @@ checks:
   - id: identity-mentions-aml-llm
     judge: llm
     target: /body/identity/en
-    rubric: "Identity should mention AML and analyst."
+    rubric: "analyst"
     threshold: 0.4
 """,
         encoding="utf-8",

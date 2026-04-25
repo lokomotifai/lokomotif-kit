@@ -7,7 +7,7 @@
   "homepage": "https://kit.lokomotif.ai",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lokomotif-ai/lokomotif-kit.git",
+    "url": "git+https://github.com/lokomotifai/lokomotif-kit.git",
     "directory": "docs"
   },
   "type": "module",
@@ -16,7 +16,7 @@
     "build": "next build",
     "start": "next start",
     "voice-gate": "node scripts/voice-gate.mjs",
-    "lint": "next lint",
+    "lint": "node scripts/voice-gate.mjs",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf .next .turbo"
   },

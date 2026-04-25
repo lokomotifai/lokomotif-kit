@@ -35,12 +35,10 @@ _TC_KIMLIK = re.compile(r"(?<!\d)\d{11}(?!\d)")
 
 # IBAN TR: country code + 2 check digits + 22 digits, possibly spaced
 # in groups of 4. We accept the unspaced form too.
-_IBAN_TR = re.compile(r"\bTR\d{2}(?:[ -]?\d{4}){5}\d{2}\b", re.IGNORECASE)
+_IBAN_TR = re.compile(r"\bTR\d{2}(?:[ -]?\d{4}){5}[ -]?\d{2}\b", re.IGNORECASE)
 
 # Turkish mobile numbers — common forms.
-_TR_PHONE = re.compile(
-    r"(?<!\d)(?:\+?90|0)?[\s-]?5\d{2}[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}(?!\d)"
-)
+_TR_PHONE = re.compile(r"(?<!\d)(?:\+?90|0)?[\s-]?5\d{2}[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}(?!\d)")
 
 # Generic email — kept loose; intent is signal, not parser-grade.
 _EMAIL = re.compile(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}")

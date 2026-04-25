@@ -16,4 +16,8 @@ def test_python_version_supported() -> None:
 
 
 def test_package_imports() -> None:
-    assert lokomotif_eval.__version__ == "0.0.0"
+    # Version follows semver; assert shape, not a specific value, so the
+    # check survives release bumps.
+    parts = lokomotif_eval.__version__.split(".")
+    assert len(parts) == 3
+    assert all(part.isdigit() for part in parts)

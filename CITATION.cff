@@ -5,7 +5,7 @@ type: software
 version: "0.1.0"
 date-released: "2026-04-25"
 license: Apache-2.0
-repository-code: "https://github.com/lokomotif-ai/lokomotif-kit"
+repository-code: "https://github.com/lokomotifai/lokomotif-kit"
 url: "https://kit.lokomotif.ai"
 authors:
   - given-names: "Fatih"

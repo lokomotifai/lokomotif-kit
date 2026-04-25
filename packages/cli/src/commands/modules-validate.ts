@@ -3,6 +3,8 @@ import { resolve } from 'node:path';
 import { Command, Option } from 'clipanion';
 import fg from 'fast-glob';
 
+import type { ValidationError } from '@lokomotif/schema';
+
 import { loadModuleFile } from '../lib/module-loader.js';
 import {
   writeJson,
@@ -13,7 +15,7 @@ import {
 
 type FileResult =
   | { readonly path: string; readonly ok: true }
-  | { readonly path: string; readonly ok: false; readonly errors: ReturnType<typeof loadModuleFile> extends { errors: infer E } ? E : never };
+  | { readonly path: string; readonly ok: false; readonly errors: readonly ValidationError[] };
 
 export class ModulesValidateCommand extends Command {
   static override paths = [['modules', 'validate']];

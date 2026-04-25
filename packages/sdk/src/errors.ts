@@ -34,7 +34,7 @@ export class LoadModuleError extends Error {
  * Thrown by `loadFlow` / `compose` for flow-shape problems.
  */
 export class FlowError extends Error {
-  readonly cause?: unknown;
+  override readonly cause?: unknown;
 
   constructor(message: string, cause?: unknown) {
     super(message);

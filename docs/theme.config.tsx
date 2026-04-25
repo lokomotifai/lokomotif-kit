@@ -3,9 +3,9 @@ import type { DocsThemeConfig } from 'nextra-theme-docs';
 const config: DocsThemeConfig = {
   logo: <span style={{ fontWeight: 600 }}>Lokomotif Kit</span>,
   project: {
-    link: 'https://github.com/lokomotif-ai/lokomotif-kit',
+    link: 'https://github.com/lokomotifai/lokomotif-kit',
   },
-  docsRepositoryBase: 'https://github.com/lokomotif-ai/lokomotif-kit/tree/main/docs',
+  docsRepositoryBase: 'https://github.com/lokomotifai/lokomotif-kit/tree/main/docs',
   footer: {
     content: 'Apache 2.0 · Lokomotif AI · kit@lokomotif.ai',
   },

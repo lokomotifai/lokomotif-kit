@@ -193,7 +193,8 @@
           "description": "First-person framing of who the model is acting as. Senior-practitioner voice."
         },
         "expertise": {
-          "$ref": "#/definitions/LocalizedStringArray",
+          "type": "array",
+          "items": { "$ref": "#/definitions/LocalizedString" },
           "minItems": 1,
           "description": "Domains, methods, or instruments the role is calibrated for."
         },
