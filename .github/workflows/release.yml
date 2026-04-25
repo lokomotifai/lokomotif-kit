@@ -47,6 +47,18 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
+      - name: Debug npm token (temporary — remove after rehearsal)
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          echo "--- whoami ---"
+          npm whoami || echo "FAILED whoami"
+          echo "--- token can publish to @lokomotif? ---"
+          npm access list packages @lokomotif || echo "FAILED access list"
+          echo "--- org membership ---"
+          npm org ls lokomotif || echo "FAILED org ls"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Build
         run: pnpm build
 
