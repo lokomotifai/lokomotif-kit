@@ -1,6 +1,6 @@
 {
   "name": "@lokomotif/otel-schema",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "OpenTelemetry semantic conventions for Lokomotif Kit modules, flows, and evals.",
   "license": "Apache-2.0",
   "homepage": "https://kit.lokomotif.ai",
