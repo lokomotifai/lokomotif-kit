@@ -12,30 +12,32 @@ export class EvalRunCommand extends Command {
 
   static override usage = Command.Usage({
     category: 'Eval',
-    description: 'Run the Python eval harness in packages/eval.',
-    details: `Delegates to \`uv run pytest\` inside \`packages/eval\`. Until the full harness ships in Phase 5 of the implementation plan, this runs the package's smoke tests.
+    description: 'Run the Python eval harness against modules in the repo.',
+    details: `Delegates to \`uv run lokomotif-eval run\` inside \`packages/eval\`. The harness walks \`modules/**\` for eval suites and runs every check.
 
-Pass extra arguments to pytest after \`--\`:
+Forward extra arguments to the harness after \`--\`:
 
 \`\`\`bash
-lokomotif eval run -- -k "roles" --cov
+lokomotif eval run -- --module roles/finance/aml-analyst
+lokomotif eval run -- --reporter json
 \`\`\`
 `,
     examples: [
-      ['Run all eval tests', 'lokomotif eval run'],
-      ['Run a filtered subset', 'lokomotif eval run -- -k "finance"'],
+      ['Run every eval suite', 'lokomotif eval run'],
+      ['Filter to one module', 'lokomotif eval run -- --module roles/finance/aml-analyst'],
+      ['JSON output for CI', 'lokomotif eval run -- --reporter json'],
     ],
   });
 
   json = Option.Boolean('--json', false, {
-    description: 'Emit JSON status instead of streaming pytest output. Useful for CI metadata wrappers.',
+    description: 'Emit a JSON status envelope instead of streaming harness output. Useful for CI metadata wrappers.',
   });
 
   rootOverride = Option.String('--root', {
     description: 'Repository root. Defaults to the current working directory.',
   });
 
-  pytestArgs = Option.Proxy({ name: 'pytest args' });
+  harnessArgs = Option.Proxy({ name: 'harness args' });
 
   async execute(): Promise<number> {
     const repoRoot = findRepoRoot(this.rootOverride ?? process.cwd());
@@ -46,7 +48,8 @@ lokomotif eval run -- -k "roles" --cov
       return 1;
     }
 
-    const args = ['run', 'pytest', ...this.pytestArgs];
+    const harnessArgs = this.harnessArgs.length > 0 ? this.harnessArgs : ['run'];
+    const args = ['run', 'lokomotif-eval', ...harnessArgs];
 
     if (!this.json) {
       writeLine(this.context.stdout, `> uv ${args.join(' ')}    (cwd: ${evalDir})`);
