@@ -1,12 +1,8 @@
 name: Release
 
-# Manual-trigger only until the first release rehearsal (Phase F in
-# OPERATOR_TASKS.md § 13). Restoring the push trigger before the first
-# release with NPM_TOKEN configured would publish v0.0.0 packages to
-# npm — Changesets sees them as "unpublished" and tries to ship them.
-# After the rehearsal succeeds on a 0.0.x tag, push: branches: [main]
-# can be restored.
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 # Top-level minimum-privilege; job-level grants the writes Changesets needs.
@@ -46,17 +42,6 @@ jobs:
 
       - name: Install
         run: pnpm install --frozen-lockfile
-
-      - name: Debug npm token (temporary — remove after rehearsal)
-        run: |
-          echo "--- whoami ---"
-          npm whoami || echo "FAILED whoami"
-          echo "--- token can publish to @lokomotif? ---"
-          npm access list packages @lokomotif || echo "FAILED access list"
-          echo "--- org membership ---"
-          npm org ls lokomotif || echo "FAILED org ls"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Build
         run: pnpm build
