@@ -1,6 +1,6 @@
 {
   "name": "@lokomotif/blueprint-langgraph",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Adapt Lokomotif RTCSG flows to a LangGraph state graph.",
   "license": "Apache-2.0",
   "homepage": "https://kit.lokomotif.ai",

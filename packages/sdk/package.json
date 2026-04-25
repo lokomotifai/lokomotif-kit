@@ -1,6 +1,6 @@
 {
   "name": "@lokomotif/sdk",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Runtime-agnostic TypeScript SDK for composing RTCSG modules into prompts.",
   "license": "Apache-2.0",
   "homepage": "https://kit.lokomotif.ai",
