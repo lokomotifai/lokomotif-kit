@@ -5,7 +5,7 @@
 **Owner:** Fatih Güner (Lead Maintainer)
 **Effective:** 2026-04-25 (v1.1 amendment 2026-04-25)
 
-> v0.1.0 shipped on 2026-04-25 — eight @lokomotif/* packages on npm with Sigstore provenance, eight GitHub releases, docs site live at kit.lokomotif.ai. Phases 0–10 all closed. Beyond v0.1.0, see [`ROADMAP.md`](./ROADMAP.md).
+> v0.1.0 shipped on 2026-04-25 — eight @lokomotif/\* packages on npm with Sigstore provenance, eight GitHub releases, docs site live at kit.lokomotif.ai. Phases 0–10 all closed. Beyond v0.1.0, see [`ROADMAP.md`](./ROADMAP.md).
 >
 > v1.1 changes Phase 6 from a five-module ship to a two-pass ship: three public-sourced modules now (Pass 1) and two engagement-derived modules later (Pass 2). See `docs/rfcs/0001-phase-6-partial-scope.md`.
 

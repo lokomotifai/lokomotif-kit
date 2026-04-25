@@ -51,6 +51,19 @@ repos:
         args: ["-c", ".yamllint.yaml"]
         exclude: '^(pnpm-lock\.yaml|\.changeset/)'
 
+  # Prettier runs against staged files via the project's local install so
+  # the formatter version always matches what CI's `pnpm format:check` uses.
+  # `--ignore-unknown` lets prettier skip files it doesn't know how to
+  # format and respect `.prettierignore`.
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        language: system
+        entry: pnpm exec prettier --write --ignore-unknown
+        stages: [pre-commit]
+        pass_filenames: true
+
   # PII detection.
   # Operator activation lives in OPERATOR_TASKS.md § 10. Once `uv sync`
   # has been run inside packages/eval the hook can be re-enabled below.
