@@ -58,7 +58,7 @@
     "@langchain/core": "^0.3.27",
     "@langchain/langgraph": "^0.2.34",
     "@types/node": "^20.17.10",
-    "@vitest/coverage-v8": "^2.1.8",
-    "vitest": "^2.1.8"
+    "@vitest/coverage-v8": "^4.1.5",
+    "vitest": "^4.1.5"
   }
 }

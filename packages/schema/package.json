@@ -63,10 +63,10 @@
   },
   "devDependencies": {
     "@types/node": "^20.17.10",
-    "@vitest/coverage-v8": "^2.1.8",
+    "@vitest/coverage-v8": "^4.1.5",
     "fast-glob": "^3.3.2",
     "json-schema-to-typescript": "^15.0.3",
-    "vitest": "^2.1.8",
+    "vitest": "^4.1.5",
     "yaml": "^2.6.1"
   }
 }
